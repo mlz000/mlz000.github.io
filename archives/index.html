@@ -202,109 +202,33 @@
 <h2 class="archive-title">归档</h2>
 
 
-  
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
+  <div class="archive">
     
-      <img src="">
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2015-07-14T07:37:03.000Z"><a href="/2015/07/14/srm-538/">2015-07-14</a></time>
+            
+              <h1 class="title"><a href="/2015/07/14/srm-538/">srm 538</a></h1>
+            
+          </header>
+        </div>
+      </article>
     
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-07-14T07:37:03.000Z"><a href="/2015/07/14/srm-538/">2015-07-14</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/07/14/srm-538/">srm 538</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h1 id="题外话">题外话</h1><p>之前准备期末预习加上刚放假浪了一会= =没有补题，今天开始恢复补题。。</p>
-<h1 id="250">250</h1><h2 id="Description:">Description:</h2><p>平面上给出$N$个点，整数坐标。从$(0,0)$出发，每次往上下左右四个垂直方向走，要求遍历所有点至少一次，最后回到给出的N个点中的某个点（不包括原点）。然后走过的距离是曼哈顿距离。给出一个数字代表要求走过的距离为奇还是为偶。问能否满足要求。</p>
-<h2 id="Solution">Solution</h2><p>显然如果要求是偶的话只有全奇时无解，若有一个偶数，则可通过往返的方式访问其他点最后停留在偶数点，要求为奇数时同理</p>
-<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm538/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">class</span> EvenRoute &#123;</span><br><span class="line">        <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">isItPossible</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; x, <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; y, <span class="keyword">int</span> wantedParity)</span> </span>&#123;</span><br><span class="line">        	<span class="keyword">int</span> n = x.size();</span><br><span class="line">			<span class="keyword">bool</span> even = <span class="number">0</span>, odd = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">				<span class="keyword">if</span> ((<span class="built_in">abs</span>(x[i]) + <span class="built_in">abs</span>(y[i])) &amp; <span class="number">1</span>)	odd = <span class="number">1</span>;</span><br><span class="line">				<span class="keyword">else</span> even = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> (odd &amp;&amp; even) || (even &amp;&amp; !wantedParity) || (odd &amp;&amp; wantedParity) ? <span class="string">"CAN"</span> : <span class="string">"CANNOT"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="450">450</h1><h2 id="Description">Description</h2><p>给出四种命令。左转多少度，右转多少度，前进多远，后退多远。先在顺序是打乱的。要求给出一种排列使得最终总的位移和最远。输出最远距离即可。</p>
-<h2 id="Solution-1">Solution</h2><p>一个很明显的直观感受是尽量走直线会使得答案更大一些。这样就很简单了，不妨全向前，然后把调整角度放到后面，最后全向后即可。调整的角度背包求即可</p>
-<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm538/450.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a, b;<span class="comment">//ang back</span></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">60</span>][<span class="number">360</span>];</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Pi = <span class="built_in">acos</span>(-<span class="number">1.0</span>);</span><br><span class="line"><span class="keyword">class</span> TurtleSpy &#123;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">maxDistance</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; commands)</span> </span>&#123;</span><br><span class="line">   			<span class="keyword">int</span> n = commands.size();</span><br><span class="line">			<span class="keyword">double</span> X = <span class="number">0.0</span>, Y = <span class="number">0.0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">				<span class="keyword">char</span> s[<span class="number">10</span>];</span><br><span class="line">				<span class="keyword">int</span> x;</span><br><span class="line">				<span class="built_in">sscanf</span>(commands[i].c_str(), <span class="string">"%s%d"</span>, s, &amp;x);</span><br><span class="line">				<span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">'f'</span>)	X += x;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">'b'</span>)	Y += x;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">'l'</span>)	a.pb(x);</span><br><span class="line">				<span class="keyword">else</span>	a.pb(<span class="number">360</span> - x);</span><br><span class="line">			&#125;</span><br><span class="line">			dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.size(); ++i) &#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">360</span>; ++j)</span><br><span class="line">					<span class="keyword">if</span> (dp[i][j])	dp[i + <span class="number">1</span>][(j + a[i]) % <span class="number">360</span>] = dp[i + <span class="number">1</span>][j] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">double</span> t = <span class="number">0.0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">360</span>; ++i) &#123;</span><br><span class="line">				<span class="keyword">if</span> (dp[a.size()][i])	t = max(t, X * X + Y * Y - <span class="number">2.0</span> * X * Y * <span class="built_in">cos</span>(Pi * i / <span class="number">180.0</span>));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">sqrt</span>(t);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2015-07-10T16:58:29.000Z"><a href="/2015/07/11/新的Blog/">2015-07-11</a></time>
+            
+              <h1 class="title"><a href="/2015/07/11/新的Blog/">新的Blog</a></h1>
+            
+          </header>
+        </div>
+      </article>
     
   </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-07-10T16:58:29.000Z"><a href="/2015/07/11/新的Blog/">2015-07-11</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/07/11/新的Blog/">新的Blog</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>鼓捣了好久终于搞了一个Blog,感人肺腑QAQ。之前一直想用jekyll的。。然后发现并不好使，只好用Hexo辣O_o<br>反正写Blog也是用Markdown的，所以之前Csdn的blog还是会继续更新，搞这个纯粹是闲着蛋疼为了看着顺眼而已= =。又不想自己搭，所以就这样辣<br>这个Blog大概还是会主要写一些蒟蒻的题解吧，其余的可能会偶尔吹吹比。希望能帮助需要帮助的人和让自己爽爽。。。&gt;_&lt;</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-  
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
