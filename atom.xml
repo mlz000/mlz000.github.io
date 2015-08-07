@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://mlz000.github.io//"/>
-  <updated>2015-08-07T15:01:50.553Z</updated>
+  <updated>2015-08-07T15:11:52.726Z</updated>
   <id>http://mlz000.github.io//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://mlz000.github.io/2015/08/07/2015-ACM%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E7%AC%AC%E4%B8%80%E5%9C%BA/"/>
     <id>http://mlz000.github.io/2015/08/07/2015-ACM多校训练第一场/</id>
     <published>2015-08-07T12:56:18.000Z</published>
-    <updated>2015-08-07T15:01:50.553Z</updated>
+    <updated>2015-08-07T15:11:52.726Z</updated>
     <content type="html"><![CDATA[<h1 id="题外话">题外话</h1><p>这个暑假以前就决定要把这次多校的所有题全补了，中间断断续续，总算把第一场的题补全了，鄙视一下颓废的自己。。。</p>
 <p><hr></p>
 <h1 id="hdu_5288(1001)_OO’s_Sequence">hdu 5288(1001) OO’s Sequence</h1><h2 id="Solution">Solution</h2><p>水题，定义两个数组$L[i], R[i]$示第i个数左侧和右侧最接近它且值是a[i]因子的数字的位置，统计贡献即可。由于a[i]范围很小，因子数很小，暴力统计更新l,r即可。</p>
@@ -65,7 +65,7 @@
     
       <category term="hdu" scheme="http://mlz000.github.io/categories/hdu/"/>
     
-      <category term="多校题解" scheme="http://mlz000.github.io/categories/hdu/%E5%A4%9A%E6%A0%A1%E9%A2%98%E8%A7%A3/"/>
+      <category term="ACM多校题解" scheme="http://mlz000.github.io/categories/hdu/ACM%E5%A4%9A%E6%A0%A1%E9%A2%98%E8%A7%A3/"/>
     
   </entry>
   
