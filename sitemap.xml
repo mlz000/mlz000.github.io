@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mlz000.github.io/categories/index.html</loc>
+    <lastmod>2015-09-12T15:46:41.116Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://mlz000.github.io/tags/index.html</loc>
+    <lastmod>2015-09-12T15:45:51.679Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://mlz000.github.io/2015/09/12/categories/</loc>
     <lastmod>2015-09-12T15:42:43.640Z</lastmod>
   </url>
