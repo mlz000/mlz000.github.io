@@ -749,23 +749,23 @@ body {
 .header-inner {
   margin: 0 auto;
   padding: 100px 0 70px;
-  width: 960px;
+  width: 1280px;
 }
 .one-column .header-inner {
-  width: 700px;
+  width: 960px;
 }
 .main {
   padding-bottom: 150px;
 }
 .main-inner {
   margin: 0 auto;
-  width: 960px;
+  width: 1280px;
 }
 .one-column .main-inner {
-  width: 700px;
+  width: 960px;
 }
 .main-inner .content {
-  width: 700px;
+  width: 960px;
 }
 .footer {
   position: absolute;
@@ -776,10 +776,10 @@ body {
 }
 .footer-inner {
   margin: 20px auto;
-  width: 960px;
+  width: 1280px;
 }
 .one-column .footer-inner {
-  width: 700px;
+  width: 960px;
 }
 .headband {
   height: 3px;
@@ -1055,7 +1055,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #aa1306;
+  background: #fff0ff;
 }
 .sidebar-nav {
   margin: 0;
@@ -1226,7 +1226,7 @@ body {
 .posts-expand {
   padding-top: 40px;
 }
-@media (max-width: 767px) {
+@media (max-width: 1280px) {
   .posts-expand {
     margin: 0 20px;
   }
