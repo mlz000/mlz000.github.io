@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://mlz000.github.io//"/>
-  <updated>2015-09-12T15:48:03.927Z</updated>
+  <updated>2015-09-03T12:16:36.431Z</updated>
   <id>http://mlz000.github.io//</id>
   
   <author>
@@ -14,32 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title><![CDATA[about]]></title>
-    <link href="http://mlz000.github.io/2015/09/12/about/"/>
-    <id>http://mlz000.github.io/2015/09/12/about/</id>
-    <published>2015-09-12T15:48:03.000Z</published>
-    <updated>2015-09-12T15:48:03.927Z</updated>
-    <content type="html"></content>
-    <summary type="html">
-    
-    </summary>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[categories]]></title>
-    <link href="http://mlz000.github.io/2015/09/12/categories/"/>
-    <id>http://mlz000.github.io/2015/09/12/categories/</id>
-    <published>2015-09-12T15:42:11.000Z</published>
-    <updated>2015-09-12T15:42:43.640Z</updated>
-    <content type="html"></content>
-    <summary type="html">
-    
-    </summary>
-    
-  </entry>
   
   <entry>
     <title><![CDATA[2015-ACM多校训练第三场]]></title>
