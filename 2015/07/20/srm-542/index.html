@@ -1,0 +1,610 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="mlz000's Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="250
+Description从矩形地图中选三个点，使得A-B,B-C,C-A的曼哈顿距离和在给定的一个范围内，求多少种选法。$X,Y\le 3000$
+Solution水题，很容易发现曼哈顿距离和是一个矩形的周长，枚举长和宽统计即可。
+Code12345678910111213141516171819202122#include &amp;lt;bits/stdc++.h&amp;gt;using namesp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="srm 542">
+<meta property="og:url" content="http://mlz000.github.io/2015/07/20/srm-542/index.html">
+<meta property="og:site_name" content="mlz000's Blog">
+<meta property="og:description" content="250
+Description从矩形地图中选三个点，使得A-B,B-C,C-A的曼哈顿距离和在给定的一个范围内，求多少种选法。$X,Y\le 3000$
+Solution水题，很容易发现曼哈顿距离和是一个矩形的周长，枚举长和宽统计即可。
+Code12345678910111213141516171819202122#include &amp;lt;bits/stdc++.h&amp;gt;using namesp">
+<meta property="og:updated_time" content="2015-07-20T12:57:29.948Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="srm 542">
+<meta name="twitter:description" content="250
+Description从矩形地图中选三个点，使得A-B,B-C,C-A的曼哈顿距离和在给定的一个范围内，求多少种选法。$X,Y\le 3000$
+Solution水题，很容易发现曼哈顿距离和是一个矩形的周长，枚举长和宽统计即可。
+Code12345678910111213141516171819202122#include &amp;lt;bits/stdc++.h&amp;gt;using namesp">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> srm 542 | mlz000's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">mlz000's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            標籤
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              srm 542
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2015-07-20T20:05:42+08:00" content="2015-07-20">
+            2015-07-20
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
+                  <span itemprop="name">topcoder题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="250">250</h1><p><hr></p>
+<h2 id="Description">Description</h2><p>从矩形地图中选三个点，使得A-B,B-C,C-A的曼哈顿距离和在给定的一个范围内，求多少种选法。$X,Y\le 3000$</p>
+<h2 id="Solution">Solution</h2><p>水题，很容易发现曼哈顿距离和是一个矩形的周长，枚举长和宽统计即可。</p>
+<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm542/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">5000</span>;</span><br><span class="line"><span class="keyword">struct</span> PatrolRoute &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countRoutes</span><span class="params">(<span class="keyword">int</span> X, <span class="keyword">int</span> Y, <span class="keyword">int</span> minT, <span class="keyword">int</span> maxT)</span> </span>&#123;</span><br><span class="line">		LL ans = <span class="number">0</span>;</span><br><span class="line">  		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; X; ++i)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">2</span>; j &lt; Y; ++j) &#123;</span><br><span class="line">				<span class="keyword">if</span> ((i + j) * <span class="number">2</span> &gt;= minT &amp;&amp; (i + j) * <span class="number">2</span> &lt;= maxT) &#123;</span><br><span class="line">					ans += <span class="number">1l</span>l * (X - i) * (Y - j) % M * (i - <span class="number">1</span>) % M * (j - <span class="number">1</span>) % M;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">return</span> ans * <span class="number">6</span> % M;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="500">500</h1><p><hr></p>
+<h2 id="Description-1">Description</h2><p>给出$n$个长度都为$m$的字符串。$n\le 16, m\le 50$，任两个字符串之间的大小关系由一个随即产生的排列来决定。即，如果比较至第$i$位，则去比较$pa_i$和$pb_i$的大小关系，从而确定字符串的大小关系。问$words_i$排完序后是最小串的概率。</p>
+<h2 id="Solution-1">Solution</h2><p>感觉这题很难QAQ，首先n=16可以想到状压Dp，但是状态很难想，看了别人的题解才会做。。<br>$dp[i][mask]$表示当前状态是$mask$，第$i$个人是最小串的概率，$mask$为i的位置表示该串已被选择。在统计第$i$个串的概率时同时记录每位字母对应比该串小的和相等的状态。分别用$small[j]$和$same[j]$存二进制状态。<br>当$small[j] \&amp; mask &gt; 0$时，显然不可以转移，当$same[j] \&amp; mask=mask$时，转移没什么意义，否则$dp[i][mask] += dp[i][same[j] \&amp; mask]$</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm542/500.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//状压Dp</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">16</span>;</span><br><span class="line"><span class="keyword">int</span> small[<span class="number">51</span>], same[<span class="number">51</span>];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; ans; </span><br><span class="line"><span class="keyword">double</span> dp[N][<span class="number">1</span> &lt;&lt; N];</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">gao</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> mask, <span class="keyword">int</span> l)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (dp[x][mask] != -<span class="number">1.0</span>)	<span class="keyword">return</span> dp[x][mask];</span><br><span class="line">	<span class="keyword">double</span> &amp;t = dp[x][mask];</span><br><span class="line">	<span class="keyword">if</span> (mask == (<span class="number">1</span> &lt;&lt; x))	<span class="keyword">return</span> t = <span class="number">1.0</span>;</span><br><span class="line">	t = <span class="number">0.0</span>;</span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; l; ++i) &#123;</span><br><span class="line">		<span class="keyword">if</span> ((small[i] &amp; mask) &gt; <span class="number">0</span>)	++cnt;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> ((same[i] &amp; mask) != mask)	++cnt, t += gao(x, mask &amp; same[i], l);</span><br><span class="line">	&#125;</span><br><span class="line">	t /= cnt;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> StrangeDictionary2 &#123;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">double</span>&gt; getProbabilities(<span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; words) &#123;</span><br><span class="line">  		<span class="keyword">int</span> n = words.size(), l = words[<span class="number">0</span>].size();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">1</span> &lt;&lt; n; ++j)</span><br><span class="line">				dp[i][j] = -<span class="number">1.0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">			<span class="built_in">memset</span>(small, <span class="number">0</span>, <span class="keyword">sizeof</span>(small));</span><br><span class="line">			<span class="built_in">memset</span>(same, <span class="number">0</span>, <span class="keyword">sizeof</span>(same));</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; l; ++k)</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">					<span class="keyword">if</span> (words[j][k] &lt; words[i][k])	small[k] |= <span class="number">1</span> &lt;&lt; j;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span> (words[j][k] == words[i][k])	same[k] |= <span class="number">1</span> &lt;&lt; j;</span><br><span class="line">				&#125;</span><br><span class="line">			ans.pb(gao(i, (<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>, l));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/07/2015-ACM多校训练第一场/" rel="prev">2015 ACM多校训练第一场</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/19/srm-541/" rel="next">srm 541</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="mlz000" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">mlz000</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">分類</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">標籤</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#250"><span class="nav-number">1.</span> <span class="nav-text">250</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#500"><span class="nav-number">2.</span> <span class="nav-text">500</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-1"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-1"><span class="nav-number">2.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mlz000</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

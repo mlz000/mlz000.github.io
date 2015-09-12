@@ -1,0 +1,660 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="mlz000's Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="题外话尼玛颓废着颓废着就开学了= =无聊终于把第三场的题全补完了
+
+hdu 5316(1001) MagicianSolution线段树裸题，维护四个东西，以奇/偶开头奇/偶结尾的最大值，正常线段树合并即可。
+Code
+hdu 5317(1002) RGCDQSolution水题，发现$2\times 3\times 5\times 7\times 9\times 11\times 13 \tim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2015-ACM多校训练第三场">
+<meta property="og:url" content="http://mlz000.github.io/2015/09/01/2015-ACM多校训练第三场/index.html">
+<meta property="og:site_name" content="mlz000's Blog">
+<meta property="og:description" content="题外话尼玛颓废着颓废着就开学了= =无聊终于把第三场的题全补完了
+
+hdu 5316(1001) MagicianSolution线段树裸题，维护四个东西，以奇/偶开头奇/偶结尾的最大值，正常线段树合并即可。
+Code
+hdu 5317(1002) RGCDQSolution水题，发现$2\times 3\times 5\times 7\times 9\times 11\times 13 \tim">
+<meta property="og:updated_time" content="2015-09-03T12:16:36.431Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2015-ACM多校训练第三场">
+<meta name="twitter:description" content="题外话尼玛颓废着颓废着就开学了= =无聊终于把第三场的题全补完了
+
+hdu 5316(1001) MagicianSolution线段树裸题，维护四个东西，以奇/偶开头奇/偶结尾的最大值，正常线段树合并即可。
+Code
+hdu 5317(1002) RGCDQSolution水题，发现$2\times 3\times 5\times 7\times 9\times 11\times 13 \tim">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 2015-ACM多校训练第三场 | mlz000's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">mlz000's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            標籤
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              2015-ACM多校训练第三场
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2015-09-01T21:03:28+08:00" content="2015-09-01">
+            2015-09-01
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/hdu/" itemprop="url" rel="index">
+                  <span itemprop="name">hdu</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/hdu/ACM多校题解/" itemprop="url" rel="index">
+                  <span itemprop="name">ACM多校题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="题外话">题外话</h1><p>尼玛颓废着颓废着就开学了= =无聊终于把第三场的题全补完了</p>
+<p><hr></p>
+<h1 id="hdu_5316(1001)_Magician">hdu 5316(1001) Magician</h1><h2 id="Solution">Solution</h2><p>线段树裸题，维护四个东西，以奇/偶开头奇/偶结尾的最大值，正常线段树合并即可。</p>
+<h2 id="Code"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/01.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5317(1002)_RGCDQ">hdu 5317(1002) RGCDQ</h1><h2 id="Solution-1">Solution</h2><p>水题，发现$2\times 3\times 5\times 7\times 9\times 11\times 13 \times17&gt;1000000$，所以素因子种数最多为7个，前缀和统计一下即可</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/02.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h2 id="hdu_5318(1003)_The_Goddess_Of_The_Moon">hdu 5318(1003) The Goddess Of The Moon</h2><h2 id="Solution-2">Solution</h2><p>水题，题目太长比赛没看= =，唯一的坑是要把数字去重，然后容易看出可以用矩阵乘法来递推</p>
+<h2 id="Code-2"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/03.cpp" target="_blank" rel="external">Code</a></h2><p><hr>  </p>
+<h1 id="hdu_5319(1004)_Painter">hdu 5319(1004) Painter</h1><h2 id="Solution-3">Solution</h2><p>简单模拟题，按题目要求一刷刷到底就可以了</p>
+<h2 id="Code-3"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/04.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5320(1005)_Fan_Li">hdu 5320(1005) Fan Li</h1><h2 id="Solution-4">Solution</h2><p>感觉这道题是个不错题，考虑以$i$为开头的序列，$gcd$如果发生变化一定至少除以$2$，所以不同的gcd区间最多也是log级的。可以预处理出所有的四元组$(g,i,l,r)$，表示以$i$为开头，结尾在$[l,r]$区间内$gcd$为$g$。<br>考虑$dp$，不妨考虑当前$gcd=x$的方案数以及区间数，假设该四元组开头为$i$,显然区间数是以结尾在$[1,i-1]$区间内的最大值$+1$，方案数也很好计算。容易发现用一个线段树就可以轻松维护了。</p>
+<h2 id="Code-4"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/05.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5321(1006)_Beautiful_Set">hdu 5321(1006) Beautiful Set</h1><h1 id="Description">Description</h1><p>A的计算方法是：对于$n$个数的某个排列，此排列的美丽值为这个排列所有的区间最大公约数之和。然后这个集合的美丽值为$n$个数的所有排列的美丽值之和。<br>B的计算方法是：在$n$个数中选出$k(1 \le k \le n)$个数，对于某种选取方案，这种方案的美丽值为$k$个数的最大公约数乘上$k$。然后这个集合的美丽值为所有选数方案的美丽值之和。</p>
+<h2 id="Solution-5">Solution</h2><p>很容易想到用$cnt[i]$表示集合中$i$的倍数个数</p>
+<ul>
+<li>考虑第一个人<br>$F1[x]$表示$gcd$为$x$的倍数的区间的个数<br>$f1[x]$表示$gcd$为$x$的区间的个数<br>$F1[x]=\sum_{x|d}f1[d]$</li>
+</ul>
+<p>且$F1[x]=\sum_{j=1}^{cnt[x]} \binom{cnt[x]}{j}\times j! \times (n-j+1)!$<br>从$cnt[x]$里选$j$个数，再把$n-j$个数和这$j$个数算做$n-j+1$的排列</p>
+<ul>
+<li>考虑第二个人<br>$F2[x]$表示$gcd$为$x$的倍数的区间的个数<br>$f2[x]$表示$gcd$为$x$的区间的个数<br>易知$F2[x] = \sum_{x|d}f2[d]$</li>
+</ul>
+<p>且$F2[x]= \sum_{j=1}^{cnt[x]} \binom{cnt[x]}{j}\times j = cnt[x]\times 2^{cnt[x]-1}$<br>这个稍微推推就能推出来</p>
+<p>同样的$F2[x] = \sum_{x|d}f2[d]$</p>
+<p>然后就是我们熟悉的莫比乌斯反演辣！</p>
+<p>$F(n)=\sum_{n|d}f(d)$</p>
+<p>可以得到</p>
+<p>$f[n]=\sum_{n|d}\mu(d/n)\times F(d)$</p>
+<p>于是可以计算出$f$，$\sum f[i]\times i$即是答案</p>
+<h2 id="Code-5"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/06.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5322(1007)_Hope">hdu 5322(1007) Hope</h1><h2 id="Solution-6">Solution</h2><p>这题其实并不难，考虑$dp[i]$为长度为$i$的排列的答案，枚举这个排列最大值所在的位置，最大值左边和它都是联通的，于是我们可以得到转移方程<br>$dp[i]=\sum_{j=1}^i \binom{i-1}{j-1}\times (j-1)!\times dp[i-j]\times j^2$</p>
+<p>稍加变换我们可以得到</p>
+<p>$dp[i]=(i-1)!\times \sum_{j=1}^i \frac{j^2}{(i-j)!}\times dp[i-j]$</p>
+<p>令$k=i-j$我们可以得到$dp[i]=(i-1)!\times \sum_{k=0}^{i-1}\frac{(i-k)^2}{k!}\times dp[k]$<br>展开得$dp[i]=(i-1)!\times (i^2-2ik+k^2)\times \frac{dp[k]}{k!}$<br>维护三个前缀和即可O(N)解决，当然你可以没思维难度得想到cdq分治+NTT得做法QAQ</p>
+<h2 id="Code-6"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/07.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5323(1008)_Solve_this_interesting_problem">hdu 5323(1008) Solve this interesting problem</h1><h2 id="Solution-7">Solution</h2><p>考虑$[l,r]$是做左儿子还是右儿子，具体有$4$种情况，暴力枚举即可，实际上的复杂度是$4^{11}$，完全可以接受</p>
+<h2 id="Code-7"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/08.cpp" target="_blank" rel="external">Code</a></h2><hr>
+
+<h1 id="hdu_5324(1009)_Boring_Class">hdu 5324(1009) Boring Class</h1><h2 id="Solution-8">Solution</h2><p>三维最长不下降序列之类的题，很容易想到按$id$算答案，$r$这一维排序，$l$这一维用树状数组维护然后cdq分治的经典做法。<br>考虑$dp$由于要字典序最小，先cdq分治算右区间的答案，考虑对左区间的影响即可。<br>写了不到$80$行，轻松愉快，cdq分治真是个高大的姿势。。。爽</p>
+<h2 id="Code-8"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/09.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5325(1010)_Crazy_Bobo">hdu 5325(1010) Crazy Bobo</h1><h2 id="Solution-9">Solution</h2><p>水题，按权值排序后，权值小的向大的连即可，dp一下就行了</p>
+<h2 id="Code-9"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/10.cpp" target="_blank" rel="external">Code</a></h2><hr>
+
+<h1 id="hdu_5326(1011)_Work">hdu 5326(1011) Work</h1><h2 id="Solution-10">Solution</h2><p>水题，随便dfs就行了= =</p>
+<h2 id="Code-10"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/11.cpp" target="_blank" rel="external">Code</a></h2><p>完结撒花！<br>继续补题！&gt;_&lt;</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/17/2015-ACM多校训练第二场/" rel="next">2015 ACM多校训练第二场</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="mlz000" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">mlz000</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">分類</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">標籤</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题外话"><span class="nav-number">1.</span> <span class="nav-text">题外话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5316(1001)_Magician"><span class="nav-number">2.</span> <span class="nav-text">hdu 5316(1001) Magician</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">2.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5317(1002)_RGCDQ"><span class="nav-number">3.</span> <span class="nav-text">hdu 5317(1002) RGCDQ</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">3.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-1"><span class="nav-number">3.2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdu_5318(1003)_The_Goddess_Of_The_Moon"><span class="nav-number">3.3.</span> <span class="nav-text">hdu 5318(1003) The Goddess Of The Moon</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-2"><span class="nav-number">3.4.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-2"><span class="nav-number">3.5.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5319(1004)_Painter"><span class="nav-number">4.</span> <span class="nav-text">hdu 5319(1004) Painter</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-3"><span class="nav-number">4.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-3"><span class="nav-number">4.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5320(1005)_Fan_Li"><span class="nav-number">5.</span> <span class="nav-text">hdu 5320(1005) Fan Li</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-4"><span class="nav-number">5.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-4"><span class="nav-number">5.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5321(1006)_Beautiful_Set"><span class="nav-number">6.</span> <span class="nav-text">hdu 5321(1006) Beautiful Set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">7.</span> <span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-5"><span class="nav-number">7.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-5"><span class="nav-number">7.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5322(1007)_Hope"><span class="nav-number">8.</span> <span class="nav-text">hdu 5322(1007) Hope</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-6"><span class="nav-number">8.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-6"><span class="nav-number">8.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5323(1008)_Solve_this_interesting_problem"><span class="nav-number">9.</span> <span class="nav-text">hdu 5323(1008) Solve this interesting problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-7"><span class="nav-number">9.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-7"><span class="nav-number">9.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5324(1009)_Boring_Class"><span class="nav-number">10.</span> <span class="nav-text">hdu 5324(1009) Boring Class</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-8"><span class="nav-number">10.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-8"><span class="nav-number">10.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5325(1010)_Crazy_Bobo"><span class="nav-number">11.</span> <span class="nav-text">hdu 5325(1010) Crazy Bobo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-9"><span class="nav-number">11.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-9"><span class="nav-number">11.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5326(1011)_Work"><span class="nav-number">12.</span> <span class="nav-text">hdu 5326(1011) Work</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-10"><span class="nav-number">12.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-10"><span class="nav-number">12.2.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mlz000</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
