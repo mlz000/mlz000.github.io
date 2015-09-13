@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://mlz000.github.io//"/>
-  <updated>2015-09-03T12:16:36.431Z</updated>
+  <updated>2015-09-13T14:26:06.249Z</updated>
   <id>http://mlz000.github.io//</id>
   
   <author>
@@ -20,8 +20,9 @@
     <link href="http://mlz000.github.io/2015/09/01/2015-ACM%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E7%AC%AC%E4%B8%89%E5%9C%BA/"/>
     <id>http://mlz000.github.io/2015/09/01/2015-ACM多校训练第三场/</id>
     <published>2015-09-01T13:03:28.000Z</published>
-    <updated>2015-09-03T12:16:36.431Z</updated>
-    <content type="html"><![CDATA[<h1 id="题外话">题外话</h1><p>尼玛颓废着颓废着就开学了= =无聊终于把第三场的题全补完了</p>
+    <updated>2015-09-13T14:26:06.249Z</updated>
+    <content type="html"><![CDATA[<p><script type="text/javascript" src="http://www.xiami.com/widget/player-multi?uid=5803277&sid=3513664,3493833,3493812,1769161673,1769161682,1769303797,1769453828,3480575,3250266,1768983626,3502269,1769969032,1771211988,1769015299,95052,1770163788,1769184049,&width=235&height=346&mainColor=FF8719&backColor=494949&autoplay=1&mode=js"></script></p>
+<h1 id="题外话">题外话</h1><p>尼玛颓废着颓废着就开学了= =无聊终于把第三场的题全补完了</p>
 <p><hr></p>
 <h1 id="hdu_5316(1001)_Magician">hdu 5316(1001) Magician</h1><h2 id="Solution">Solution</h2><p>线段树裸题，维护四个东西，以奇/偶开头奇/偶结尾的最大值，正常线段树合并即可。</p>
 <h2 id="Code"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/01.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
@@ -67,9 +68,7 @@
 <h2 id="Code-10"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/11.cpp" target="_blank" rel="external">Code</a></h2><p>完结撒花！<br>继续补题！&gt;_&lt;</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h1 id="题外话">题外话</h1><p>尼玛颓废着颓废着就开学了= =无聊终于把第三场的题全补完了</p>
-<p><hr></p>
-<h1 id="hdu_5316(1001)_Magician">hdu 5316(1001) Magician</h1><h2 id="S]]>
+    <![CDATA[<p><script type="text/javascript" src="http://www.xiami.com/widget/player-multi?uid=5803277&sid=3513664,3493833,3493812,1769161673,176916168]]>
     </summary>
     
       <category term="hdu" scheme="http://mlz000.github.io/categories/hdu/"/>
