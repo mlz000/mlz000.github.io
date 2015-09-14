@@ -204,6 +204,130 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/14/2015-ACM多校训练第四场/" itemprop="url">
+                2015-ACM多校训练第四场
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-14T18:22:15+08:00" content="2015-09-14">
+            2015-09-14
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/hdu/" itemprop="url" rel="index">
+                  <span itemprop="name">hdu</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/hdu/ACM多校题解/" itemprop="url" rel="index">
+                  <span itemprop="name">ACM多校题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/14/2015-ACM多校训练第四场/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/14/2015-ACM多校训练第四场/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque"></p>
+<h1 id="题外话">题外话</h1><p>思考了一下人生，快打regional了，功利一点说多校的题并不需要每道都补，一些比较丧病或者烦的题我暂时就跳过了吧QvQ，先把正常向的题补了。。</p>
+<p><hr></p>
+<h1 id="hdu_5327(1001)_Olympiad">hdu 5327(1001) Olympiad</h1><h2 id="Solution">Solution</h2><p>SB暴力题，暴力算就好</p>
+<h2 id="Code"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/4/01.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5328(1002)_Problem_Killer">hdu 5328(1002) Problem Killer</h1><h2 id="Solution-1">Solution</h2><p>水题，等差等比$O(N)$扫的时候判断即可</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/4/02.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5329(1003)_Question_for_the_Leader">hdu 5329(1003) Question for the Leader</h1><h2 id="Solution-2">Solution</h2><p>简化问题，考虑把一棵树分成$k$块,这时一个显然的结论是如果有$k$个子树大小为$<br>frac{n}{k}的倍数，即可以分成$k$块。<br>考虑原问题，原题是一个基环加外向树，考虑不在环上的点$i$的$sz[i]$，显然可以直接计算。在基环上的点，不妨考虑断掉一条边后每个点为根的子树的$sz$,容易发现是一个前缀和的形式。然后我们对枚举的$k$取模，每次$O(N)$枚举在环上断掉哪条边即可。<br>复杂度$O(N\times logN)$</p>
+<h2 id="Code-2"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/4/03.cpp" target="_blank" rel="external">Code</a></h2><p><hr>  </p>
+<h1 id="hdu_5330(1004)_Route_Statistics">hdu 5330(1004) Route Statistics</h1><h2 id="Solution-3">Solution</h2><p>dp题，考虑$dp[S][k]$表示与$S$这个点距离为$k$的个数。($S$是一个长度为维度的0,1,2串)我们最后求出所有的$dp[S][k]$即可。<br>我们发现可以枚举中间某位不同，把那位分别替换为$0,1,2$三种情况来转移，简单dp一下即可</p>
+<h2 id="Code-3"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/4/04.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5331(1005)_Simple_Problem">hdu 5331(1005) Simple Problem</h1><h2 id="Solution-4">Solution</h2><p>这个题其实并不Simple = =模型转换比较神，代码比较长，暂时没补，以后再说QvQ</p>
+<p><hr></p>
+<h1 id="hdu_5332(1006)_Test_for_Rikka">hdu 5332(1006) Test for Rikka</h1><h2 id="Solution-5">Solution</h2><p>这个一道比较有趣的题，$B=A^m,B[1][n]=k$很容易想到，我们相当于从$1$开始走$m$步到达n的方案数是k。<br>这样至少有个方向了。然后我们考虑特殊的图，完全图。<br>一个$n$个点的完全图，且每个点都直接与自己相连，走$x$步到达每个点的方案数都是$n^{x-1}$，然后怎么做呢。<br>我们很容易想到进制拆分，把$k$写成$\sum a[i]\times n^i$的形式，我们只需要搞出$a[i]$就可以了，我们可以把终点n拉出一条链，分别表示成对应$n$的$i$次方，然后不妨考虑完全图上有$a[i]$个点和链上连，这不就是$a[i]\times n^i$了么！至此，问题解决</p>
+<h2 id="Code-4"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/4/06.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5333(1007)_Undirected_Graph">hdu 5333(1007) Undirected Graph</h1><h2 id="Solution-6">Solution</h2><p>LCT题，先跳过= =以后再补</p>
+<p><hr></p>
+<h1 id="hdu_5334(1008)_Virtual_Participation">hdu 5334(1008) Virtual Participation</h1><h2 id="Solution-7">Solution</h2><p>$k\le 10^5$时，全输出$1$即可<br>否则，不妨枚举有$i个1，j个2，k个3$，则，$i + j + k + i\times j + i\times k + j\times k=x$,枚举$i,j$即可，看上去复杂度非常高，其实满足条件的$i,j,k$不会特别大的</p>
+<h2 id="Code-5"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/4/08.cpp" target="_blank" rel="external">Code</a></h2><hr>
+
+<h1 id="hdu_5335(1009)_Walk_Out">hdu 5335(1009) Walk Out</h1><h2 id="Solution-8">Solution</h2><p>细节题，先一直沿着0走到距离终点最近的距离，把这些点加入队列。<br>之后显然可以贪心走，输出答案时要注意细节。我写的有点烦= =</p>
+<h2 id="Code-6"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/4/09.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5336(1010)_XYZ_and_Drops">hdu 5336(1010) XYZ and Drops</h1><h2 id="Solution-9">Solution</h2><p>没什么好说的，大暴力就行，大水滴小水滴个数都不多，暴力复杂度完全可以接受</p>
+<h2 id="Code-7"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/4/10.cpp" target="_blank" rel="external">Code</a></h2><hr>
+
+<h1 id="hdu_5337(1011)_Yet_Another_XYZ_Problem">hdu 5337(1011) Yet Another XYZ Problem</h1><h2 id="Solution-10">Solution</h2><p>大型讨论题，先跳过= =</p>
+<p><hr></p>
+<h1 id="hdu_5338(1002)_ZZX_and_Permutations">hdu 5338(1002) ZZX and Permutations</h1><h2 id="Solution-11">Solution</h2><p>这题题意非常蛋疼，读懂了以后并不难做。<br>由于字典序要求最大，很容易想到贪心，不妨按位贪心，考虑第$1$位，查询$1$这个数的下一个数，不妨设为$A$，看之前的区间最大值$B$，如果$A$更大的话，标记$A$值使用过了，说明这个循环节可以用后面的替换。如果$B$更大，说明当前位置到$B$之间是一段连续的区间，确定下来了，然后把区间位置插入一个set里，表示这段区间已确定。就搞定了</p>
+<h2 id="Code-8"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/4/12.cpp" target="_blank" rel="external">Code</a></h2><p>完结撒花！<br>继续补题！&gt;_&lt;</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/09/01/2015-ACM多校训练第三场/" itemprop="url">
                 2015-ACM多校训练第三场
               </a>
@@ -1146,7 +1270,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
