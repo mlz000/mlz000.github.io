@@ -57,7 +57,7 @@ Code
 hdu 5328(1002) Problem KillerSolution水题，等差等比$O(N)$扫的时候判断即可
 Code
 hdu 5329(10">
-<meta property="og:updated_time" content="2015-09-14T11:07:56.190Z">
+<meta property="og:updated_time" content="2015-09-14T11:09:11.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2015-ACM多校训练第四场">
 <meta name="twitter:description" content="题外话思考了一下人生，快打regional了，功利一点说多校的题并不需要每道都补，一些比较丧病或者烦的题我暂时就跳过了吧QvQ，先把正常向的题补了。。
@@ -290,7 +290,7 @@ hdu 5329(10">
 <h2 id="Code"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/4/01.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
 <h1 id="hdu_5328(1002)_Problem_Killer">hdu 5328(1002) Problem Killer</h1><h2 id="Solution-1">Solution</h2><p>水题，等差等比$O(N)$扫的时候判断即可</p>
 <h2 id="Code-1"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/4/02.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5329(1003)_Question_for_the_Leader">hdu 5329(1003) Question for the Leader</h1><h2 id="Solution-2">Solution</h2><p>简化问题，考虑把一棵树分成$k$块,这时一个显然的结论是如果有$k$个子树大小为$<br>\frac{n}{k}的倍数，即可以分成$k$块。<br>考虑原问题，原题是一个基环加外向树，考虑不在环上的点$i$的$sz[i]$，显然可以直接计算。在基环上的点，不妨考虑断掉一条边后每个点为根的子树的$sz$,容易发现是一个前缀和的形式。然后我们对枚举的$k$取模，每次$O(N)$枚举在环上断掉哪条边即可。<br>复杂度$O(N \times logN)$</p>
+<h1 id="hdu_5329(1003)_Question_for_the_Leader">hdu 5329(1003) Question for the Leader</h1><h2 id="Solution-2">Solution</h2><p>简化问题，考虑把一棵树分成$k$块,这时一个显然的结论是如果有$k$个子树大小为$<br>\frac{n}{k}的倍数，即可以分成$k$块。<br>考虑原问题，原题是一个基环加外向树，考虑不在环上的点$i$的$sz[i]$，显然可以直接计算。在基环上的点，不妨考虑断掉一条边后每个点为根的子树的$sz$,容易发现是一个前缀和的形式。然后我们对枚举的$k$取模，每次$O(N)$枚举在环上断掉哪条边即可。<br>复杂度$O(NlogN)$</p>
 <h2 id="Code-2"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/4/03.cpp" target="_blank" rel="external">Code</a></h2><p><hr>  </p>
 <h1 id="hdu_5330(1004)_Route_Statistics">hdu 5330(1004) Route Statistics</h1><h2 id="Solution-3">Solution</h2><p>dp题，考虑$dp[S][k]$表示与$S$这个点距离为$k$的个数。($S$是一个长度为维度的$0,1,2$串)我们最后求出所有的$dp[S][k]$即可。<br>我们发现可以枚举中间某位不同，把那位分别替换为$0,1,2$三种情况来转移，简单dp一下即可</p>
 <h2 id="Code-3"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/4/04.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
