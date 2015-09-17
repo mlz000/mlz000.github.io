@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://mlz000.github.io//"/>
-  <updated>2015-09-14T13:12:54.760Z</updated>
+  <updated>2015-09-17T08:55:54.261Z</updated>
   <id>http://mlz000.github.io//</id>
   
   <author>
@@ -16,12 +16,57 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[2015-ACM多校训练第五场]]></title>
+    <link href="http://mlz000.github.io/2015/09/17/2015-ACM%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E7%AC%AC%E4%BA%94%E5%9C%BA/"/>
+    <id>http://mlz000.github.io/2015/09/17/2015-ACM多校训练第五场/</id>
+    <published>2015-09-17T08:30:33.000Z</published>
+    <updated>2015-09-17T08:55:54.261Z</updated>
+    <content type="html"><![CDATA[<p><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque"></p>
+<h1 id="题外话">题外话</h1><p>第五套感觉难度适中，今天把它补掉了。。。</p>
+<p><hr></p>
+<h1 id="hdu_5343(1001)_MZL’s_Circle_Zhou">hdu 5343(1001) MZL’s Circle Zhou</h1><h2 id="Solution">Solution</h2><p>这题深深的暴露了自己$SAM$水平只差，每次遇到$SAM$的题，都不太能做出来，说到底还是对$SAM$理解不够深刻吧= =。。<br>由于是把两个串拼起来，容易想到，对第一个串正着建立$SAM$，第二个串反过来建$SAM$，用$dp[i]$表示第二个串中以$i$这个字符开头的串有多少个。<br>然后在第一个串$SAM$节点上，如果不能转移到字母$c$，答案加上$dp[c]$就好了<br>仔细想想，其实这题并不难= =。。。自己太弱了</p>
+<h2 id="Code"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/01.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5344(1002)_MZL’s_xor">hdu 5344(1002) MZL’s xor</h1><h2 id="Solution-1">Solution</h2><p>水题，发现不同项都抵消掉了。。。</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/02.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5345(1003)_MZL’s_combat">hdu 5345(1003) MZL’s combat</h1><h2 id="Solution-2">Solution</h2><p>貌似有点烦，先跳过= =过段时间补</p>
+<p><hr>  </p>
+<h1 id="hdu_5346(1004)_MZL’s_game">hdu 5346(1004) MZL’s game</h1><h2 id="Solution-3">Solution</h2><p>dp好题，状态设计非常高端，和前几天CC月赛一个题思想非常相似，很好的idea。<br>正常dp复杂度无法保证，不妨考虑，一个选人顺序的全排列，如果一个人挂了，就继续选下一个人。由于每个人在每个位置概率都是$\frac{1}{n}$，我们不妨考虑编号$1 \sim n$。<br>这样转化后我们就可以做了！<br>考虑$dp[j][i]$表示$i$这个人受到$j$次攻击的概率,分两种情况考虑</p>
+<ul>
+<li>(1) 第$i-1$个人没挂，则第$j$次攻击是来自第$i-1$的人的，于是$dp[j][i] = dp[j-1][i-1]\times (1-p)^{j-1}$</li>
+<li><2> 第$i-1$个人挂掉了，则受到的攻击次数和第$i-1$个人相同，于是$dp[j][i] = dp[j][i-1]\times (1-(1-p)^j)$<br>于是就做完了，考虑全排列的这种思想，学到了。。</2></li>
+</ul>
+<h2 id="Code-2"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/04.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5347(1005)_MZL’s_chemistry">hdu 5347(1005) MZL’s chemistry</h1><h2 id="Solution-4">Solution</h2><p>无聊题，随手打个表</p>
+<h2 id="Code-3"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/05.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5348(1006)_MZL’s_endless_loop">hdu 5348(1006) MZL’s endless loop</h1><h2 id="Solution-5">Solution</h2><p>类似于一笔画，奇数度的两两连一下，跑欧拉回路就完了</p>
+<h2 id="Code-4"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/06.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5349(1007)_MZL’s_simple_problem">hdu 5349(1007) MZL’s simple problem</h1><h2 id="Solution-6">Solution</h2><p>水题，直接用set或者维护一下都可以</p>
+<h2 id="Code-5"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/07.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5350(1008)_MZL’s_munhaff_function">hdu 5350(1008) MZL’s munhaff function</h1><h2 id="Solution-7">Solution</h2><p>其实这就是个huffman树的生成过程，想明白那个式子和它的转换关系即可</p>
+<h2 id="Code-6"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/08.cpp" target="_blank" rel="external">Code</a></h2><hr>
+
+<h1 id="hdu_5351(1009)_MZL’s_Border">hdu 5351(1009) MZL’s Border</h1><h2 id="Solution-8">Solution</h2><p>水题，关于$Fibonacci$的一般打个表就看出规律了，找第一个$i,m+1&lt;|fib[i]|$,答案就是$m-|fib[i-2]|$</p>
+<h2 id="Code-7"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/09.java" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5352(1010)_MZL’s_City">hdu 5352(1010) MZL’s City</h1><h2 id="Solution-9">Solution</h2><p>很容易想到的做法是，把每个操作$1$拆成$k$个点，与能相连的城市连一条边，跑匹配即可，由于要求字典序最小，倒着跑匹配即可。也可用最大流，费用流来做</p>
+<h2 id="Code-8"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/10.cpp" target="_blank" rel="external">Code</a></h2><p>完结撒花！<br>继续补题！&gt;_&lt;</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash"]]>
+    </summary>
+    
+      <category term="hdu" scheme="http://mlz000.github.io/categories/hdu/"/>
+    
+      <category term="ACM多校题解" scheme="http://mlz000.github.io/categories/hdu/ACM%E5%A4%9A%E6%A0%A1%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[srm 543]]></title>
     <link href="http://mlz000.github.io/2015/09/14/srm-543/"/>
     <id>http://mlz000.github.io/2015/09/14/srm-543/</id>
     <published>2015-09-14T12:52:09.000Z</published>
-    <updated>2015-09-14T13:12:54.760Z</updated>
-    <content type="html"><![CDATA[<embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+    <updated>2015-09-17T08:31:51.905Z</updated>
+    <content type="html"><![CDATA[<embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
 
 <h1 id="250">250</h1><p><hr><br>求$A, B(A,B\le 4\times 10^{12})$之间所有数的$XOR$</p>
 <h2 id="Solution">Solution</h2><p>转换成$1\sim B$异或和异或$1\sim A$异或和，容易发现当$n\ge 2时，1~\sim 2^n-1异或和为0$，$0,1,2,3$特判即可</p>
@@ -31,7 +76,7 @@
 <h2 id="Solution-1">Solution</h2><p>很容易想到dp,$dp[i][j]$表示过了前$i$个线段，当前在$j$的答案，暴力转移复杂度爆炸，容易发现，在每个线段的答案沿高度是单调的，转移时维护上一次转移的位置即可。</p>
 <h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm543/500.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> inf = <span class="number">1e20</span>;</span><br><span class="line"><span class="keyword">double</span> dp[<span class="number">2</span>][<span class="number">100005</span>];</span><br><span class="line"><span class="keyword">struct</span> EllysRivers &#123;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">getMin</span><span class="params">(<span class="keyword">int</span> length, <span class="keyword">int</span> walk, <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; width, <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; speed)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = width.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= length; ++i)   dp[<span class="number">0</span>][i] = (<span class="keyword">double</span>)i / walk;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= length; ++j)   dp[i &amp; <span class="number">1</span>][j] = inf;</span><br><span class="line">            <span class="keyword">int</span> last = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= length; ++j)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = last; k &lt;= j; ++k) &#123;</span><br><span class="line">                    <span class="keyword">double</span> t =  dp[(i - <span class="number">1</span>) &amp; <span class="number">1</span>][k] + hypot(width[i - <span class="number">1</span>], j - k) / speed[i - <span class="number">1</span>];</span><br><span class="line">                    <span class="keyword">if</span> (t &gt; dp[i &amp; <span class="number">1</span>][j])   <span class="keyword">break</span>;</span><br><span class="line">                    dp[i &amp; <span class="number">1</span>][j] = t;</span><br><span class="line">                    last = k;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n &amp; <span class="number">1</span>][length];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
     <summary type="html">
-    <![CDATA[<embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" wi]]>
+    <![CDATA[<embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" wi]]>
     </summary>
     
       <category term="topcoder题解" scheme="http://mlz000.github.io/categories/topcoder%E9%A2%98%E8%A7%A3/"/>

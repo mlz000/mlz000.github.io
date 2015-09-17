@@ -39,16 +39,22 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="topcoder,srm538 题解">
+<meta name="description" content="题外话第五套感觉难度适中，今天把它补掉了。。。
+
+hdu 5343(1001) MZL’s Circle ZhouSolution这题深深的暴露了自己$SAM$水平只差，每次遇到$SAM$的题，都不太能做出来，说到底还是对$SAM$理解不够深刻吧= =。。由于是把两个串拼起来，容易想到，对第一个串正着建立$SAM$，第二个串反过来建$SAM$，用$dp[i]$表示第二个串中以$i$这个字符开头的串">
 <meta property="og:type" content="article">
-<meta property="og:title" content="srm 538">
-<meta property="og:url" content="http://mlz000.github.io/2015/07/14/srm-538/index.html">
+<meta property="og:title" content="2015-ACM多校训练第五场">
+<meta property="og:url" content="http://mlz000.github.io/2015/09/17/2015-ACM多校训练第五场/index.html">
 <meta property="og:site_name" content="mlz000's Blog">
-<meta property="og:description" content="topcoder,srm538 题解">
-<meta property="og:updated_time" content="2015-07-16T07:12:01.671Z">
+<meta property="og:description" content="题外话第五套感觉难度适中，今天把它补掉了。。。
+
+hdu 5343(1001) MZL’s Circle ZhouSolution这题深深的暴露了自己$SAM$水平只差，每次遇到$SAM$的题，都不太能做出来，说到底还是对$SAM$理解不够深刻吧= =。。由于是把两个串拼起来，容易想到，对第一个串正着建立$SAM$，第二个串反过来建$SAM$，用$dp[i]$表示第二个串中以$i$这个字符开头的串">
+<meta property="og:updated_time" content="2015-09-17T08:55:54.261Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="srm 538">
-<meta name="twitter:description" content="topcoder,srm538 题解">
+<meta name="twitter:title" content="2015-ACM多校训练第五场">
+<meta name="twitter:description" content="题外话第五套感觉难度适中，今天把它补掉了。。。
+
+hdu 5343(1001) MZL’s Circle ZhouSolution这题深深的暴露了自己$SAM$水平只差，每次遇到$SAM$的题，都不太能做出来，说到底还是对$SAM$理解不够深刻吧= =。。由于是把两个串拼起来，容易想到，对第一个串正着建立$SAM$，第二个串反过来建$SAM$，用$dp[i]$表示第二个串中以$i$这个字符开头的串">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -58,7 +64,7 @@
   };
 </script>
 
-  <title> srm 538 | mlz000's Blog </title>
+  <title> 2015-ACM多校训练第五场 | mlz000's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -203,7 +209,7 @@
           
           
             
-              srm 538
+              2015-ACM多校训练第五场
             
           
         </h1>
@@ -212,8 +218,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-07-14T15:37:03+08:00" content="2015-07-14">
-            2015-07-14
+          <time itemprop="dateCreated" datetime="2015-09-17T16:30:33+08:00" content="2015-09-17">
+            2015-09-17
           </time>
         </span>
 
@@ -222,8 +228,20 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
-                  <span itemprop="name">topcoder题解</span>
+                <a href="/categories/hdu/" itemprop="url" rel="index">
+                  <span itemprop="name">hdu</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/hdu/ACM多校题解/" itemprop="url" rel="index">
+                  <span itemprop="name">ACM多校题解</span>
                 </a>
               </span>
 
@@ -238,8 +256,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/07/14/srm-538/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/srm-538/" itemprop="commentsCount"></span>
+              <a href="/2015/09/17/2015-ACM多校训练第五场/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/17/2015-ACM多校训练第五场/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -253,14 +271,34 @@
       
 
       
-        <span itemprop="articleBody"><p>topcoder,srm538 题解<br><a id="more"></a></p>
-<h1 id="题外话">题外话</h1><p>之前准备期末预习加上刚放假浪了一会= =没有补题，今天开始恢复补题。。</p>
-<h1 id="250">250</h1><h2 id="Description:">Description:</h2><p>平面上给出$N$个点，整数坐标。从$(0,0)$出发，每次往上下左右四个垂直方向走，要求遍历所有点至少一次，最后回到给出的N个点中的某个点（不包括原点）。然后走过的距离是曼哈顿距离。给出一个数字代表要求走过的距离为奇还是为偶。问能否满足要求。</p>
-<h2 id="Solution">Solution</h2><p>显然如果要求是偶的话只有全奇时无解，若有一个偶数，则可通过往返的方式访问其他点最后停留在偶数点，要求为奇数时同理</p>
-<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm538/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">class</span> EvenRoute &#123;</span><br><span class="line">        <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">isItPossible</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; x, <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; y, <span class="keyword">int</span> wantedParity)</span> </span>&#123;</span><br><span class="line">        	<span class="keyword">int</span> n = x.size();</span><br><span class="line">			<span class="keyword">bool</span> even = <span class="number">0</span>, odd = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">				<span class="keyword">if</span> ((<span class="built_in">abs</span>(x[i]) + <span class="built_in">abs</span>(y[i])) &amp; <span class="number">1</span>)	odd = <span class="number">1</span>;</span><br><span class="line">				<span class="keyword">else</span> even = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> (odd &amp;&amp; even) || (even &amp;&amp; !wantedParity) || (odd &amp;&amp; wantedParity) ? <span class="string">"CAN"</span> : <span class="string">"CANNOT"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="450">450</h1><h2 id="Description">Description</h2><p>给出四种命令。左转多少度，右转多少度，前进多远，后退多远。先在顺序是打乱的。要求给出一种排列使得最终总的位移和最远。输出最远距离即可。</p>
-<h2 id="Solution-1">Solution</h2><p>一个很明显的直观感受是尽量走直线会使得答案更大一些。这样就很简单了，不妨全向前，然后把调整角度放到后面，最后全向后即可。调整的角度背包求即可</p>
-<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm538/450.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a, b;<span class="comment">//ang back</span></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">60</span>][<span class="number">360</span>];</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Pi = <span class="built_in">acos</span>(-<span class="number">1.0</span>);</span><br><span class="line"><span class="keyword">class</span> TurtleSpy &#123;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">maxDistance</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; commands)</span> </span>&#123;</span><br><span class="line">   			<span class="keyword">int</span> n = commands.size();</span><br><span class="line">			<span class="keyword">double</span> X = <span class="number">0.0</span>, Y = <span class="number">0.0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">				<span class="keyword">char</span> s[<span class="number">10</span>];</span><br><span class="line">				<span class="keyword">int</span> x;</span><br><span class="line">				<span class="built_in">sscanf</span>(commands[i].c_str(), <span class="string">"%s%d"</span>, s, &amp;x);</span><br><span class="line">				<span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">'f'</span>)	X += x;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">'b'</span>)	Y += x;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">'l'</span>)	a.pb(x);</span><br><span class="line">				<span class="keyword">else</span>	a.pb(<span class="number">360</span> - x);</span><br><span class="line">			&#125;</span><br><span class="line">			dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.size(); ++i) &#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">360</span>; ++j)</span><br><span class="line">					<span class="keyword">if</span> (dp[i][j])	dp[i + <span class="number">1</span>][(j + a[i]) % <span class="number">360</span>] = dp[i + <span class="number">1</span>][j] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">double</span> t = <span class="number">0.0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">360</span>; ++i) &#123;</span><br><span class="line">				<span class="keyword">if</span> (dp[a.size()][i])	t = max(t, X * X + Y * Y - <span class="number">2.0</span> * X * Y * <span class="built_in">cos</span>(Pi * i / <span class="number">180.0</span>));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">sqrt</span>(t);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><p><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque"></p>
+<h1 id="题外话">题外话</h1><p>第五套感觉难度适中，今天把它补掉了。。。</p>
+<p><hr></p>
+<h1 id="hdu_5343(1001)_MZL’s_Circle_Zhou">hdu 5343(1001) MZL’s Circle Zhou</h1><h2 id="Solution">Solution</h2><p>这题深深的暴露了自己$SAM$水平只差，每次遇到$SAM$的题，都不太能做出来，说到底还是对$SAM$理解不够深刻吧= =。。<br>由于是把两个串拼起来，容易想到，对第一个串正着建立$SAM$，第二个串反过来建$SAM$，用$dp[i]$表示第二个串中以$i$这个字符开头的串有多少个。<br>然后在第一个串$SAM$节点上，如果不能转移到字母$c$，答案加上$dp[c]$就好了<br>仔细想想，其实这题并不难= =。。。自己太弱了</p>
+<h2 id="Code"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/01.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5344(1002)_MZL’s_xor">hdu 5344(1002) MZL’s xor</h1><h2 id="Solution-1">Solution</h2><p>水题，发现不同项都抵消掉了。。。</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/02.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5345(1003)_MZL’s_combat">hdu 5345(1003) MZL’s combat</h1><h2 id="Solution-2">Solution</h2><p>貌似有点烦，先跳过= =过段时间补</p>
+<p><hr>  </p>
+<h1 id="hdu_5346(1004)_MZL’s_game">hdu 5346(1004) MZL’s game</h1><h2 id="Solution-3">Solution</h2><p>dp好题，状态设计非常高端，和前几天CC月赛一个题思想非常相似，很好的idea。<br>正常dp复杂度无法保证，不妨考虑，一个选人顺序的全排列，如果一个人挂了，就继续选下一个人。由于每个人在每个位置概率都是$\frac{1}{n}$，我们不妨考虑编号$1 \sim n$。<br>这样转化后我们就可以做了！<br>考虑$dp[j][i]$表示$i$这个人受到$j$次攻击的概率,分两种情况考虑</p>
+<ul>
+<li>(1) 第$i-1$个人没挂，则第$j$次攻击是来自第$i-1$的人的，于是$dp[j][i] = dp[j-1][i-1]\times (1-p)^{j-1}$</li>
+<li><2> 第$i-1$个人挂掉了，则受到的攻击次数和第$i-1$个人相同，于是$dp[j][i] = dp[j][i-1]\times (1-(1-p)^j)$<br>于是就做完了，考虑全排列的这种思想，学到了。。</2></li>
+</ul>
+<h2 id="Code-2"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/04.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5347(1005)_MZL’s_chemistry">hdu 5347(1005) MZL’s chemistry</h1><h2 id="Solution-4">Solution</h2><p>无聊题，随手打个表</p>
+<h2 id="Code-3"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/05.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5348(1006)_MZL’s_endless_loop">hdu 5348(1006) MZL’s endless loop</h1><h2 id="Solution-5">Solution</h2><p>类似于一笔画，奇数度的两两连一下，跑欧拉回路就完了</p>
+<h2 id="Code-4"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/06.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5349(1007)_MZL’s_simple_problem">hdu 5349(1007) MZL’s simple problem</h1><h2 id="Solution-6">Solution</h2><p>水题，直接用set或者维护一下都可以</p>
+<h2 id="Code-5"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/07.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5350(1008)_MZL’s_munhaff_function">hdu 5350(1008) MZL’s munhaff function</h1><h2 id="Solution-7">Solution</h2><p>其实这就是个huffman树的生成过程，想明白那个式子和它的转换关系即可</p>
+<h2 id="Code-6"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/08.cpp" target="_blank" rel="external">Code</a></h2><hr>
+
+<h1 id="hdu_5351(1009)_MZL’s_Border">hdu 5351(1009) MZL’s Border</h1><h2 id="Solution-8">Solution</h2><p>水题，关于$Fibonacci$的一般打个表就看出规律了，找第一个$i,m+1&lt;|fib[i]|$,答案就是$m-|fib[i-2]|$</p>
+<h2 id="Code-7"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/09.java" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5352(1010)_MZL’s_City">hdu 5352(1010) MZL’s City</h1><h2 id="Solution-9">Solution</h2><p>很容易想到的做法是，把每个操作$1$拆成$k$个点，与能相连的城市连一条边，跑匹配即可，由于要求字典序最小，倒着跑匹配即可。也可用最大流，费用流来做</p>
+<h2 id="Code-8"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/10.cpp" target="_blank" rel="external">Code</a></h2><p>完结撒花！<br>继续补题！&gt;_&lt;</p>
 </span>
       
     </div>
@@ -272,13 +310,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/15/srm-539/" rel="prev">srm 539</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/11/新的Blog/" rel="next">新的Blog</a>
+              <a href="/2015/09/14/srm-543/" rel="next">srm 543</a>
             
           </div>
         </div>
@@ -303,8 +339,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/07/14/srm-538/"
-                   data-title="srm 538" data-url="http://mlz000.github.io/2015/07/14/srm-538/">
+              <div class="ds-thread" data-thread-key="2015/09/17/2015-ACM多校训练第五场/"
+                   data-title="2015-ACM多校训练第五场" data-url="http://mlz000.github.io/2015/09/17/2015-ACM多校训练第五场/">
               </div>
             
           </div>
@@ -410,7 +446,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题外话"><span class="nav-number">1.</span> <span class="nav-text">题外话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#250"><span class="nav-number">2.</span> <span class="nav-text">250</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description:"><span class="nav-number">2.1.</span> <span class="nav-text">Description:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">2.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#450"><span class="nav-number">3.</span> <span class="nav-text">450</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">3.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">3.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-1"><span class="nav-number">3.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题外话"><span class="nav-number">1.</span> <span class="nav-text">题外话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5343(1001)_MZL’s_Circle_Zhou"><span class="nav-number">2.</span> <span class="nav-text">hdu 5343(1001) MZL’s Circle Zhou</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">2.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5344(1002)_MZL’s_xor"><span class="nav-number">3.</span> <span class="nav-text">hdu 5344(1002) MZL’s xor</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">3.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-1"><span class="nav-number">3.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5345(1003)_MZL’s_combat"><span class="nav-number">4.</span> <span class="nav-text">hdu 5345(1003) MZL’s combat</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-2"><span class="nav-number">4.1.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5346(1004)_MZL’s_game"><span class="nav-number">5.</span> <span class="nav-text">hdu 5346(1004) MZL’s game</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-3"><span class="nav-number">5.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-2"><span class="nav-number">5.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5347(1005)_MZL’s_chemistry"><span class="nav-number">6.</span> <span class="nav-text">hdu 5347(1005) MZL’s chemistry</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-4"><span class="nav-number">6.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-3"><span class="nav-number">6.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5348(1006)_MZL’s_endless_loop"><span class="nav-number">7.</span> <span class="nav-text">hdu 5348(1006) MZL’s endless loop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-5"><span class="nav-number">7.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-4"><span class="nav-number">7.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5349(1007)_MZL’s_simple_problem"><span class="nav-number">8.</span> <span class="nav-text">hdu 5349(1007) MZL’s simple problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-6"><span class="nav-number">8.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-5"><span class="nav-number">8.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5350(1008)_MZL’s_munhaff_function"><span class="nav-number">9.</span> <span class="nav-text">hdu 5350(1008) MZL’s munhaff function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-7"><span class="nav-number">9.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-6"><span class="nav-number">9.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5351(1009)_MZL’s_Border"><span class="nav-number">10.</span> <span class="nav-text">hdu 5351(1009) MZL’s Border</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-8"><span class="nav-number">10.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-7"><span class="nav-number">10.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu_5352(1010)_MZL’s_City"><span class="nav-number">11.</span> <span class="nav-text">hdu 5352(1010) MZL’s City</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-9"><span class="nav-number">11.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-8"><span class="nav-number">11.2.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
