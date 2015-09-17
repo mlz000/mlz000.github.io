@@ -49,7 +49,7 @@ hdu 5343(1001) MZL’s Circle ZhouSolution这题深深的暴露了自己$SAM$水
 <meta property="og:description" content="题外话第五套感觉难度适中，今天把它补掉了。。。
 
 hdu 5343(1001) MZL’s Circle ZhouSolution这题深深的暴露了自己$SAM$水平只差，每次遇到$SAM$的题，都不太能做出来，说到底还是对$SAM$理解不够深刻吧= =。。由于是把两个串拼起来，容易想到，对第一个串正着建立$SAM$，第二个串反过来建$SAM$，用$dp[i]$表示第二个串中以$i$这个字符开头的串">
-<meta property="og:updated_time" content="2015-09-17T08:55:54.261Z">
+<meta property="og:updated_time" content="2015-09-17T08:57:24.993Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2015-ACM多校训练第五场">
 <meta name="twitter:description" content="题外话第五套感觉难度适中，今天把它补掉了。。。
@@ -283,7 +283,7 @@ hdu 5343(1001) MZL’s Circle ZhouSolution这题深深的暴露了自己$SAM$水
 <h1 id="hdu_5346(1004)_MZL’s_game">hdu 5346(1004) MZL’s game</h1><h2 id="Solution-3">Solution</h2><p>dp好题，状态设计非常高端，和前几天CC月赛一个题思想非常相似，很好的idea。<br>正常dp复杂度无法保证，不妨考虑，一个选人顺序的全排列，如果一个人挂了，就继续选下一个人。由于每个人在每个位置概率都是$\frac{1}{n}$，我们不妨考虑编号$1 \sim n$。<br>这样转化后我们就可以做了！<br>考虑$dp[j][i]$表示$i$这个人受到$j$次攻击的概率,分两种情况考虑</p>
 <ul>
 <li>(1) 第$i-1$个人没挂，则第$j$次攻击是来自第$i-1$的人的，于是$dp[j][i] = dp[j-1][i-1]\times (1-p)^{j-1}$</li>
-<li><2> 第$i-1$个人挂掉了，则受到的攻击次数和第$i-1$个人相同，于是$dp[j][i] = dp[j][i-1]\times (1-(1-p)^j)$<br>于是就做完了，考虑全排列的这种思想，学到了。。</2></li>
+<li>(2) 第$i-1$个人挂掉了，则受到的攻击次数和第$i-1$个人相同，于是$dp[j][i] = dp[j][i-1]\times (1-(1-p)^j)$<br>于是就做完了，考虑全排列的这种思想，学到了。。</li>
 </ul>
 <h2 id="Code-2"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/04.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
 <h1 id="hdu_5347(1005)_MZL’s_chemistry">hdu 5347(1005) MZL’s chemistry</h1><h2 id="Solution-4">Solution</h2><p>无聊题，随手打个表</p>
