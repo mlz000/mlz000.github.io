@@ -204,6 +204,96 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/18/codechef-3D-Queries-MGCH3D/" itemprop="url">
+                codechef 3D Queries(MGCH3D)
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-18T17:07:10+08:00" content="2015-09-18">
+            2015-09-18
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/codechef题解/" itemprop="url" rel="index">
+                  <span itemprop="name">codechef题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/18/codechef-3D-Queries-MGCH3D/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/18/codechef-3D-Queries-MGCH3D/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+
+
+<h1 id="题外话">题外话</h1><p>这个题是cc 9月challenge的最后一题，当时没仔细考虑，以为这是个近似计算的题。。。赛后看了题解才猛然醒悟</p>
+<h1 id="codechef_3D_Queries(MGCH3D)">codechef 3D Queries(MGCH3D)</h1><h2 id="Description">Description</h2><p>求$\sum_{i!=j} \frac{|A(X_i - X_j) + B(Y_i - Y_j) + C(Z_i - Z_j) + D|}{N(N-1)\sqrt((X_i-X_j)^4 + (Y_i-Y_j)^4+(Z_i-Z_j)^4)}$<br>$2\le N \le 777777,1\le X, Y, Z, A, B, C\le 77$, $Q(1\le Q\le 77)$组询问,每次给$A, B, C, D$, 求上式的值。</p>
+<h2 id="Solution">Solution</h2><p>$x, y, z$坐标都很小($1\le x, y, z\le 77$)，差的取值也很小，不妨构造多项式$A[N^2\times x + N\times y + z] += 1$, $B[N^2\times (77-x)+N\times (77 - y)+(77-z)]+=1$。另$N=<br>我们发现$A\times B=N^2\times (77+x[i]-x[j]) + N\times (77+y[i]-y[j]) + (77+z[i]-z[j])$<br>显然$x[i]-x[j],y[i]-y[j],z[i]-z[j]$，于是这题FFT一下就做完了= =<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">153</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(-<span class="number">1.0</span>);</span><br><span class="line"><span class="keyword">double</span> D[<span class="number">80</span>][<span class="number">80</span>][<span class="number">80</span>];</span><br><span class="line"><span class="keyword">namespace</span> FFT &#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> W = <span class="number">1</span> &lt;&lt; <span class="number">22</span>;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(-<span class="number">1.0</span>);</span><br><span class="line">  <span class="keyword">struct</span> Complex &#123;</span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line">    Complex(<span class="keyword">double</span> _x = <span class="number">0</span>, <span class="keyword">double</span> _y = <span class="number">0</span>) : x(_x), y(_y) &#123;&#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> + (<span class="keyword">const</span> Complex &amp;t) <span class="keyword">const</span> &#123;<span class="keyword">return</span> Complex(x + t.x, y + t.y);&#125;</span><br><span class="line">    Complex&amp; <span class="keyword">operator</span> += (<span class="keyword">const</span> Complex &amp;t) &#123;x += t.x, y += t.y;<span class="keyword">return</span> *<span class="keyword">this</span>;&#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> - (<span class="keyword">const</span> Complex &amp;t) <span class="keyword">const</span> &#123;<span class="keyword">return</span> Complex(x-t.x,y-t.y);&#125;</span><br><span class="line">    Complex&amp; <span class="keyword">operator</span> -= (<span class="keyword">const</span> Complex &amp;t) &#123;x -= t.x, y -= t.y;<span class="keyword">return</span> *<span class="keyword">this</span>;&#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> * (<span class="keyword">const</span> Complex &amp;t) <span class="keyword">const</span> &#123;<span class="keyword">return</span> Complex(x * t.x - y * t.y, x * t.y + y * t.x);&#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> / (<span class="keyword">const</span> <span class="keyword">double</span> &amp;t) <span class="keyword">const</span> &#123;<span class="keyword">return</span> Complex(x / t,y / t);&#125;</span><br><span class="line">    Complex&amp; <span class="keyword">operator</span> /= (<span class="keyword">const</span> <span class="keyword">double</span> &amp;t) &#123;x /= t, y /= t;<span class="keyword">return</span> *<span class="keyword">this</span>;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">real</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> x;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">imag</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> y;&#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">fft</span><span class="params">(Complex a[], <span class="keyword">int</span> n, <span class="keyword">int</span> rev)</span> </span>&#123;<span class="comment">// rev=-1, reverse</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>, k; i &lt; n; ++i) &#123;</span><br><span class="line">          <span class="keyword">for</span> (k = n &gt;&gt; <span class="number">1</span>; k &gt; (j ^= k); k &gt;&gt;= <span class="number">1</span>);</span><br><span class="line">          <span class="keyword">if</span> (i &lt; j) swap(a[i], a[j]);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> s = <span class="number">1</span>, ss = <span class="number">2</span>; s &lt; n; s &lt;&lt;= <span class="number">1</span>,ss &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">          <span class="function">Complex <span class="title">wn</span><span class="params">(<span class="built_in">cos</span>(2 * PI * rev / ss)</span>, <span class="title">sin</span><span class="params">(2 * PI * rev / ss)</span>), w</span>;</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j ; i &lt; n; i += ss) &#123;</span><br><span class="line">              <span class="keyword">for</span> (j = i, w = <span class="number">1</span>; j &lt; i + s; ++j, w = w * wn) &#123;</span><br><span class="line">                  Complex t = w * a[j + s];</span><br><span class="line">                  a[j + s] = a[j] - t; </span><br><span class="line">                  a[j] = a[j] + t;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (rev == -<span class="number">1</span>) <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) a[i] /= n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">FFT::Complex A[FFT::W], B[FFT::W];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">sqrr</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * x * x * x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, q;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;q);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, x, y, z; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z);</span><br><span class="line">        --x, --y, --z;</span><br><span class="line">        <span class="keyword">int</span> t1 = N * N * x + N * y + z, t2 = N * N * (<span class="number">76</span> - x) + N * (<span class="number">76</span> - y) + (<span class="number">76</span> - z);</span><br><span class="line">        A[t1].x += <span class="number">1</span>, B[t2].x += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">77</span>; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= <span class="number">77</span>; ++j)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= <span class="number">77</span>; ++k)</span><br><span class="line">                D[i][j][k] = <span class="built_in">sqrt</span>(sqrr(i) + sqrr(j) + sqrr(k));</span><br><span class="line">    FFT::fft(A, FFT::W, <span class="number">1</span>);</span><br><span class="line">    FFT::fft(B, FFT::W, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; FFT::W; ++i)    A[i] = A[i] * B[i];</span><br><span class="line">    FFT::fft(A, FFT::W, -<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">while</span> (q--) &#123;</span><br><span class="line">        <span class="keyword">double</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> a, b, c, d;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>, &amp;a, &amp;b, &amp;c, &amp;d);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; FFT::W; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> cnt = <span class="keyword">int</span>(A[i].real() + <span class="number">0.5</span>);</span><br><span class="line">            <span class="keyword">if</span> (!cnt)   <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">int</span> x = i / (N * N) - <span class="number">76</span>, y = i / N % N - <span class="number">76</span>, z = i % N - <span class="number">76</span>;</span><br><span class="line">            <span class="keyword">if</span> (!x &amp;&amp; !y &amp;&amp; !z) <span class="keyword">continue</span>;</span><br><span class="line">            ans += <span class="built_in">fabs</span>(a * x + b * y + c * z + d) * cnt / D[<span class="built_in">abs</span>(x)][<span class="built_in">abs</span>(y)][<span class="built_in">abs</span>(z)];</span><br><span class="line">        &#125;</span><br><span class="line">        ans /= n, ans /= n - <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%.10lf\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="总结">总结</h2><p>自己还是太年轻，一看范围小就想着想忽略近似计算和乱搞，犯了方向性的错误= =。。还是要多加思考QvQ</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/09/17/srm-544/" itemprop="url">
                 srm 544
               </a>
@@ -257,7 +347,7 @@
 
       
         
-          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
 
 <h1 id="275">275</h1><p><hr></p>
 <h2 id="Description">Description</h2><p>给你一些百分比，四舍五入之后，问原来可不可能是百分之百</p>
@@ -1194,94 +1284,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/16/srm-540/" itemprop="url">
-                srm 540
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-07-16T21:21:32+08:00" content="2015-07-16">
-            2015-07-16
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
-                  <span itemprop="name">topcoder题解</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/07/16/srm-540/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/srm-540/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>topcoder, srm 540题解<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/16/srm-540/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1320,14 +1322,14 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
