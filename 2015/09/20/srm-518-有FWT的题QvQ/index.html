@@ -39,16 +39,26 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="topcoder,srm538 题解">
+<meta name="description" content="250Description从一个字符串中找一字典序最大的字串
+Solution从左至右贪心即可
+500:Description有一个序列，每次可以将一个数-1需要花费1的代价，问最后使得序列满足$2a{i}\le{a{i-1}+a_{i+1}}$
+Solution因为满足$a{i-1}-a{i}\ge{a{i}-a{i+1}}$,也就是说序列相邻两项差是递减的，所以每当不满足条件时暴力调整$a_">
 <meta property="og:type" content="article">
-<meta property="og:title" content="srm 538">
-<meta property="og:url" content="http://mlz000.github.io/2015/07/14/srm-538/index.html">
+<meta property="og:title" content="srm 518(有FWT的题QvQ)">
+<meta property="og:url" content="http://mlz000.github.io/2015/09/20/srm-518-有FWT的题QvQ/index.html">
 <meta property="og:site_name" content="mlz000's Blog">
-<meta property="og:description" content="topcoder,srm538 题解">
-<meta property="og:updated_time" content="2015-07-16T07:12:01.671Z">
+<meta property="og:description" content="250Description从一个字符串中找一字典序最大的字串
+Solution从左至右贪心即可
+500:Description有一个序列，每次可以将一个数-1需要花费1的代价，问最后使得序列满足$2a{i}\le{a{i-1}+a_{i+1}}$
+Solution因为满足$a{i-1}-a{i}\ge{a{i}-a{i+1}}$,也就是说序列相邻两项差是递减的，所以每当不满足条件时暴力调整$a_">
+<meta property="og:image" content="http://user-image.logdown.io/user/8987/blog/8877/post/221264/XAutFOlQ6muTRxZbqDmD_QQ%20Photo20140831154228.gif">
+<meta property="og:updated_time" content="2015-09-20T16:02:17.025Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="srm 538">
-<meta name="twitter:description" content="topcoder,srm538 题解">
+<meta name="twitter:title" content="srm 518(有FWT的题QvQ)">
+<meta name="twitter:description" content="250Description从一个字符串中找一字典序最大的字串
+Solution从左至右贪心即可
+500:Description有一个序列，每次可以将一个数-1需要花费1的代价，问最后使得序列满足$2a{i}\le{a{i-1}+a_{i+1}}$
+Solution因为满足$a{i-1}-a{i}\ge{a{i}-a{i+1}}$,也就是说序列相邻两项差是递减的，所以每当不满足条件时暴力调整$a_">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -58,7 +68,7 @@
   };
 </script>
 
-  <title> srm 538 | mlz000's Blog </title>
+  <title> srm 518(有FWT的题QvQ) | mlz000's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -203,7 +213,7 @@
           
           
             
-              srm 538
+              srm 518(有FWT的题QvQ)
             
           
         </h1>
@@ -212,8 +222,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-07-14T15:37:03+08:00" content="2015-07-14">
-            2015-07-14
+          <time itemprop="dateCreated" datetime="2015-09-20T23:59:06+08:00" content="2015-09-20">
+            2015-09-20
           </time>
         </span>
 
@@ -238,8 +248,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/07/14/srm-538/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/srm-538/" itemprop="commentsCount"></span>
+              <a href="/2015/09/20/srm-518-有FWT的题QvQ/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/20/srm-518-有FWT的题QvQ/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -253,15 +263,23 @@
       
 
       
-        <span itemprop="articleBody"><p>topcoder,srm538 题解<br><a id="more"></a></p>
-<h1 id="题外话">题外话</h1><p>之前准备期末预习加上刚放假浪了一会= =没有补题，今天开始恢复补题。。</p>
-<h1 id="250">250</h1><h2 id="Description:">Description:</h2><p>平面上给出$N$个点，整数坐标。从$(0,0)$出发，每次往上下左右四个垂直方向走，要求遍历所有点至少一次，最后回到给出的N个点中的某个点（不包括原点）。然后走过的距离是曼哈顿距离。给出一个数字代表要求走过的距离为奇还是为偶。问能否满足要求。</p>
-<h2 id="Solution">Solution</h2><p>显然如果要求是偶的话只有全奇时无解，若有一个偶数，则可通过往返的方式访问其他点最后停留在偶数点，要求为奇数时同理</p>
-<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm538/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">class</span> EvenRoute &#123;</span><br><span class="line">        <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">isItPossible</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; x, <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; y, <span class="keyword">int</span> wantedParity)</span> </span>&#123;</span><br><span class="line">        	<span class="keyword">int</span> n = x.size();</span><br><span class="line">			<span class="keyword">bool</span> even = <span class="number">0</span>, odd = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">				<span class="keyword">if</span> ((<span class="built_in">abs</span>(x[i]) + <span class="built_in">abs</span>(y[i])) &amp; <span class="number">1</span>)	odd = <span class="number">1</span>;</span><br><span class="line">				<span class="keyword">else</span> even = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> (odd &amp;&amp; even) || (even &amp;&amp; !wantedParity) || (odd &amp;&amp; wantedParity) ? <span class="string">"CAN"</span> : <span class="string">"CANNOT"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="450">450</h1><h2 id="Description">Description</h2><p>给出四种命令。左转多少度，右转多少度，前进多远，后退多远。先在顺序是打乱的。要求给出一种排列使得最终总的位移和最远。输出最远距离即可。</p>
-<h2 id="Solution-1">Solution</h2><p>一个很明显的直观感受是尽量走直线会使得答案更大一些。这样就很简单了，不妨全向前，然后把调整角度放到后面，最后全向后即可。调整的角度背包求即可</p>
-<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm538/450.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a, b;<span class="comment">//ang back</span></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">60</span>][<span class="number">360</span>];</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Pi = <span class="built_in">acos</span>(-<span class="number">1.0</span>);</span><br><span class="line"><span class="keyword">class</span> TurtleSpy &#123;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">maxDistance</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; commands)</span> </span>&#123;</span><br><span class="line">   			<span class="keyword">int</span> n = commands.size();</span><br><span class="line">			<span class="keyword">double</span> X = <span class="number">0.0</span>, Y = <span class="number">0.0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">				<span class="keyword">char</span> s[<span class="number">10</span>];</span><br><span class="line">				<span class="keyword">int</span> x;</span><br><span class="line">				<span class="built_in">sscanf</span>(commands[i].c_str(), <span class="string">"%s%d"</span>, s, &amp;x);</span><br><span class="line">				<span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">'f'</span>)	X += x;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">'b'</span>)	Y += x;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">'l'</span>)	a.pb(x);</span><br><span class="line">				<span class="keyword">else</span>	a.pb(<span class="number">360</span> - x);</span><br><span class="line">			&#125;</span><br><span class="line">			dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.size(); ++i) &#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">360</span>; ++j)</span><br><span class="line">					<span class="keyword">if</span> (dp[i][j])	dp[i + <span class="number">1</span>][(j + a[i]) % <span class="number">360</span>] = dp[i + <span class="number">1</span>][j] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">double</span> t = <span class="number">0.0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">360</span>; ++i) &#123;</span><br><span class="line">				<span class="keyword">if</span> (dp[a.size()][i])	t = max(t, X * X + Y * Y - <span class="number">2.0</span> * X * Y * <span class="built_in">cos</span>(Pi * i / <span class="number">180.0</span>));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">sqrt</span>(t);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</span>
+        <span itemprop="articleBody"><p><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque"></p>
+<h1 id="250">250</h1><h2 id="Description">Description</h2><p>从一个字符串中找一字典序最大的字串</p>
+<h2 id="Solution">Solution</h2><p>从左至右贪心即可</p>
+<h1 id="500:">500:</h1><h2 id="Description-1">Description</h2><p>有一个序列，每次可以将一个数-1需要花费1的代价，问最后使得序列满足$2a<em>{i}\le{a</em>{i-1}+a_{i+1}}$</p>
+<h2 id="Solution-1">Solution</h2><p>因为满足$a<em>{i-1}-a</em>{i}\ge{a<em>{i}-a</em>{i+1}}$<code>,也就是说序列相邻两项差是递减的，所以每当不满足条件时暴力调整</code>$a_{i}$，直到不需要调整为止。想想极限数据调整次数即可直到复杂度是靠谱的。</p>
+<h1 id="1000">1000</h1><h2 id="Description-2">Description</h2><p>求符合以下条件的序列个数</p>
+<ul>
+<li>1:长度为K</li>
+<li>2:每个元素大小不超过L</li>
+<li>3:每个数都是质数</li>
+<li>4:所有数异或和为0<br>$K\le{10^{9}},L\le{5\times{10^{4}}}$<h2 id="Solution-2">Solution</h2>基本的递推方程很容易列出来$f<em>{i,j}表示前i个数异或和为j的方案数$<br>则:$f</em>{i,x\oplus{y}}=\sum<em>{0\le{x,y\le{2^{16}}}}{f</em>{i-1,x}\times{f<em>{1,y}}}$<br>$f</em>{1,y}=1当且仅当y为质数且y\le{L}$<br>这样暴力递推显然是$O(KL^{2})的,i为偶数时分治一下可以做到O(L^2log<em>{2}{K})的$，复杂度还是不行<br>然后我们可以想到把这个东西搞成类似于FFT的东西。<br>设向量a,b,c,定义向量之间的运算$　\$,c=a \$ b　$<br>$c</em>{i\oplus{j}}=\sum<em>{}{a</em>{i}\times{b<em>{j}}},做变换tf,使得tf(a\$b)=tf(a)\times{tf(b)},逆变换dft(tf(x))=x$<code>
+</code>$设a向量，a</em>{i}表示i堆石子异或和为0\sim{2^{16}}的方案数，a<em>{1}在素数位置处为1，其他位置为0$<code>
+</code>$这样我们只需要用log</em>{2}{K}的时间算出tf(a<em>{1})^{K},在做逆变换得到a</em>{K}即为答案$<code>`$观察tf和dtf的性质，当只有一个元素时，tf(x)=dtf(x)=x$</code><br>当有两个元素<code>$X=(a,b),Y=(c,d)$</code>时<br><code>$Z=X$Y$</code><br><code>$Z_{0}=X_{0}\times{Y_{0}}+X_{1}\times{Y_{1}}=ac+bd$</code><br><code>$Z_{1}=X_{0}\times{Y_{1}}+X_{1}\times{Y_{0}}=ad+bc$</code><br><code>$另tf(a,b)=(a-b,a+b)$</code><br>则<code>$tf(X)\times{tf(Y)}=(a-b,a+b)\times{(c-d,c+d)}$</code><br><code>$=((a-b)\times{(c-d)},(a+b)\times{(c+d)})$</code><br><code>$=(ac+bd-ad-bc,ac+bd+ad+bc)$</code><br><code>$=tf(ac+bd,ac-bd)$</code><br><code>$=tf((a,b)\$(c,d))$</code><br><code>$=tf(X\$Y)$</code><br><code>$有A，B两向量，用归纳法可证明出tf(A + B) = tf(A) + tf(B) $</code><br><code>$如果我们将X向量分成两段等长的向量X_{1},X_{2}$</code><br>`$我们归纳一下会发现tf(X<em>{1},X</em>{2})=(tf(X1) - tf(X2), tf(X1) + tf(X2))$</li>
+</ul>
+<p>$(X<em>{1}-X</em>{2})<em>{i}={X</em>{1}}<em>{i}-{X</em>{2}}<em>{i}$<br>$(X</em>{1}+X<em>{2})</em>{i}={X<em>{1}}</em>{i}+{X<em>{2}}</em>{i}$<br>$将A分为A<em>{1},A</em>{2},B分为B<em>{1},B</em>{2}$<br>$则依旧可以归纳证出tf( (A1,A2) \$ (B1,B2) ) = tf(A1,A2)\times{tf(B1,B2)}$<br>$即对任意向量A，B，tf(A\$B)=tf(A)\times{tf(B)}$<br>$说明当有两个元素时,tf(a,b)=(a-b,a+b)正好就是我们所需要的变换$<br>然后我们就可以用$tf(X<em>{1},X</em>{2})=(tf(X1) - tf(X2), tf(X1) + tf(X2))来做啦$<br>$算出tf(a<em>{1})^{K},在做逆变换得到a</em>{K}即为答案$<br><img src="http://user-image.logdown.io/user/8987/blog/8877/post/221264/XAutFOlQ6muTRxZbqDmD_QQ%20Photo20140831154228.gif" alt=""><br>还有不明白的可以看<a href="http://apps.topcoder.com/wiki/display/tc/SRM+518" target="_blank" rel="external">http://apps.topcoder.com/wiki/display/tc/SRM+518</a></p>
+<h2 id="Code">Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1</span>&lt;&lt;<span class="number">16</span>,M=<span class="number">1000000007</span>;</span><br><span class="line">ll a[N],inv2;</span><br><span class="line"><span class="function">ll <span class="title">P</span><span class="params">(ll x,ll y)</span></span>&#123;</span><br><span class="line">	ll tmp=<span class="number">1l</span>l;</span><br><span class="line">	<span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(y&amp;<span class="number">1</span>)	tmp=tmp*x%M;</span><br><span class="line">		x=x*x%M;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">trans</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l==r-<span class="number">1</span>)	<span class="keyword">return</span> ;</span><br><span class="line">	<span class="keyword">int</span> len=(r-l)/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> mid=l+len;</span><br><span class="line">	trans(l,mid),trans(mid,r);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;mid;++i)&#123;</span><br><span class="line">		ll x1=(a[i]-a[i+len]+M)%M,x2=(a[i]+a[i+len])%M;</span><br><span class="line">		a[i]=x1,a[i+len]=x2;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(r-l==<span class="number">1</span>)	<span class="keyword">return</span> ;</span><br><span class="line">	<span class="keyword">int</span> len=(r-l)/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> mid=l+len;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;mid;++i)&#123;</span><br><span class="line">		ll x1=a[i],x2=a[i+len];</span><br><span class="line">		a[i]=(x1+x2)*inv2%M;</span><br><span class="line">		a[i+len]=(x2-x1)*inv2%M;</span><br><span class="line">	&#125;</span><br><span class="line">	reverse(l,mid),reverse(mid,r);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> Nim&#123;</span><br><span class="line">        <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">count</span><span class="params">(<span class="keyword">int</span> K, <span class="keyword">int</span> L)</span></span>&#123;</span><br><span class="line">            inv2=P(<span class="number">2</span>,M-<span class="number">2</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=L;++i)</span><br><span class="line">				<span class="keyword">if</span>(!a[i])</span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> j=i+i;j&lt;=L;j+=i)	a[j]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=L;++i)	a[i]^=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> Log=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">while</span>(Log&lt;=L)	Log&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">			trans(<span class="number">0</span>,Log);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;Log;++i)	a[i]=P(a[i],K);</span><br><span class="line">			reverse(<span class="number">0</span>,Log);</span><br><span class="line">			<span class="keyword">return</span> a[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Code链接"><a href="https://github.com/mlz000/topcoder/tree/master/srm518" target="_blank" rel="external">Code链接</a></h1></span>
       
     </div>
 
@@ -272,13 +290,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/15/srm-539/" rel="prev">srm 539</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/11/新的Blog/" rel="next">新的Blog</a>
+              <a href="/2015/09/18/codechef-3D-Queries-MGCH3D/" rel="next">codechef 3D Queries(MGCH3D)</a>
             
           </div>
         </div>
@@ -303,8 +319,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/07/14/srm-538/"
-                   data-title="srm 538" data-url="http://mlz000.github.io/2015/07/14/srm-538/">
+              <div class="ds-thread" data-thread-key="2015/09/20/srm-518-有FWT的题QvQ/"
+                   data-title="srm 518(有FWT的题QvQ)" data-url="http://mlz000.github.io/2015/09/20/srm-518-有FWT的题QvQ/">
               </div>
             
           </div>
@@ -410,7 +426,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题外话"><span class="nav-number">1.</span> <span class="nav-text">题外话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#250"><span class="nav-number">2.</span> <span class="nav-text">250</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description:"><span class="nav-number">2.1.</span> <span class="nav-text">Description:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">2.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#450"><span class="nav-number">3.</span> <span class="nav-text">450</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">3.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">3.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-1"><span class="nav-number">3.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#250"><span class="nav-number">1.</span> <span class="nav-text">250</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#500:"><span class="nav-number">2.</span> <span class="nav-text">500:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-1"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1000"><span class="nav-number">3.</span> <span class="nav-text">1000</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-2"><span class="nav-number">3.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-2"><span class="nav-number">3.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Code链接"><span class="nav-number">4.</span> <span class="nav-text">Code链接</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
