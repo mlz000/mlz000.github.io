@@ -204,6 +204,98 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/24/srm-546/" itemprop="url">
+                srm 546
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-24T20:40:35+08:00" content="2015-09-24">
+            2015-09-24
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
+                  <span itemprop="name">topcoder题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/24/srm-546/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/24/srm-546/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+
+<h1 id="250">250</h1><p><hr></p>
+<h2 id="Solution">Solution</h2><p>考虑奇偶性，每次定一个可以变成该数的上下界，按二进制位考虑即可</p>
+<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm546/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">struct</span> KleofasTail &#123;</span><br><span class="line">    <span class="function">LL <span class="title">gao</span><span class="params">(LL x, LL k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (k &gt; x)  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (k &lt;= <span class="number">1</span>) <span class="keyword">return</span> x - k + <span class="number">1</span>;</span><br><span class="line">        LL kk = k + (k % <span class="number">2</span> == <span class="number">0</span>);</span><br><span class="line">        LL t = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (k &lt;= x) &#123;</span><br><span class="line">            t += min(x, kk) - k + <span class="number">1</span>;</span><br><span class="line">            k &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">            kk = (kk &lt;&lt; <span class="number">1</span> | <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">countGoodSequences</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> K, <span class="keyword">long</span> <span class="keyword">long</span> A, <span class="keyword">long</span> <span class="keyword">long</span> B)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> gao(B, K) - gao(A - <span class="number">1</span>, K);              </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="500">500</h1><p><hr></p>
+<h2 id="Description">Description</h2><p>求满足大于$A(A\le 10^{15})$的且$digit1$至少出现$count1$次，$digit2$至少出现$count2次$的最小的数是多少？<br>$(count1+count2\le 15,digit1,digit2\le 10)$</p>
+<h2 id="Solution-1">Solution</h2><p>很容易想到数位$dp$,常见数位$dp$套路，用一个$f$表示当前数是否与最小值相等，还有$cnt1个x1,cnt2个x2$没有用，是否成立。<br>正常转移即可，注意一点，除了$x1,x2,lim,lim+1$以外，其他数是没什么意义的，$dp$即可</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm546/500.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;<span class="comment">//dp</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">16</span>];</span><br><span class="line">LL ans;</span><br><span class="line"><span class="keyword">struct</span> FavouriteDigits &#123;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">bool</span> f, <span class="keyword">int</span> x1, <span class="keyword">int</span> cnt1, <span class="keyword">int</span> x2, <span class="keyword">int</span> cnt2, LL now)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (p == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cnt1 &lt;= <span class="number">0</span> &amp;&amp; cnt2 &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                ans = now;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> lim = f ? a[p] : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = lim; i &lt;= <span class="number">9</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (f) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!(i == lim || i == x1 || i == x2 || i == lim + <span class="number">1</span>))  <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (!(i == lim || i == x1 || i == x2))  <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> d1 = cnt1 - (i == x1);</span><br><span class="line">            <span class="keyword">int</span> d2 = cnt2 - (i == x2);</span><br><span class="line">            <span class="keyword">if</span> (!now &amp;&amp; !x1)    d1 = cnt1;</span><br><span class="line">            <span class="keyword">if</span> (dfs(p - <span class="number">1</span>, f &amp; (i == lim), x1, d1, x2, d2, now * <span class="number">10</span> + i))   <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">findNext</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> N, <span class="keyword">int</span> x1, <span class="keyword">int</span> cnt1, <span class="keyword">int</span> x2, <span class="keyword">int</span> cnt2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x1 &gt; x2)    swap(x1, x2), swap(cnt1, cnt2);</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (N) &#123;</span><br><span class="line">            a[p++] = N % <span class="number">10</span>;</span><br><span class="line">            N /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        p = max(p, cnt1 + cnt2);</span><br><span class="line">        dfs(p, <span class="number">1</span>, x1, cnt1, x2, cnt2, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/09/24/srm-545/" itemprop="url">
                 srm 545
               </a>
@@ -1165,136 +1257,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/08/07/2015-ACM多校训练第一场/" itemprop="url">
-                2015 ACM多校训练第一场
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-08-07T20:56:18+08:00" content="2015-08-07">
-            2015-08-07
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/hdu/" itemprop="url" rel="index">
-                  <span itemprop="name">hdu</span>
-                </a>
-              </span>
-
-              
-              
-                ， 
-              
-
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/hdu/ACM多校题解/" itemprop="url" rel="index">
-                  <span itemprop="name">ACM多校题解</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/08/07/2015-ACM多校训练第一场/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/07/2015-ACM多校训练第一场/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h1 id="题外话">题外话</h1><p>这个暑假以前就决定要把这次多校的所有题全补了，中间断断续续，总算把第一场的题补全了，鄙视一下颓废的自己。。。</p>
-<p><hr></p>
-<h1 id="hdu_5288(1001)_OO’s_Sequence">hdu 5288(1001) OO’s Sequence</h1><h2 id="Solution">Solution</h2><p>水题，定义两个数组$L[i], R[i]$示第i个数左侧和右侧最接近它且值是a[i]因子的数字的位置，统计贡献即可。由于a[i]范围很小，因子数很小，暴力统计更新l,r即可。</p>
-<h2 id="Code"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/01.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5289(1002)_Assignment">hdu 5289(1002) Assignment</h1><h2 id="Solution-1">Solution</h2><p>水题，很容易想到先用st表预处理区间最大最小值，然后枚举左端点，二分右端点检查是否满足即可。复杂度$O(NlogN)$，也可以用单调队列维护最值</p>
-<h2 id="Code-1"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/02.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h2 id="hdu_5290(1003)_Bombing_plan">hdu 5290(1003) Bombing plan</h2><h2 id="Solution-2">Solution</h2><p>这题比赛时候没时间看，其实赛后发现并不是很难。看数据范围很容易往O(NW)上去想。于是不难想到dp<br>定义两个数组<br>$f[i][j]$表示以i为根的子树全部破坏掉，还能向上破坏最多j的距离，需要的最少点数<br>$g[i][j]$表示以i为根的子树未被全部破坏掉，且未被破坏的点距离i最远为j，需要的最少点数</p>
-<ul>
-<li><p>(1)不取i点,则<br>  $$f[i][j]=f[son][j+1]+\sum_{l是i的其他孩子} min(f[l][0],f[l][1],…,f[l][j+1],g[l][0],g[l][1],…,g[l][j-1])$$</p>
-<p>  $$g[i][j]=g[son][j-1]+\sum_{l是i的其他孩子} min(f[l][0],f[l][1],…,f[l][j],g[l][0],g[l][1],…,g[l][j-1])$$</p>
-</li>
-<li>(2)取i点则<br>  $$f[i][w[i]]=1+\sum_{l是i的孩子} min(f[l][0],f[l][1],…,f[l][w[i]+1],g[l][0],g[l][1],…,g[l][w[i]-1])$$<br>很容易想到用两个数组$ff,gg$分别维护$f,g$的最小值，复杂度$O(NW)$，具体实现的时候注意下边界$0$的情况即可。仔细想想，转移方程还是比较容易得到的</li>
-</ul>
-<h2 id="Code-2"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/03.cpp" target="_blank" rel="external">Code</a></h2><p><hr>  </p>
-<h1 id="hdu_5291(1004)_Candy_Distribution">hdu 5291(1004) Candy Distribution</h1><h2 id="Solution-3">Solution</h2><p>考虑最暴力的dp,$dp[i][j]表示分配完第i种物品，A比B多j个的方案数$，然后dp转移的时候枚举分给A$x$个，B$y$个，则$dp[i][j+x-y]+=dp[i-1][j]$。考虑第$i$种物品有$s$个，$x+y\le s$时可转移，则$dp[i-1][j]$对$dp[i][j]$的贡献有$\frac{s}{2}+1$次($x=y=0…x=y=\frac{s}{2}$),下发现，j每变化2,贡献-1。奇偶两种情况考虑时，这个东西类似于等差数列，差分两次后我们就可以完成递推了。复杂度$O(n^3)$</p>
-<h2 id="Code-3"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/04.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5292(1005)_Pocket_Cube">hdu 5292(1005) Pocket Cube</h1><h2 id="Solution-4">Solution</h2><p>这个题就是个找规律的题，看了题解才会做QAQ。。。<br><img src="http://i1.tietuku.com/a1c7349922a9e0de.jpg" alt=""></p>
-<h2 id="Code-4"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/05.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5293(1006)_Tree_chain_problem">hdu 5293(1006) Tree chain problem</h1><h2 id="Solution-5">Solution</h2><p>比赛时没看，赛后发现是个很裸的题= =。<br>考虑dp，$dp[i]$表示以$i$为根的子树的最优值，则<br>$sum[i]=\sum_{j\in son[i]} dp[j]$<br>容易想到有两种转移</p>
-<ul>
-<li>(1) $dp[i]=sum[i]$</li>
-<li>(2) $dp[i]=value[p]+\sum sum[k]-\sum dp[k]$ $(链p的lca是i,k是链上的节点)$<br>链上求和很容易想到树链剖分，复杂度$O(Nlog^2N)$</li>
-</ul>
-<h2 id="Code-5"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/06.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5294(1007)_Tricks_Device">hdu 5294(1007) Tricks Device</h1><h2 id="Solution-6">Solution</h2><p>水题，最短路寻找道路边数最少的最短路,总边数减去最少条数为第二个问答案。<br>把最短路图抽出来建流量为1的边，最小割即为第一问答案。</p>
-<h2 id="Code-6"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/07.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5295(1008)_Unstable">hdu 5295(1008) Unstable</h1><h2 id="Solution-7">Solution</h2><p><img src="http://i3.tietuku.com/3d848fc23b742532.jpg" alt=""><br>平几题，给出中点很容易想到倍长的事情。如图，倍长$AF$，做$BG$平行于$AD$且$|BG|=|AD|$，容易看出三角形$FDA$和三角形$FCA’全等$<br>不妨固定BC,$A’$可以通过以$C$圆心，半径长为$da$，和以$B$为圆心，半径长为$2ef$的圆交点得到。<br>由于$A’GBC$是平行四边形，可以得到G的坐标。于是$D$的坐标可以通过以$C$为圆心，半径长为$cd$，和以$G$为圆心，半径长为$DG$(即$ab$)的圆得到。于是可以得到$A$的坐标</p>
-<h2 id="Code-7"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/08.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5296(1009)_Annoying_problem">hdu 5296(1009) Annoying problem</h1><h2 id="Solution-8">Solution</h2><p>比赛时自己蠢一直没想出来，想过dfs序但没细想= =<br>其实每次插入的时候找两个dfs序最接近的点$x,y$一个大于$u$一个小于$u$即可。每次增加的花费是$dis[u]-dis[lca(x,u)]-dis[lca(y,u)]+dis[lca(x,y)]$，即为$u$到$x-y$链上的距离。删除时类似。<br>找不到这样的点时直接取最大和最小dfs序的两个点即可<br>为什么这样呢，给定固定点把它们连通得到的树一定是固定的。这样选点的目的是为了不让边重复。</p>
-<h2 id="Code-8"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/09.cpp" target="_blank" rel="external">Code</a></h2><h1 id="hdu_5297(1010)_Y_sequence">hdu 5297(1010) Y sequence</h1><h2 id="Solution-9">Solution</h2><p>这个题比赛时我写的二分，一直T，= =非常蛋疼。赛后看题解和问别人才知道，可以迭代，迭代次数不会太多。<br>首先考虑反函数$f(x)$表示前$x$个数中Y-sequence的数量。我们迭代来算这个值，不用二分。<br>我们要求第$n$个Y-sequence，开始令$x=n$，如果$f(x)=now$，那么前$x$个数中有$n-now$个不是Y-sequence的数，那么我们令$x=x+n-now$，看看新的$f(x)$是否等于n即可。<br>我们每次只加了缺少的答案数，所以不可能超过正确答案。<br>迭代还是玄学啊。。。。新姿势get</p>
-<h2 id="Code-9"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/10.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5298(1011)_Solid_Geometry_Homework">hdu 5298(1011) Solid Geometry Homework</h1><h2 id="Solution-10">Solution</h2><p>比赛时以为是大型计算几何看都没看，赛后发现这是个SB题，把点带到平面和球面方程中，确定点在哪一边把结果异或一下考虑染色即可。</p>
-<h2 id="Code-10"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/11.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5299(1012)_Circles_Game">hdu 5299(1012) Circles Game</h1><h2 id="Solution-11">Solution</h2><p>自己太弱，不会扫描线，赛后补了下姿势。。<br>很容易想到扫描线处理圆，把圆变成树，然后就变成了经典博弈问题树上删边问题，具体可以看09年国家集训队论文&lt;&lt;组合游戏略述——浅谈SG游戏的若干拓展及变形&gt;&gt;。<br>结论是叶子节点$sg值为0$其余节点$sg$值为所以孩子节点$sg$值$+1$的异或和。</p>
-<h2 id="Code-11"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/12.cpp" target="_blank" rel="external">Code</a></h2><p>完结撒花！<br>继续补题！&gt;_&lt;</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1333,7 +1295,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
