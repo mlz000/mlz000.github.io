@@ -204,6 +204,146 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/01/2015-ACM多校训练第三场/" itemprop="url">
+                2015-ACM多校训练第三场
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-01T21:03:28+08:00" content="2015-09-01">
+            2015-09-01
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/hdu/" itemprop="url" rel="index">
+                  <span itemprop="name">hdu</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/hdu/ACM多校题解/" itemprop="url" rel="index">
+                  <span itemprop="name">ACM多校题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/01/2015-ACM多校训练第三场/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/01/2015-ACM多校训练第三场/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque"></p>
+<h1 id="题外话">题外话</h1><p>尼玛颓废着颓废着就开学了= =无聊终于把第三场的题全补完了</p>
+<p><hr></p>
+<h1 id="hdu_5316(1001)_Magician">hdu 5316(1001) Magician</h1><h2 id="Solution">Solution</h2><p>线段树裸题，维护四个东西，以奇/偶开头奇/偶结尾的最大值，正常线段树合并即可。</p>
+<h2 id="Code"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/01.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5317(1002)_RGCDQ">hdu 5317(1002) RGCDQ</h1><h2 id="Solution-1">Solution</h2><p>水题，发现$2\times 3\times 5\times 7\times 9\times 11\times 13 \times17&gt;1000000$，所以素因子种数最多为7个，前缀和统计一下即可</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/02.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h2 id="hdu_5318(1003)_The_Goddess_Of_The_Moon">hdu 5318(1003) The Goddess Of The Moon</h2><h2 id="Solution-2">Solution</h2><p>水题，题目太长比赛没看= =，唯一的坑是要把数字去重，然后容易看出可以用矩阵乘法来递推</p>
+<h2 id="Code-2"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/03.cpp" target="_blank" rel="external">Code</a></h2><p><hr>  </p>
+<h1 id="hdu_5319(1004)_Painter">hdu 5319(1004) Painter</h1><h2 id="Solution-3">Solution</h2><p>简单模拟题，按题目要求一刷刷到底就可以了</p>
+<h2 id="Code-3"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/04.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5320(1005)_Fan_Li">hdu 5320(1005) Fan Li</h1><h2 id="Solution-4">Solution</h2><p>感觉这道题是个不错题，考虑以$i$为开头的序列，$gcd$如果发生变化一定至少除以$2$，所以不同的gcd区间最多也是log级的。可以预处理出所有的四元组$(g,i,l,r)$，表示以$i$为开头，结尾在$[l,r]$区间内$gcd$为$g$。<br>考虑$dp$，不妨考虑当前$gcd=x$的方案数以及区间数，假设该四元组开头为$i$,显然区间数是以结尾在$[1,i-1]$区间内的最大值$+1$，方案数也很好计算。容易发现用一个线段树就可以轻松维护了。</p>
+<h2 id="Code-4"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/05.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5321(1006)_Beautiful_Set">hdu 5321(1006) Beautiful Set</h1><h1 id="Description">Description</h1><p>A的计算方法是：对于$n$个数的某个排列，此排列的美丽值为这个排列所有的区间最大公约数之和。然后这个集合的美丽值为$n$个数的所有排列的美丽值之和。<br>B的计算方法是：在$n$个数中选出$k(1 \le k \le n)$个数，对于某种选取方案，这种方案的美丽值为$k$个数的最大公约数乘上$k$。然后这个集合的美丽值为所有选数方案的美丽值之和。</p>
+<h2 id="Solution-5">Solution</h2><p>很容易想到用$cnt[i]$表示集合中$i$的倍数个数</p>
+<ul>
+<li>考虑第一个人<br>$F1[x]$表示$gcd$为$x$的倍数的区间的个数<br>$f1[x]$表示$gcd$为$x$的区间的个数<br>$F1[x]=\sum_{x|d}f1[d]$</li>
+</ul>
+<p>且$F1[x]=\sum_{j=1}^{cnt[x]} \binom{cnt[x]}{j}\times j! \times (n-j+1)!$<br>从$cnt[x]$里选$j$个数，再把$n-j$个数和这$j$个数算做$n-j+1$的排列</p>
+<ul>
+<li>考虑第二个人<br>$F2[x]$表示$gcd$为$x$的倍数的区间的个数<br>$f2[x]$表示$gcd$为$x$的区间的个数<br>易知$F2[x] = \sum_{x|d}f2[d]$</li>
+</ul>
+<p>且$F2[x]= \sum_{j=1}^{cnt[x]} \binom{cnt[x]}{j}\times j = cnt[x]\times 2^{cnt[x]-1}$<br>这个稍微推推就能推出来</p>
+<p>同样的$F2[x] = \sum_{x|d}f2[d]$</p>
+<p>然后就是我们熟悉的莫比乌斯反演辣！</p>
+<p>$F(n)=\sum_{n|d}f(d)$</p>
+<p>可以得到</p>
+<p>$f[n]=\sum_{n|d}\mu(d/n)\times F(d)$</p>
+<p>于是可以计算出$f$，$\sum f[i]\times i$即是答案</p>
+<h2 id="Code-5"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/06.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5322(1007)_Hope">hdu 5322(1007) Hope</h1><h2 id="Solution-6">Solution</h2><p>这题其实并不难，考虑$dp[i]$为长度为$i$的排列的答案，枚举这个排列最大值所在的位置，最大值左边和它都是联通的，于是我们可以得到转移方程<br>$dp[i]=\sum_{j=1}^i \binom{i-1}{j-1}\times (j-1)!\times dp[i-j]\times j^2$</p>
+<p>稍加变换我们可以得到</p>
+<p>$dp[i]=(i-1)!\times \sum_{j=1}^i \frac{j^2}{(i-j)!}\times dp[i-j]$</p>
+<p>令$k=i-j$我们可以得到$dp[i]=(i-1)!\times \sum_{k=0}^{i-1}\frac{(i-k)^2}{k!}\times dp[k]$<br>展开得$dp[i]=(i-1)!\times (i^2-2ik+k^2)\times \frac{dp[k]}{k!}$<br>维护三个前缀和即可O(N)解决，当然你可以没思维难度得想到cdq分治+NTT得做法QAQ</p>
+<h2 id="Code-6"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/07.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5323(1008)_Solve_this_interesting_problem">hdu 5323(1008) Solve this interesting problem</h1><h2 id="Solution-7">Solution</h2><p>考虑$[l,r]$是做左儿子还是右儿子，具体有$4$种情况，暴力枚举即可，实际上的复杂度是$4^{11}$，完全可以接受</p>
+<h2 id="Code-7"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/08.cpp" target="_blank" rel="external">Code</a></h2><hr>
+
+<h1 id="hdu_5324(1009)_Boring_Class">hdu 5324(1009) Boring Class</h1><h2 id="Solution-8">Solution</h2><p>三维最长不下降序列之类的题，很容易想到按$id$算答案，$r$这一维排序，$l$这一维用树状数组维护然后cdq分治的经典做法。<br>考虑$dp$由于要字典序最小，先cdq分治算右区间的答案，考虑对左区间的影响即可。<br>写了不到$80$行，轻松愉快，cdq分治真是个高大的姿势。。。爽</p>
+<h2 id="Code-8"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/09.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5325(1010)_Crazy_Bobo">hdu 5325(1010) Crazy Bobo</h1><h2 id="Solution-9">Solution</h2><p>水题，按权值排序后，权值小的向大的连即可，dp一下就行了</p>
+<h2 id="Code-9"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/10.cpp" target="_blank" rel="external">Code</a></h2><hr>
+
+<h1 id="hdu_5326(1011)_Work">hdu 5326(1011) Work</h1><h2 id="Solution-10">Solution</h2><p>水题，随便dfs就行了= =</p>
+<h2 id="Code-10"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/3/11.cpp" target="_blank" rel="external">Code</a></h2><p>完结撒花！<br>继续补题！&gt;_&lt;</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/08/17/2015-ACM多校训练第二场/" itemprop="url">
                 2015 ACM多校训练第二场
               </a>
@@ -1010,7 +1150,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
