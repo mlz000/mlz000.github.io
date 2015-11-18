@@ -204,6 +204,98 @@
           
           
             
+              <a class="post-title-link" href="/2015/11/18/srm-554/" itemprop="url">
+                srm 554
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-18T15:37:00+08:00" content="2015-11-18">
+            2015-11-18
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
+                  <span itemprop="name">topcoder题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/18/srm-554/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/srm-554/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+
+<h1 id="250">250</h1><p><hr></p>
+<h2 id="Description">Description</h2><p>给高度为$h_1$的棍子$r_1$个，$h_2$的$r_2$个，轮流放，问最多放出多少种不同的高度</p>
+<h2 id="Solution">Solution</h2><p>考虑$h_1$是否等于$h_2$，再讨论即可</p>
+<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm554/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">struct</span> TheBrickTowerEasyDivOne &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> r1, <span class="keyword">int</span> h1, <span class="keyword">int</span> r2, <span class="keyword">int</span> h2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (h1 == h2) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span> * min(r1, r2) + (r1 == r2 ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span> * min(r1, r2) + (r1 &gt; r2) + min(r1, r2) + (r2 &gt; r1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="500">500</h1><p><hr></p>
+<h2 id="Description-1">Description</h2><p>将$n$个数重新排列，使得相邻两个数最大值之和尽量小，同时字典序最小。</p>
+<h2 id="Solution-1">Solution</h2><p>$n$个数算$n-1$的最大值，很显然尽量小的情况是除了最小值所有值都被计算过一次。观察可得，序列应该是先递减再递增的，按字典序排即可。</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm554/500.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">50</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;pii&gt; s;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="keyword">struct</span> TheBrickTowerMediumDivOne &#123;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; find(<span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; a) &#123;</span><br><span class="line">        <span class="keyword">int</span> n = a.size();</span><br><span class="line">        ans.pb(<span class="number">0</span>), vis[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> p = -<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!vis[j] &amp;&amp; a[j] &lt;= a[ans[i - <span class="number">1</span>]]) &#123;</span><br><span class="line">                    p = j;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (~p) ans.pb(p), vis[p] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">            <span class="keyword">if</span> (!vis[i])    s.pb(mp(a[i], i));</span><br><span class="line">        sort(s.begin(), s.end());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); ++i)  ans.pb(s[i].S);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/12/2015区域赛总结/" itemprop="url">
                 2015区域赛总结
               </a>
@@ -257,7 +349,7 @@
 
       
         
-          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
 
 
 
@@ -1046,98 +1138,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/24/srm-545/" itemprop="url">
-                srm 545
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-24T16:35:00+08:00" content="2015-09-24">
-            2015-09-24
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
-                  <span itemprop="name">topcoder题解</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/24/srm-545/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/24/srm-545/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
-
-<h1 id="275">275</h1><p><hr></p>
-<h2 id="Description">Description</h2><p>让你构造一个长度为$n$的串，逆序数恰好为$m$且字典序比某字符串$string$大，请构造字典序最小的这样的串。</p>
-<h2 id="Solution">Solution</h2><p>数据范围非常小，暴力搜索即可</p>
-<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm545/275.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">26</span>;</span><br><span class="line"><span class="built_in">string</span> ans;</span><br><span class="line"><span class="keyword">struct</span> StrIIRec &#123;</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> minInv, <span class="built_in">string</span> minStr, <span class="built_in">set</span>&lt;<span class="keyword">char</span>&gt; S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (minInv &gt; (n - <span class="number">1</span>) * n / <span class="number">2</span>)   <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="built_in">string</span>(<span class="number">1</span>, *S.begin());</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (!minStr.size()) minStr = <span class="string">"a"</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">set</span>&lt;<span class="keyword">char</span>&gt;:: iterator it = S.begin(); it != S.end(); it++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (*it &gt;= minStr[<span class="number">0</span>]) &#123;</span><br><span class="line">                <span class="built_in">set</span>&lt;<span class="keyword">char</span>&gt; f = S;</span><br><span class="line">                f.erase(*it);</span><br><span class="line">                <span class="built_in">string</span> t;</span><br><span class="line">                <span class="keyword">if</span> (*it == minStr[<span class="number">0</span>])   t = dfs(n - <span class="number">1</span>, minInv - cnt, <span class="built_in">string</span>(minStr, <span class="number">1</span>), f);</span><br><span class="line">                <span class="keyword">else</span> t = dfs(n - <span class="number">1</span>, minInv - cnt, <span class="string">""</span>, f);</span><br><span class="line">                <span class="keyword">if</span> (t.size())   <span class="keyword">return</span> *it + t;</span><br><span class="line">            &#125;</span><br><span class="line">            ++cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">recovstr</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> minInv, <span class="built_in">string</span> minStr)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">set</span>&lt;<span class="keyword">char</span>&gt; S;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; ++i)    S.insert(<span class="string">'a'</span> + i);</span><br><span class="line">        <span class="built_in">string</span> ans = dfs(n, minInv, minStr, S);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="500">500</h1><p><hr></p>
-<h2 id="Description-1">Description</h2><p> 你可以在$H\times L$的网格上以$(x,0)$为起点画一条非水平的射线，$0\le x\le L$，且为整数。在这个射线上每次要取$k$个整数坐标。问一共可以取得多少个不同的坐标集合$(1\le H,L,K\le 2000)。$</p>
-<h2 id="Solution-1">Solution</h2><p>暴力枚举$dx, dy$，当$gcd(dx,dy)=1$的时候这个就相当于枚举斜率啦，然后我们需要枚举$x$,显然枚举会超时，我们考虑只有当$x+=dx,y+=dy$的时候，点数才可能会发生变化，枚举即可。</p>
-<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm545/500.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2005</span>, M = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> c[N][N];</span><br><span class="line"><span class="keyword">struct</span> Spacetsk &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countsets</span><span class="params">(<span class="keyword">int</span> L, <span class="keyword">int</span> H, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (K == <span class="number">1</span>) <span class="keyword">return</span> (H + <span class="number">1</span>) * (L + <span class="number">1</span>) % M;</span><br><span class="line">        c[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">2001</span>; ++i) &#123;</span><br><span class="line">            c[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; ++j)    c[i][j] = (c[i - <span class="number">1</span>][j] + c[i - <span class="number">1</span>][j - <span class="number">1</span>]) % M;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= L; ++i)    (ans += c[H + <span class="number">1</span>][K]) %= M;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> dx = <span class="number">1</span>; dx &lt;= L; ++dx)</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">int</span> dy = <span class="number">1</span>; dy &lt;= H; ++dy) &#123;</span><br><span class="line">                <span class="keyword">if</span> (__gcd(dx, dy) == <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">int</span> sum = <span class="number">0</span>, cnt = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>; x &lt;= L; x += dx, y += dy) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (y &lt;= H) ++cnt;  </span><br><span class="line">                        <span class="keyword">int</span> num = min(dx, L - x + <span class="number">1</span>);</span><br><span class="line">                        (sum += <span class="number">1l</span>l * num * c[cnt][K] % M) %= M;</span><br><span class="line">                    &#125;</span><br><span class="line">                    (ans += sum * <span class="number">2</span> % M) %= M;</span><br><span class="line">                &#125;</span><br><span class="line">             &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1176,7 +1176,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

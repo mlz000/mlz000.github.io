@@ -39,16 +39,25 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="topcoder,srm538 题解">
+<meta name="description" content="250
+Description给高度为$h_1$的棍子$r_1$个，$h_2$的$r_2$个，轮流放，问最多放出多少种不同的高度
+Solution考虑$h_1$是否等于$h_2$，再讨论即可
+Code123456789101112131415161718#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;#define pb push_back#de">
 <meta property="og:type" content="article">
-<meta property="og:title" content="srm 538">
-<meta property="og:url" content="http://mlz000.github.io/2015/07/14/srm-538/index.html">
+<meta property="og:title" content="srm 554">
+<meta property="og:url" content="http://mlz000.github.io/2015/11/18/srm-554/index.html">
 <meta property="og:site_name" content="mlz000's Blog">
-<meta property="og:description" content="topcoder,srm538 题解">
-<meta property="og:updated_time" content="2015-07-16T07:12:01.671Z">
+<meta property="og:description" content="250
+Description给高度为$h_1$的棍子$r_1$个，$h_2$的$r_2$个，轮流放，问最多放出多少种不同的高度
+Solution考虑$h_1$是否等于$h_2$，再讨论即可
+Code123456789101112131415161718#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;#define pb push_back#de">
+<meta property="og:updated_time" content="2015-11-18T07:47:07.576Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="srm 538">
-<meta name="twitter:description" content="topcoder,srm538 题解">
+<meta name="twitter:title" content="srm 554">
+<meta name="twitter:description" content="250
+Description给高度为$h_1$的棍子$r_1$个，$h_2$的$r_2$个，轮流放，问最多放出多少种不同的高度
+Solution考虑$h_1$是否等于$h_2$，再讨论即可
+Code123456789101112131415161718#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;#define pb push_back#de">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -58,7 +67,7 @@
   };
 </script>
 
-  <title> srm 538 | mlz000's Blog </title>
+  <title> srm 554 | mlz000's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -203,7 +212,7 @@
           
           
             
-              srm 538
+              srm 554
             
           
         </h1>
@@ -212,8 +221,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-07-14T15:37:03+08:00" content="2015-07-14">
-            2015-07-14
+          <time itemprop="dateCreated" datetime="2015-11-18T15:37:00+08:00" content="2015-11-18">
+            2015-11-18
           </time>
         </span>
 
@@ -238,8 +247,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/07/14/srm-538/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/srm-538/" itemprop="commentsCount"></span>
+              <a href="/2015/11/18/srm-554/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/srm-554/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -253,15 +262,16 @@
       
 
       
-        <span itemprop="articleBody"><p>topcoder,srm538 题解<br><a id="more"></a></p>
-<h1 id="题外话">题外话</h1><p>之前准备期末预习加上刚放假浪了一会= =没有补题，今天开始恢复补题。。</p>
-<h1 id="250">250</h1><h2 id="Description:">Description:</h2><p>平面上给出$N$个点，整数坐标。从$(0,0)$出发，每次往上下左右四个垂直方向走，要求遍历所有点至少一次，最后回到给出的N个点中的某个点（不包括原点）。然后走过的距离是曼哈顿距离。给出一个数字代表要求走过的距离为奇还是为偶。问能否满足要求。</p>
-<h2 id="Solution">Solution</h2><p>显然如果要求是偶的话只有全奇时无解，若有一个偶数，则可通过往返的方式访问其他点最后停留在偶数点，要求为奇数时同理</p>
-<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm538/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">class</span> EvenRoute &#123;</span><br><span class="line">        <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">isItPossible</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; x, <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; y, <span class="keyword">int</span> wantedParity)</span> </span>&#123;</span><br><span class="line">        	<span class="keyword">int</span> n = x.size();</span><br><span class="line">			<span class="keyword">bool</span> even = <span class="number">0</span>, odd = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">				<span class="keyword">if</span> ((<span class="built_in">abs</span>(x[i]) + <span class="built_in">abs</span>(y[i])) &amp; <span class="number">1</span>)	odd = <span class="number">1</span>;</span><br><span class="line">				<span class="keyword">else</span> even = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> (odd &amp;&amp; even) || (even &amp;&amp; !wantedParity) || (odd &amp;&amp; wantedParity) ? <span class="string">"CAN"</span> : <span class="string">"CANNOT"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="450">450</h1><h2 id="Description">Description</h2><p>给出四种命令。左转多少度，右转多少度，前进多远，后退多远。先在顺序是打乱的。要求给出一种排列使得最终总的位移和最远。输出最远距离即可。</p>
-<h2 id="Solution-1">Solution</h2><p>一个很明显的直观感受是尽量走直线会使得答案更大一些。这样就很简单了，不妨全向前，然后把调整角度放到后面，最后全向后即可。调整的角度背包求即可</p>
-<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm538/450.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a, b;<span class="comment">//ang back</span></span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">60</span>][<span class="number">360</span>];</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Pi = <span class="built_in">acos</span>(-<span class="number">1.0</span>);</span><br><span class="line"><span class="keyword">class</span> TurtleSpy &#123;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">maxDistance</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; commands)</span> </span>&#123;</span><br><span class="line">   			<span class="keyword">int</span> n = commands.size();</span><br><span class="line">			<span class="keyword">double</span> X = <span class="number">0.0</span>, Y = <span class="number">0.0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">				<span class="keyword">char</span> s[<span class="number">10</span>];</span><br><span class="line">				<span class="keyword">int</span> x;</span><br><span class="line">				<span class="built_in">sscanf</span>(commands[i].c_str(), <span class="string">"%s%d"</span>, s, &amp;x);</span><br><span class="line">				<span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">'f'</span>)	X += x;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">'b'</span>)	Y += x;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">'l'</span>)	a.pb(x);</span><br><span class="line">				<span class="keyword">else</span>	a.pb(<span class="number">360</span> - x);</span><br><span class="line">			&#125;</span><br><span class="line">			dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.size(); ++i) &#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">360</span>; ++j)</span><br><span class="line">					<span class="keyword">if</span> (dp[i][j])	dp[i + <span class="number">1</span>][(j + a[i]) % <span class="number">360</span>] = dp[i + <span class="number">1</span>][j] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">double</span> t = <span class="number">0.0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">360</span>; ++i) &#123;</span><br><span class="line">				<span class="keyword">if</span> (dp[a.size()][i])	t = max(t, X * X + Y * Y - <span class="number">2.0</span> * X * Y * <span class="built_in">cos</span>(Pi * i / <span class="number">180.0</span>));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">sqrt</span>(t);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</span>
+        <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+
+<h1 id="250">250</h1><p><hr></p>
+<h2 id="Description">Description</h2><p>给高度为$h_1$的棍子$r_1$个，$h_2$的$r_2$个，轮流放，问最多放出多少种不同的高度</p>
+<h2 id="Solution">Solution</h2><p>考虑$h_1$是否等于$h_2$，再讨论即可</p>
+<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm554/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">struct</span> TheBrickTowerEasyDivOne &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> r1, <span class="keyword">int</span> h1, <span class="keyword">int</span> r2, <span class="keyword">int</span> h2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (h1 == h2) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span> * min(r1, r2) + (r1 == r2 ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span> * min(r1, r2) + (r1 &gt; r2) + min(r1, r2) + (r2 &gt; r1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="500">500</h1><p><hr></p>
+<h2 id="Description-1">Description</h2><p>将$n$个数重新排列，使得相邻两个数最大值之和尽量小，同时字典序最小。</p>
+<h2 id="Solution-1">Solution</h2><p>$n$个数算$n-1$的最大值，很显然尽量小的情况是除了最小值所有值都被计算过一次。观察可得，序列应该是先递减再递增的，按字典序排即可。</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm554/500.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">50</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;pii&gt; s;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="keyword">struct</span> TheBrickTowerMediumDivOne &#123;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; find(<span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; a) &#123;</span><br><span class="line">        <span class="keyword">int</span> n = a.size();</span><br><span class="line">        ans.pb(<span class="number">0</span>), vis[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> p = -<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!vis[j] &amp;&amp; a[j] &lt;= a[ans[i - <span class="number">1</span>]]) &#123;</span><br><span class="line">                    p = j;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (~p) ans.pb(p), vis[p] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">            <span class="keyword">if</span> (!vis[i])    s.pb(mp(a[i], i));</span><br><span class="line">        sort(s.begin(), s.end());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); ++i)  ans.pb(s[i].S);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -272,13 +282,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/15/srm-539/" rel="prev">srm 539</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/11/新的Blog/" rel="next">新的Blog</a>
+              <a href="/2015/11/12/2015区域赛总结/" rel="next">2015区域赛总结</a>
             
           </div>
         </div>
@@ -303,8 +311,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/07/14/srm-538/"
-                   data-title="srm 538" data-url="http://mlz000.github.io/2015/07/14/srm-538/">
+              <div class="ds-thread" data-thread-key="2015/11/18/srm-554/"
+                   data-title="srm 554" data-url="http://mlz000.github.io/2015/11/18/srm-554/">
               </div>
             
           </div>
@@ -418,7 +426,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题外话"><span class="nav-number">1.</span> <span class="nav-text">题外话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#250"><span class="nav-number">2.</span> <span class="nav-text">250</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description:"><span class="nav-number">2.1.</span> <span class="nav-text">Description:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">2.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#450"><span class="nav-number">3.</span> <span class="nav-text">450</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">3.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">3.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-1"><span class="nav-number">3.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#250"><span class="nav-number">1.</span> <span class="nav-text">250</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#500"><span class="nav-number">2.</span> <span class="nav-text">500</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-1"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-1"><span class="nav-number">2.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
