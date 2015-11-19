@@ -204,6 +204,99 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/25/srm-547/" itemprop="url">
+                srm 547
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-25T15:50:20+08:00" content="2015-09-25">
+            2015-09-25
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
+                  <span itemprop="name">topcoder题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/25/srm-547/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/25/srm-547/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+
+<h1 id="250">250</h1><p><hr></p>
+<h2 id="Description">Description</h2><p>$1\le x\le 10^5, 1\le y\le 10^5,x,y\in N$,给定$w$,随机选$x,y$求$\sum sqrt((x-y)^2+w^2)$的期望</p>
+<h2 id="Solution">Solution</h2><p>枚举$x-y$即可，注意细节即可</p>
+<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm547/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">struct</span> Pillars &#123;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">getExpectedLength</span><span class="params">(<span class="keyword">int</span> w, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">double</span> ans = <span class="number">0.0</span>;</span><br><span class="line">         <span class="keyword">if</span> (x &lt; y) swap(x, y);</span><br><span class="line">         <span class="keyword">int</span> del = x - y;</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> d = <span class="number">1</span> - y; d &lt;= <span class="number">0</span>; ++d) &#123;</span><br><span class="line">            ans += (<span class="keyword">double</span>)(y + d) * <span class="built_in">sqrt</span>(<span class="number">1.0</span> * d * d + w * w);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> d = <span class="number">1</span>; d &lt;= del; ++d) &#123;</span><br><span class="line">            ans += (<span class="keyword">double</span>)y * <span class="built_in">sqrt</span>(<span class="number">1.0</span> * d * d + w * w);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> d = del + <span class="number">1</span>; d &lt; x; ++d) &#123;</span><br><span class="line">            ans += (<span class="keyword">double</span>)(x - d) * <span class="built_in">sqrt</span>(<span class="number">1.0</span> * d * d + w * w);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> ans / x / y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="500">500</h1><p><hr></p>
+<h2 id="Description-1">Description</h2><p>给定一个$h\times w(h,w\le 10^6)$的矩阵，数字为别为$0\sim h\times w - 1$，给定一个$sum(sum\le 10^{12})$，求最小面积的子矩形，使得和等于$sum$</p>
+<h2 id="Solution-1">Solution</h2><p>考虑面积的上界$s$,$s\times (s-1) / 2\ge sum$，于是得到上界是$10^6$级别的，枚举$n$，复杂度为$N\times logN$,显然是可以接受的。<br>设矩阵最上角为$x$，根据等差数列求和，显然可以列出$x$和$sum$的关系，判断是否满足即可</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm547/500.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">struct</span> RectangularSum &#123;</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">minimalArea</span><span class="params">(<span class="keyword">int</span> height, <span class="keyword">int</span> width, <span class="keyword">long</span> <span class="keyword">long</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> s;</span><br><span class="line">        <span class="keyword">for</span> (s = <span class="number">1</span>; (LL)s * (s - <span class="number">1</span>) / <span class="number">2</span> &lt;= S; ++s);</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">1e7</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">1</span>; n &lt;= s &amp;&amp; n &lt;= height; ++n)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> m = <span class="number">1</span>; n * m &lt;= s &amp;&amp; m &lt;= width; ++m) &#123;</span><br><span class="line">                <span class="keyword">if</span> (S * <span class="number">2</span> % n != <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">                LL t = S * <span class="number">2</span> / n - (LL)(n - <span class="number">1</span>) * m * width;</span><br><span class="line">                <span class="keyword">if</span> (t &lt; <span class="number">0</span> || t &amp; <span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (t % m != <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">                t = t / m + <span class="number">1</span> - m;</span><br><span class="line">                <span class="keyword">if</span> (t &lt; <span class="number">0</span> || t &amp; <span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">                t /= <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">int</span> y = t % width, x = t / width;</span><br><span class="line">                <span class="keyword">if</span> (x &gt;= <span class="number">0</span> &amp;&amp; x + n - <span class="number">1</span> &lt; height &amp;&amp; y &gt;= <span class="number">0</span> &amp;&amp; y + m - <span class="number">1</span> &lt; width)    ans = min(ans, n * m);</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> ans == <span class="number">1e7</span> ? -<span class="number">1</span> : ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/09/24/srm-546/" itemprop="url">
                 srm 546
               </a>
@@ -1136,127 +1229,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/08/17/2015-ACM多校训练第二场/" itemprop="url">
-                2015 ACM多校训练第二场
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-08-17T12:56:18+08:00" content="2015-08-17">
-            2015-08-17
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/hdu/" itemprop="url" rel="index">
-                  <span itemprop="name">hdu</span>
-                </a>
-              </span>
-
-              
-              
-                ， 
-              
-
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/hdu/ACM多校题解/" itemprop="url" rel="index">
-                  <span itemprop="name">ACM多校题解</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/08/17/2015-ACM多校训练第二场/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/17/2015-ACM多校训练第二场/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h1 id="题外话">题外话</h1><p>颓废了一万年终于把第二场的题补完了，除了丧病的第一题。。</p>
-<p><hr></p>
-<h1 id="hdu_5301(1002)_Buildings">hdu 5301(1002) Buildings</h1><h2 id="Solution">Solution</h2><p>水题，仔细讨论各种情况即可</p>
-<h2 id="Code"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/2/02.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5302(1003)_Connect_the_Graph">hdu 5302(1003) Connect the Graph</h1><h2 id="Solution-1">Solution</h2><p>构造题，比赛时没看，赛后发现挺水的。由于连接黑边白边只有$0,1,2$三种情况，0我们就不管了。<br>不妨想考虑白色边，$1,2$的情况我们只需要先构造一个长链，解决$2个1和所有2$，然后再把1的搞出来。然后为了防止重边，做黑色边的时候有同样的方法，连边时隔着一个点连即可。</p>
-<h2 id="Code-1"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/2/03.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h2 id="hdu_5303(1004)_Delicious_Apples">hdu 5303(1004) Delicious Apples</h2><h2 id="Solution-2">Solution</h2><p>贪心的好题，有两种情况，一种是都从两个半边取，另外一种是从一边开始取回去后，绕后另外一个半边取。但是注意到环最多肯定是只绕一次的，如果绕两次我们明显可以只绕一次，然后再走一个半边。显然更优。<br>预处理的时候把所有苹果按位置排序，dp一下即可。</p>
-<h2 id="Code-2"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/2/04.cpp" target="_blank" rel="external">Code</a></h2><p><hr>  </p>
-<h1 id="hdu_5304(1005)_Eastest_Magical_Day_Seep_Group’s_Summer">hdu 5304(1005) Eastest Magical Day Seep Group’s Summer</h1><h2 id="Solution-3">Solution</h2><p>好题，删掉$m-n$条边后剩下$n$条边，可以看出是一个树上有一个环，看到数据范围很容易想到枚举环上点的集合。然后剩下的便是生成树计数问题，可以用Matrix-tree定理解决。<br>那么如何求点集为$S$的环的个数呢，考虑状压Dp，枚举环上最小点的标号，令$dp[i][j]$为当前点集为$i$，终点为$j$的方案数，简单dp即可。最后答案要除以$2$，因为每个环两个方向都算了一遍。而且注意到长度为1的环是不算的。<br>复杂度$O(2^n \times n^3)$</p>
-<h2 id="Code-3"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/2/05.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5305(1006)_Friends">hdu 5305(1006) Friends</h1><h2 id="Solution-4">Solution</h2><p>水题，随便搜搜就过了= =</p>
-<h2 id="Code-4"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/2/06.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5306(1007)_Gorgeous_Sequence">hdu 5306(1007) Gorgeous Sequence</h1><h2 id="Solution-5">Solution</h2><p>神题，主要考察复杂度的分析= =然而我并没怎么理解QAQ。。。<br>打了和正常线段树一样的标记tag，另外记录了一个cov标记，表示该节点下多少个叶子节点被控制，还维护了mx,表示最大值。每次修改的时候，不直接修改，先dfs到叶子节点，清一下之前的标记，然后再返回来修改该节点。sum更改时只要增加tag值控制的节点的sum即可。<br>感觉非常的玄幻= =太神了。。。蒟蒻不太理解QAQ</p>
-<h2 id="Code-5"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/2/07.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5307(1008)_He_is_Flying">hdu 5307(1008) He is Flying</h1><h2 id="Solution-6">Solution</h2><p>比赛时没怎么想，赛后发现并不难。<br>首先容易想到用$s[i]$表示前$i$段的和，答案是$\sum (j-i+1)x^{s[j]-s[i-1]}$，最后$x$的次数为$k$的就是对于长度为$k$的答案。<br>变化一下形式得$\sum j\times x^{s[j]}- \sum (i-1)\times x^{s[j]-s[i-1]}$，再拆一下得到$\sum j\times x^{s[j]}\times \sum x^{s[i-1]}-\sum x^{s[j]}\times \sum (i-1)\times x^{s[i-1]}$。<br>这样熟悉FFT的同学马上就会发现这是个卷积的形式，FFT直接搞就可以了。由于精度问题，可以选择大质数的NTT，或者两个int型的NTT再中国剩余定理合并。实测选取大质数NTT会更快一些。</p>
-<h2 id="Code-6"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/2/08.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5308(1009)_I_Wanna_Become_A_24-Point_Master">hdu 5308(1009) I Wanna Become A 24-Point Master</h1><h2 id="Solution-7">Solution</h2><p>24点= =水题，就是麻烦。。。<br>我的做法是分为$n是否大于等于12$，如果$n\ge 12$，那么显然可以搞出$2\times 3\times 4$这种形式，分奇偶不同处理一下即可。比如多的一些数是$4$，那就不停的乘4除以4即可。<br>$n&lt;12$时，手算即可。</p>
-<h2 id="Code-7"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/2/09.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
-<h1 id="hdu_5309(1010)_JRY_is_Fighting">hdu 5309(1010) JRY is Fighting</h1><h2 id="Solution-8">Solution</h2><p>这题看了鸟神的题解一直没看懂= =。。最后问了他才搞明白。。感谢鸟神。<br>很容易想到二分答案，如何验证是个问题。首先预处理出一个数组$r$，$r[i]$表示在第$i$秒嗑药后能挺到第几秒。然后我们二分答案再验证，如何验证是核心。<br>考虑下面check长度为x的代码，建议和输出答案的$nxt$数组一起考虑。<br>我们将点转换为区间考虑，$d[i]$表示$i$到终点的嗑药次数，如果$d[i]&gt;d[i+1]$表示$i$这一时刻要嗑药，然后我们分了三种情况考虑</p>
-<ul>
-<li>(1)$r[i]&gt;n$表示这个点可以直接到终点，显然我们可以再这点嗑药</li>
-<li>(2)$r[i]-i&lt;x$，这个点显然不能嗑药，因为间隔$&lt;x$</li>
-<li>(3)否则$r[i]+1&gt;i+x$,如果最近的间隔到了$i+l$这一时刻可以到达最后的终点($d[i+x]&gt;d[r[i]+1]$)，显然我们这第$i$时刻可以嗑药。</li>
-</ul>
-<p>同时由于我们要求字典序最小，显然如果能取前面的就尽量取前面的,这个$d$数组挺难理解的，不知道我自己理解的是否透彻QAQ，可以把$d$数组看做后面整个区间的一个最值，从后往前推时$d$值不降，呈阶梯状，变化时表示可以嗑药。注意到第一次嗑药时没限制的，最后特殊判断一下即可。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    d[n] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">1</span>; --i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (r[i] &gt; n)   d[i] = d[i + <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (r[i] - i &lt; x)  d[i] = d[i + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">else</span>    d[i] = d[i + <span class="number">1</span>] + (d[i + x] &gt; d[r[i] + <span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> d[<span class="number">1</span>] &gt; d[r[<span class="number">0</span>] + <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) </span><br><span class="line">            nxt[i] = d[i] &gt; d[i + <span class="number">1</span>] ? i : nxt[i + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> top = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> x = nxt[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span> (x) &#123;</span><br><span class="line">            s[top++] = x;</span><br><span class="line">            <span class="keyword">if</span> (r[x] &gt; n)   <span class="keyword">break</span>;</span><br><span class="line">            x = nxt[x + ans];</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Code-8"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/2/10.cpp" target="_blank" rel="external">Code</a></h2><p>完结撒花！<br>继续补题！&gt;_&lt;</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1295,7 +1267,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

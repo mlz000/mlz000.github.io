@@ -204,6 +204,105 @@
           
           
             
+              <a class="post-title-link" href="/2015/11/19/bzoj-3926-Zjoi2015-诸神眷顾的幻想乡/" itemprop="url">
+                bzoj 3926 [Zjoi2015]诸神眷顾的幻想乡
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-19T16:32:04+08:00" content="2015-11-19">
+            2015-11-19
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/bzoj题解/" itemprop="url" rel="index">
+                  <span itemprop="name">bzoj题解</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/bzoj题解/SAM/" itemprop="url" rel="index">
+                  <span itemprop="name">SAM</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/19/bzoj-3926-Zjoi2015-诸神眷顾的幻想乡/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/19/bzoj-3926-Zjoi2015-诸神眷顾的幻想乡/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+
+<h2 id="Descripiton">Descripiton</h2><p>给定一棵树，每个节点有一个字符，求从一个节点出发沿最短路径走到另一个节点所构成的字符串一共有多少种<br>注意：叶子数$\le$20</p>
+<h2 id="Solution">Solution</h2><p>这个题，发现叶子数很少就很好做了，以每个叶子为根节点建立SAM即可，这样原树上所有路径都在SAM出现过,统计即可。</p>
+<h2 id="Code"><a href="https://github.com/mlz000/bzoj/blob/master/3926(SAM).cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100005</span> * <span class="number">2</span> * <span class="number">20</span>, M = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="keyword">struct</span> SAM &#123;</span><br><span class="line">    <span class="keyword">int</span> tot, last, step[N], g[N], par[N], son[N][M], cnt[N], Q[N], ch[N], f[N];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        tot = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(par, <span class="number">0</span>, <span class="keyword">sizeof</span>(par));</span><br><span class="line">        par[<span class="number">0</span>] = -<span class="number">1</span>;</span><br><span class="line">        <span class="built_in">memset</span>(son, <span class="number">0</span>, <span class="keyword">sizeof</span>(son));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> last, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = last, np = ++tot;</span><br><span class="line">        step[np] = step[p] + <span class="number">1</span>, last = np, ++g[np];<span class="comment">//right</span></span><br><span class="line">        ch[np] = x;</span><br><span class="line">        <span class="keyword">for</span> (; !son[p][x] &amp;&amp; ~p; p = par[p])    son[p][x] = np;</span><br><span class="line">        <span class="keyword">if</span> (p == -<span class="number">1</span>)    <span class="keyword">return</span> np;</span><br><span class="line">        <span class="keyword">int</span> q = son[p][x];</span><br><span class="line">        <span class="keyword">if</span> (step[q] == step[p] + <span class="number">1</span>) par[np] = q;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            step[++tot] = step[p] + <span class="number">1</span>;</span><br><span class="line">            ch[tot] = x;</span><br><span class="line">            <span class="keyword">int</span> nq = tot;</span><br><span class="line">            <span class="built_in">memcpy</span>(son[nq], son[q], <span class="keyword">sizeof</span>(son[q]));</span><br><span class="line">            par[nq] = par[q];</span><br><span class="line">            par[np] = par[q] = nq;</span><br><span class="line">            <span class="keyword">for</span> (; son[p][x] == q &amp;&amp; ~p; p = par[p])    son[p][x] = nq;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> np;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">topo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; ++i)    ++cnt[step[i]];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; ++i)    cnt[i] += cnt[i - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; ++i)    Q[cnt[step[i]]--] = i;        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">LL <span class="title">gao</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        LL ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; ++i)  ans += step[i] - step[par[i]];<span class="comment">//i状态表示多少个字符串</span></span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;S;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">100005</span>], d[<span class="number">100005</span>];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; g[<span class="number">100005</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa, <span class="keyword">int</span> last)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = S.add(last, a[u]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; g[u].size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = g[u][i];</span><br><span class="line">        <span class="keyword">if</span> (v == fa)    <span class="keyword">continue</span>;</span><br><span class="line">        dfs(v, u, t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    S.init();</span><br><span class="line">    <span class="keyword">int</span> n, c;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;c);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, u, v; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</span><br><span class="line">        g[u].pb(v), g[v].pb(u);</span><br><span class="line">        ++d[u], ++d[v];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="keyword">if</span> (d[i] == <span class="number">1</span>)  dfs(i, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, S.gao());</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/19/bzoj-3998-TJOI2015-弦论/" itemprop="url">
                 bzoj 3998 [TJOI2015]弦论
               </a>
@@ -1054,99 +1153,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/25/srm-547/" itemprop="url">
-                srm 547
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-25T15:50:20+08:00" content="2015-09-25">
-            2015-09-25
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
-                  <span itemprop="name">topcoder题解</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/25/srm-547/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/25/srm-547/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
-
-<h1 id="250">250</h1><p><hr></p>
-<h2 id="Description">Description</h2><p>$1\le x\le 10^5, 1\le y\le 10^5,x,y\in N$,给定$w$,随机选$x,y$求$\sum sqrt((x-y)^2+w^2)$的期望</p>
-<h2 id="Solution">Solution</h2><p>枚举$x-y$即可，注意细节即可</p>
-<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm547/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">struct</span> Pillars &#123;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">getExpectedLength</span><span class="params">(<span class="keyword">int</span> w, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">double</span> ans = <span class="number">0.0</span>;</span><br><span class="line">         <span class="keyword">if</span> (x &lt; y) swap(x, y);</span><br><span class="line">         <span class="keyword">int</span> del = x - y;</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> d = <span class="number">1</span> - y; d &lt;= <span class="number">0</span>; ++d) &#123;</span><br><span class="line">            ans += (<span class="keyword">double</span>)(y + d) * <span class="built_in">sqrt</span>(<span class="number">1.0</span> * d * d + w * w);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> d = <span class="number">1</span>; d &lt;= del; ++d) &#123;</span><br><span class="line">            ans += (<span class="keyword">double</span>)y * <span class="built_in">sqrt</span>(<span class="number">1.0</span> * d * d + w * w);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> d = del + <span class="number">1</span>; d &lt; x; ++d) &#123;</span><br><span class="line">            ans += (<span class="keyword">double</span>)(x - d) * <span class="built_in">sqrt</span>(<span class="number">1.0</span> * d * d + w * w);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> ans / x / y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="500">500</h1><p><hr></p>
-<h2 id="Description-1">Description</h2><p>给定一个$h\times w(h,w\le 10^6)$的矩阵，数字为别为$0\sim h\times w - 1$，给定一个$sum(sum\le 10^{12})$，求最小面积的子矩形，使得和等于$sum$</p>
-<h2 id="Solution-1">Solution</h2><p>考虑面积的上界$s$,$s\times (s-1) / 2\ge sum$，于是得到上界是$10^6$级别的，枚举$n$，复杂度为$N\times logN$,显然是可以接受的。<br>设矩阵最上角为$x$，根据等差数列求和，显然可以列出$x$和$sum$的关系，判断是否满足即可</p>
-<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm547/500.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">struct</span> RectangularSum &#123;</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">minimalArea</span><span class="params">(<span class="keyword">int</span> height, <span class="keyword">int</span> width, <span class="keyword">long</span> <span class="keyword">long</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> s;</span><br><span class="line">        <span class="keyword">for</span> (s = <span class="number">1</span>; (LL)s * (s - <span class="number">1</span>) / <span class="number">2</span> &lt;= S; ++s);</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">1e7</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">1</span>; n &lt;= s &amp;&amp; n &lt;= height; ++n)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> m = <span class="number">1</span>; n * m &lt;= s &amp;&amp; m &lt;= width; ++m) &#123;</span><br><span class="line">                <span class="keyword">if</span> (S * <span class="number">2</span> % n != <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">                LL t = S * <span class="number">2</span> / n - (LL)(n - <span class="number">1</span>) * m * width;</span><br><span class="line">                <span class="keyword">if</span> (t &lt; <span class="number">0</span> || t &amp; <span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (t % m != <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">                t = t / m + <span class="number">1</span> - m;</span><br><span class="line">                <span class="keyword">if</span> (t &lt; <span class="number">0</span> || t &amp; <span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">                t /= <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">int</span> y = t % width, x = t / width;</span><br><span class="line">                <span class="keyword">if</span> (x &gt;= <span class="number">0</span> &amp;&amp; x + n - <span class="number">1</span> &lt; height &amp;&amp; y &gt;= <span class="number">0</span> &amp;&amp; y + m - <span class="number">1</span> &lt; width)    ans = min(ans, n * m);</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> ans == <span class="number">1e7</span> ? -<span class="number">1</span> : ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1185,7 +1191,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
