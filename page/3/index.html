@@ -204,6 +204,136 @@
           
           
             
+              <a class="post-title-link" href="/2015/08/07/2015-ACM多校训练第一场/" itemprop="url">
+                2015 ACM多校训练第一场
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-08-07T20:56:18+08:00" content="2015-08-07">
+            2015-08-07
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/hdu/" itemprop="url" rel="index">
+                  <span itemprop="name">hdu</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/hdu/ACM多校题解/" itemprop="url" rel="index">
+                  <span itemprop="name">ACM多校题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/08/07/2015-ACM多校训练第一场/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/07/2015-ACM多校训练第一场/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h1 id="题外话">题外话</h1><p>这个暑假以前就决定要把这次多校的所有题全补了，中间断断续续，总算把第一场的题补全了，鄙视一下颓废的自己。。。</p>
+<p><hr></p>
+<h1 id="hdu_5288(1001)_OO’s_Sequence">hdu 5288(1001) OO’s Sequence</h1><h2 id="Solution">Solution</h2><p>水题，定义两个数组$L[i], R[i]$示第i个数左侧和右侧最接近它且值是a[i]因子的数字的位置，统计贡献即可。由于a[i]范围很小，因子数很小，暴力统计更新l,r即可。</p>
+<h2 id="Code"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/01.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5289(1002)_Assignment">hdu 5289(1002) Assignment</h1><h2 id="Solution-1">Solution</h2><p>水题，很容易想到先用st表预处理区间最大最小值，然后枚举左端点，二分右端点检查是否满足即可。复杂度$O(NlogN)$，也可以用单调队列维护最值</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/02.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h2 id="hdu_5290(1003)_Bombing_plan">hdu 5290(1003) Bombing plan</h2><h2 id="Solution-2">Solution</h2><p>这题比赛时候没时间看，其实赛后发现并不是很难。看数据范围很容易往O(NW)上去想。于是不难想到dp<br>定义两个数组<br>$f[i][j]$表示以i为根的子树全部破坏掉，还能向上破坏最多j的距离，需要的最少点数<br>$g[i][j]$表示以i为根的子树未被全部破坏掉，且未被破坏的点距离i最远为j，需要的最少点数</p>
+<ul>
+<li><p>(1)不取i点,则<br>  $$f[i][j]=f[son][j+1]+\sum_{l是i的其他孩子} min(f[l][0],f[l][1],…,f[l][j+1],g[l][0],g[l][1],…,g[l][j-1])$$</p>
+<p>  $$g[i][j]=g[son][j-1]+\sum_{l是i的其他孩子} min(f[l][0],f[l][1],…,f[l][j],g[l][0],g[l][1],…,g[l][j-1])$$</p>
+</li>
+<li>(2)取i点则<br>  $$f[i][w[i]]=1+\sum_{l是i的孩子} min(f[l][0],f[l][1],…,f[l][w[i]+1],g[l][0],g[l][1],…,g[l][w[i]-1])$$<br>很容易想到用两个数组$ff,gg$分别维护$f,g$的最小值，复杂度$O(NW)$，具体实现的时候注意下边界$0$的情况即可。仔细想想，转移方程还是比较容易得到的</li>
+</ul>
+<h2 id="Code-2"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/03.cpp" target="_blank" rel="external">Code</a></h2><p><hr>  </p>
+<h1 id="hdu_5291(1004)_Candy_Distribution">hdu 5291(1004) Candy Distribution</h1><h2 id="Solution-3">Solution</h2><p>考虑最暴力的dp,$dp[i][j]表示分配完第i种物品，A比B多j个的方案数$，然后dp转移的时候枚举分给A$x$个，B$y$个，则$dp[i][j+x-y]+=dp[i-1][j]$。考虑第$i$种物品有$s$个，$x+y\le s$时可转移，则$dp[i-1][j]$对$dp[i][j]$的贡献有$\frac{s}{2}+1$次($x=y=0…x=y=\frac{s}{2}$),下发现，j每变化2,贡献-1。奇偶两种情况考虑时，这个东西类似于等差数列，差分两次后我们就可以完成递推了。复杂度$O(n^3)$</p>
+<h2 id="Code-3"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/04.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5292(1005)_Pocket_Cube">hdu 5292(1005) Pocket Cube</h1><h2 id="Solution-4">Solution</h2><p>这个题就是个找规律的题，看了题解才会做QAQ。。。<br><img src="http://i1.tietuku.com/a1c7349922a9e0de.jpg" alt=""></p>
+<h2 id="Code-4"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/05.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5293(1006)_Tree_chain_problem">hdu 5293(1006) Tree chain problem</h1><h2 id="Solution-5">Solution</h2><p>比赛时没看，赛后发现是个很裸的题= =。<br>考虑dp，$dp[i]$表示以$i$为根的子树的最优值，则<br>$sum[i]=\sum_{j\in son[i]} dp[j]$<br>容易想到有两种转移</p>
+<ul>
+<li>(1) $dp[i]=sum[i]$</li>
+<li>(2) $dp[i]=value[p]+\sum sum[k]-\sum dp[k]$ $(链p的lca是i,k是链上的节点)$<br>链上求和很容易想到树链剖分，复杂度$O(Nlog^2N)$</li>
+</ul>
+<h2 id="Code-5"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/06.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5294(1007)_Tricks_Device">hdu 5294(1007) Tricks Device</h1><h2 id="Solution-6">Solution</h2><p>水题，最短路寻找道路边数最少的最短路,总边数减去最少条数为第二个问答案。<br>把最短路图抽出来建流量为1的边，最小割即为第一问答案。</p>
+<h2 id="Code-6"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/07.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5295(1008)_Unstable">hdu 5295(1008) Unstable</h1><h2 id="Solution-7">Solution</h2><p><img src="http://i3.tietuku.com/3d848fc23b742532.jpg" alt=""><br>平几题，给出中点很容易想到倍长的事情。如图，倍长$AF$，做$BG$平行于$AD$且$|BG|=|AD|$，容易看出三角形$FDA$和三角形$FCA’全等$<br>不妨固定BC,$A’$可以通过以$C$圆心，半径长为$da$，和以$B$为圆心，半径长为$2ef$的圆交点得到。<br>由于$A’GBC$是平行四边形，可以得到G的坐标。于是$D$的坐标可以通过以$C$为圆心，半径长为$cd$，和以$G$为圆心，半径长为$DG$(即$ab$)的圆得到。于是可以得到$A$的坐标</p>
+<h2 id="Code-7"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/08.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5296(1009)_Annoying_problem">hdu 5296(1009) Annoying problem</h1><h2 id="Solution-8">Solution</h2><p>比赛时自己蠢一直没想出来，想过dfs序但没细想= =<br>其实每次插入的时候找两个dfs序最接近的点$x,y$一个大于$u$一个小于$u$即可。每次增加的花费是$dis[u]-dis[lca(x,u)]-dis[lca(y,u)]+dis[lca(x,y)]$，即为$u$到$x-y$链上的距离。删除时类似。<br>找不到这样的点时直接取最大和最小dfs序的两个点即可<br>为什么这样呢，给定固定点把它们连通得到的树一定是固定的。这样选点的目的是为了不让边重复。</p>
+<h2 id="Code-8"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/09.cpp" target="_blank" rel="external">Code</a></h2><h1 id="hdu_5297(1010)_Y_sequence">hdu 5297(1010) Y sequence</h1><h2 id="Solution-9">Solution</h2><p>这个题比赛时我写的二分，一直T，= =非常蛋疼。赛后看题解和问别人才知道，可以迭代，迭代次数不会太多。<br>首先考虑反函数$f(x)$表示前$x$个数中Y-sequence的数量。我们迭代来算这个值，不用二分。<br>我们要求第$n$个Y-sequence，开始令$x=n$，如果$f(x)=now$，那么前$x$个数中有$n-now$个不是Y-sequence的数，那么我们令$x=x+n-now$，看看新的$f(x)$是否等于n即可。<br>我们每次只加了缺少的答案数，所以不可能超过正确答案。<br>迭代还是玄学啊。。。。新姿势get</p>
+<h2 id="Code-9"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/10.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5298(1011)_Solid_Geometry_Homework">hdu 5298(1011) Solid Geometry Homework</h1><h2 id="Solution-10">Solution</h2><p>比赛时以为是大型计算几何看都没看，赛后发现这是个SB题，把点带到平面和球面方程中，确定点在哪一边把结果异或一下考虑染色即可。</p>
+<h2 id="Code-10"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/11.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5299(1012)_Circles_Game">hdu 5299(1012) Circles Game</h1><h2 id="Solution-11">Solution</h2><p>自己太弱，不会扫描线，赛后补了下姿势。。<br>很容易想到扫描线处理圆，把圆变成树，然后就变成了经典博弈问题树上删边问题，具体可以看09年国家集训队论文&lt;&lt;组合游戏略述——浅谈SG游戏的若干拓展及变形&gt;&gt;。<br>结论是叶子节点$sg值为0$其余节点$sg$值为所以孩子节点$sg$值$+1$的异或和。</p>
+<h2 id="Code-11"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/1/12.cpp" target="_blank" rel="external">Code</a></h2><p>完结撒花！<br>继续补题！&gt;_&lt;</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/07/20/srm-542/" itemprop="url">
                 srm 542
               </a>
@@ -759,14 +889,14 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>

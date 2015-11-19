@@ -39,28 +39,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="之前一个月打了三场比赛，CCPC，沈阳和合肥。总体来说成绩比较满意吧，两银一金，但还是有很多遗憾
-CCPC是技不如人，$F$题不会做
-沈阳侥幸拿金，$G$那个$sb$题由于是手推公式调到死精度过不去，赛后改二分解方程就秒了
-最遗憾的是合肥，自己上来把$H$题$k=2$的情况构造好了，结果忘了$k$可以等于$3$这种更trival的情况，坑了无数罚时，对不起队友QvQ
-最后$A$题$cdq+NTT$">
+<meta name="description" content="先扯几句昨天tc怎么都上不去，突然想再补补姿势，然后发现SAM这个东西理解的很不到位，花了一晚上重新理解了一下，做了下题来回顾下&amp;gt;_&amp;lt;_
+Description对于一个给定长度为$N$的字符串，求它的第$K$小子串是什么。第二行为两个整数$T$和$K$，$T$为$0$则表示不同位置的相同子串算作一个。$T=1$则表示不同位置的相同子串算作多个。$K$的意义如题所述。$k\le 5*10">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2015区域赛总结">
-<meta property="og:url" content="http://mlz000.github.io/2015/11/12/2015区域赛总结/index.html">
+<meta property="og:title" content="bzoj 3998 [TJOI2015]弦论">
+<meta property="og:url" content="http://mlz000.github.io/2015/11/19/bzoj-3998-TJOI2015-弦论/index.html">
 <meta property="og:site_name" content="mlz000's Blog">
-<meta property="og:description" content="之前一个月打了三场比赛，CCPC，沈阳和合肥。总体来说成绩比较满意吧，两银一金，但还是有很多遗憾
-CCPC是技不如人，$F$题不会做
-沈阳侥幸拿金，$G$那个$sb$题由于是手推公式调到死精度过不去，赛后改二分解方程就秒了
-最遗憾的是合肥，自己上来把$H$题$k=2$的情况构造好了，结果忘了$k$可以等于$3$这种更trival的情况，坑了无数罚时，对不起队友QvQ
-最后$A$题$cdq+NTT$">
-<meta property="og:updated_time" content="2015-11-18T07:41:17.256Z">
+<meta property="og:description" content="先扯几句昨天tc怎么都上不去，突然想再补补姿势，然后发现SAM这个东西理解的很不到位，花了一晚上重新理解了一下，做了下题来回顾下&amp;gt;_&amp;lt;_
+Description对于一个给定长度为$N$的字符串，求它的第$K$小子串是什么。第二行为两个整数$T$和$K$，$T$为$0$则表示不同位置的相同子串算作一个。$T=1$则表示不同位置的相同子串算作多个。$K$的意义如题所述。$k\le 5*10">
+<meta property="og:updated_time" content="2015-11-19T07:31:27.986Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2015区域赛总结">
-<meta name="twitter:description" content="之前一个月打了三场比赛，CCPC，沈阳和合肥。总体来说成绩比较满意吧，两银一金，但还是有很多遗憾
-CCPC是技不如人，$F$题不会做
-沈阳侥幸拿金，$G$那个$sb$题由于是手推公式调到死精度过不去，赛后改二分解方程就秒了
-最遗憾的是合肥，自己上来把$H$题$k=2$的情况构造好了，结果忘了$k$可以等于$3$这种更trival的情况，坑了无数罚时，对不起队友QvQ
-最后$A$题$cdq+NTT$">
+<meta name="twitter:title" content="bzoj 3998 [TJOI2015]弦论">
+<meta name="twitter:description" content="先扯几句昨天tc怎么都上不去，突然想再补补姿势，然后发现SAM这个东西理解的很不到位，花了一晚上重新理解了一下，做了下题来回顾下&amp;gt;_&amp;lt;_
+Description对于一个给定长度为$N$的字符串，求它的第$K$小子串是什么。第二行为两个整数$T$和$K$，$T$为$0$则表示不同位置的相同子串算作一个。$T=1$则表示不同位置的相同子串算作多个。$K$的意义如题所述。$k\le 5*10">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -70,7 +61,7 @@ CCPC是技不如人，$F$题不会做
   };
 </script>
 
-  <title> 2015区域赛总结 | mlz000's Blog </title>
+  <title> bzoj 3998 [TJOI2015]弦论 | mlz000's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -215,7 +206,7 @@ CCPC是技不如人，$F$题不会做
           
           
             
-              2015区域赛总结
+              bzoj 3998 [TJOI2015]弦论
             
           
         </h1>
@@ -224,8 +215,8 @@ CCPC是技不如人，$F$题不会做
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-11-12T14:35:32+08:00" content="2015-11-12">
-            2015-11-12
+          <time itemprop="dateCreated" datetime="2015-11-19T14:56:49+08:00" content="2015-11-19">
+            2015-11-19
           </time>
         </span>
 
@@ -234,8 +225,20 @@ CCPC是技不如人，$F$题不会做
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/随笔/" itemprop="url" rel="index">
-                  <span itemprop="name">随笔</span>
+                <a href="/categories/bzoj题解/" itemprop="url" rel="index">
+                  <span itemprop="name">bzoj题解</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/bzoj题解/SAM/" itemprop="url" rel="index">
+                  <span itemprop="name">SAM</span>
                 </a>
               </span>
 
@@ -250,8 +253,8 @@ CCPC是技不如人，$F$题不会做
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/11/12/2015区域赛总结/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/12/2015区域赛总结/" itemprop="commentsCount"></span>
+              <a href="/2015/11/19/bzoj-3998-TJOI2015-弦论/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/19/bzoj-3998-TJOI2015-弦论/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -265,18 +268,12 @@ CCPC是技不如人，$F$题不会做
       
 
       
-        <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+        <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
 
-
-
-<p>之前一个月打了三场比赛，CCPC，沈阳和合肥。总体来说成绩比较满意吧，两银一金，但还是有很多遗憾</p>
-<p>CCPC是技不如人，$F$题不会做</p>
-<p>沈阳侥幸拿金，$G$那个$sb$题由于是手推公式调到死精度过不去，赛后改二分解方程就秒了</p>
-<p>最遗憾的是合肥，自己上来把$H$题$k=2$的情况构造好了，结果忘了$k$可以等于$3$这种更trival的情况，坑了无数罚时，对不起队友QvQ</p>
-<p>最后$A$题$cdq+NTT$的题，最后没有调对，由于自己最后时候写的有点紧张导致写了好多$SB$错误，以及原根求错了= =b(卜是窝的锅23333~)</p>
-<p>讲道理的话，之前$SB$题不坑，省下来的时间，我$A$肯定可以调对的= =，菜是原罪。。坑了队友，最后拿了银牌第二，我的锅</p>
-<p>这几场比赛暴露了好多问题，也幸好沈阳侥幸拿了金，不然合肥真是遗憾死了</p>
-<p>感谢队友cpc,syx,大腿带窝飞，没有嫌弃窝坑了他们&gt;_&lt;，如果过段时间有时间或者心情或许会详细总结一下吧，接下来可以好好休息一段时间，补补姿势，调整调整状态，$EC-final$见！希望能有个好成绩~</p>
+<h2 id="先扯几句">先扯几句</h2><p>昨天tc怎么都上不去，突然想再补补姿势，然后发现SAM这个东西理解的很不到位，花了一晚上重新理解了一下，做了下题来回顾下&gt;_&lt;_</p>
+<h2 id="Description">Description</h2><p>对于一个给定长度为$N$的字符串，求它的第$K$小子串是什么。<br>第二行为两个整数$T$和$K$，$T$为$0$则表示不同位置的相同子串算作一个。$T=1$则表示不同位置的相同子串算作多个。$K$的意义如题所述。<br>$k\le 5*10^5,N\le 10^9$</p>
+<h2 id="Solution">Solution</h2><p>很容易想到用SAM做，$T=1$正常做，$T=0$时考虑right数组的意义，把right数组都赋值为1，拓扑排序处理下即可。然后$dfs$或者非递归处理一下即可</p>
+<h2 id="Code"><a href="&quot;https://github.com/mlz000/bzoj/blob/master/3998&lt;SAM&gt;.cpp">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">500005</span> * <span class="number">2</span>, M = <span class="number">26</span>;</span><br><span class="line"><span class="keyword">struct</span> SAM &#123;</span><br><span class="line">    <span class="keyword">int</span> tot, last, step[N], g[N], par[N], son[N][M], cnt[N], Q[N], ch[N], f[N];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        tot = last = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(par, <span class="number">0</span>, <span class="keyword">sizeof</span>(par));</span><br><span class="line">        par[<span class="number">0</span>] = -<span class="number">1</span>;</span><br><span class="line">        <span class="built_in">memset</span>(son, <span class="number">0</span>, <span class="keyword">sizeof</span>(son));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = last, np = ++tot;</span><br><span class="line">        step[np] = step[p] + <span class="number">1</span>, last = np, ++g[np];<span class="comment">//right</span></span><br><span class="line">        ch[np] = x;</span><br><span class="line">        <span class="keyword">for</span> (; !son[p][x] &amp;&amp; ~p; p = par[p])    son[p][x] = np;</span><br><span class="line">        <span class="keyword">if</span> (p == -<span class="number">1</span>)    <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> q = son[p][x];</span><br><span class="line">        <span class="keyword">if</span> (step[q] == step[p] + <span class="number">1</span>) par[np] = q;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            step[++tot] = step[p] + <span class="number">1</span>;</span><br><span class="line">            ch[tot] = x;</span><br><span class="line">            <span class="keyword">int</span> nq = tot;</span><br><span class="line">            <span class="built_in">memcpy</span>(son[nq], son[q], <span class="keyword">sizeof</span>(son[q]));</span><br><span class="line">            par[nq] = par[q];</span><br><span class="line">            par[np] = par[q] = nq;</span><br><span class="line">            <span class="keyword">for</span> (; son[p][x] == q &amp;&amp; ~p; p = par[p])    son[p][x] = nq;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">topo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; ++i)    ++cnt[step[i]];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; ++i)    cnt[i] += cnt[i - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; ++i)    Q[cnt[step[i]]--] = i;        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">gao</span><span class="params">(<span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = tot; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(t == <span class="number">0</span>)  g[Q[i]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> g[par[Q[i]]] += g[Q[i]];</span><br><span class="line">            f[Q[i]] = g[Q[i]];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">26</span>; ++j)</span><br><span class="line">                f[Q[i]] += f[son[Q[i]][j]];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;S;</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s);</span><br><span class="line">    S.init();</span><br><span class="line">    <span class="keyword">int</span> l = <span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; l; ++i) S.add(s[i] - <span class="string">'a'</span>);</span><br><span class="line">    S.topo();</span><br><span class="line">    <span class="keyword">int</span> t, k;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;t, &amp;k);</span><br><span class="line">    S.gao(t);</span><br><span class="line">    <span class="keyword">int</span> rt = <span class="number">0</span>, sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; ++i)</span><br><span class="line">        sum += S.f[S.son[<span class="number">0</span>][i]];</span><br><span class="line">    <span class="keyword">if</span> (k &gt; sum)    <span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (k) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; ++i)</span><br><span class="line">                <span class="keyword">if</span> (S.son[rt][i]) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (S.f[S.son[rt][i]] &gt;= k) &#123;</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">"%c"</span>, <span class="string">'a'</span> + i);</span><br><span class="line">                        k -= S.g[S.son[rt][i]];</span><br><span class="line">                        rt = S.son[rt][i];</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> k -= S.f[S.son[rt][i]];</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -288,13 +285,11 @@ CCPC是技不如人，$F$题不会做
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/18/srm-554/" rel="prev">srm 554</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/12/srm-553/" rel="next">srm 553</a>
+              <a href="/2015/11/18/srm-554/" rel="next">srm 554</a>
             
           </div>
         </div>
@@ -319,8 +314,8 @@ CCPC是技不如人，$F$题不会做
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/11/12/2015区域赛总结/"
-                   data-title="2015区域赛总结" data-url="http://mlz000.github.io/2015/11/12/2015区域赛总结/">
+              <div class="ds-thread" data-thread-key="2015/11/19/bzoj-3998-TJOI2015-弦论/"
+                   data-title="bzoj 3998 [TJOI2015]弦论" data-url="http://mlz000.github.io/2015/11/19/bzoj-3998-TJOI2015-弦论/">
               </div>
             
           </div>
@@ -434,7 +429,7 @@ CCPC是技不如人，$F$题不会做
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先扯几句"><span class="nav-number">1.</span> <span class="nav-text">先扯几句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">4.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
