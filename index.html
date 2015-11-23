@@ -204,6 +204,99 @@
           
           
             
+              <a class="post-title-link" href="/2015/11/23/srm-555/" itemprop="url">
+                srm 555
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-23T15:45:34+08:00" content="2015-11-23">
+            2015-11-23
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
+                  <span itemprop="name">topcoder题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/23/srm-555/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/23/srm-555/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+
+
+<h1 id="255">255</h1><p><hr></p>
+<h2 id="Description">Description</h2><p>问能将一个$0/1$串最少分成几个串使得每个串都是$5$的整数次幂，且没有前导零</p>
+<h2 id="Solution">Solution</h2><p>dp即可，$dp[i]$表示前$i$个字符分割的结果，枚举一个分割点$j$，$check$即可</p>
+<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm555/255.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">55</span>;</span><br><span class="line"><span class="keyword">int</span> dp[N];</span><br><span class="line"><span class="keyword">struct</span> CuttingBitString &#123;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">ok</span><span class="params">(LL x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (x &amp;&amp; x % <span class="number">5</span> == <span class="number">0</span>) x /= <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">return</span> x == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getmin</span><span class="params">(<span class="built_in">string</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> s = <span class="string">"0"</span> + S + <span class="string">"1"</span>;</span><br><span class="line">        <span class="keyword">int</span> n = s.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)    dp[i] = <span class="number">10000</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == <span class="string">'1'</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i - <span class="number">1</span>; ++j) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (dp[j] == <span class="number">10000</span> || s[j + <span class="number">1</span>] == <span class="string">'0'</span>)  <span class="keyword">continue</span>;</span><br><span class="line">                    LL now = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> k = j + <span class="number">1</span>; k &lt;= i - <span class="number">1</span>; ++k)    now = now * <span class="number">2</span> + (s[k] == <span class="string">'1'</span> ? <span class="number">1</span> : <span class="number">0</span>);</span><br><span class="line">                    <span class="keyword">if</span> (ok(now))    dp[i - <span class="number">1</span>] = min(dp[i - <span class="number">1</span>], dp[j] + <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n - <span class="number">2</span>] == <span class="number">10000</span> ? -<span class="number">1</span> : dp[n - <span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="555">555</h1><p><hr></p>
+<h2 id="Description-1">Description</h2><p>有一个$H*W$的全$0$矩阵，给定对行列操作数，每次操作将行列$0/1$翻转，使得随后矩阵$1$的个数为$S$,求方案数<br>两个方案不同当且仅当有一行或列操作数不同</p>
+<h2 id="Solution-1">Solution</h2><p>很容易想到操作两次相当于没操作，枚举行列分别操作$1$次的个数，剩下的相当于$n$个物品(n对操作两次)放到$m$个不同盒子的方案数，即$\binom{n+m-1}{n}$，统计即可</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm555/555.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1600</span>, M = <span class="number">555555555</span>;</span><br><span class="line"><span class="keyword">int</span> c[N &lt;&lt; <span class="number">1</span>][N &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="keyword">struct</span> XorBoard &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">count</span><span class="params">(<span class="keyword">int</span> H, <span class="keyword">int</span> W, <span class="keyword">int</span> Rcount, <span class="keyword">int</span> Ccount, <span class="keyword">int</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">1555</span> * <span class="number">2</span>; ++i) &#123;</span><br><span class="line">            c[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; ++j)    c[i][j] = (c[i - <span class="number">1</span>][j] + c[i - <span class="number">1</span>][j - <span class="number">1</span>]) % M;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= Rcount &amp;&amp; i &lt;= H; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= Ccount &amp;&amp; j &lt;= W; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i * W + j * H - <span class="number">2</span> * i * j != S) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> ((Rcount - i) &amp; <span class="number">1</span> || (Ccount - j) &amp; <span class="number">1</span>)   <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">int</span> rl = (Rcount - i) / <span class="number">2</span>, cl = (Ccount - j) / <span class="number">2</span>;</span><br><span class="line">                (ans += (LL)c[rl + H - <span class="number">1</span>][rl] * c[H][i] % M * c[cl + W - <span class="number">1</span>][cl] % M * c[W][j] % M) %= M;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/19/bzoj-3926-Zjoi2015-诸神眷顾的幻想乡/" itemprop="url">
                 bzoj 3926 [Zjoi2015]诸神眷顾的幻想乡
               </a>
@@ -269,7 +362,7 @@
 
       
         
-          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
 
 <h2 id="Descripiton">Descripiton</h2><p>给定一棵树，每个节点有一个字符，求从一个节点出发沿最短路径走到另一个节点所构成的字符串一共有多少种<br>注意：叶子数$\le$20</p>
 <h2 id="Solution">Solution</h2><p>这个题，发现叶子数很少就很好做了，以每个叶子为根节点建立SAM即可，这样原树上所有路径都在SAM出现过,统计即可。</p>
@@ -368,7 +461,7 @@
 
       
         
-          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
 
 <h2 id="先扯几句">先扯几句</h2><p>昨天tc怎么都上不去，突然想再补补姿势，然后发现SAM这个东西理解的很不到位，花了一晚上重新理解了一下，做了下题来回顾下&gt;_&lt;_</p>
 <h2 id="Description">Description</h2><p>对于一个给定长度为$N$的字符串，求它的第$K$小子串是什么<br>第二行为两个整数$T$和$K$，$T$为$0$则表示不同位置的相同子串算作一个<br>$T=1$则表示不同位置的相同子串算作多个,$K$的意义如题所述。<br>$k\le 5*10^5,N\le 10^9$</p>
@@ -1060,99 +1153,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/30/srm-548/" itemprop="url">
-                srm 548
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-30T13:51:05+08:00" content="2015-09-30">
-            2015-09-30
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
-                  <span itemprop="name">topcoder题解</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/30/srm-548/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/30/srm-548/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
-
-<h1 id="250">250</h1><p><hr></p>
-<h2 id="Description">Description</h2><p>有$N(N\le 50)$个数，每个数的可变范围是$[max(N-X,1),N+X]$。让这个数列严格递增的最小$X$是多少？</p>
-<h2 id="Solution">Solution</h2><p>显然可以二分答案，然后二分一个$x$后，我们可以贪心判断，使得前面的数尽量小给后面数更大的变化空间即可</p>
-<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm548/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">55</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; h)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = h.size();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (h[i] - x &gt;= <span class="number">1</span>)  h[i] -= x;</span><br><span class="line">            <span class="keyword">else</span> h[i] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (h[i] + x &gt; h[i - <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">int</span> t = h[i - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                h[i] = max(t, h[i] - x);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> KingdomAndTrees &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minLevel</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; heights)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">1e9</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (check(mid, heights)) &#123;</span><br><span class="line">                ans = mid;</span><br><span class="line">                r = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="450">450</h1><p><hr></p>
-<h2 id="Description-1">Description</h2><p>有两个$N&lt;50$个面的骰子，每个面的数字是$1\sim X$的唯一某个数。第一个骰子有些面是$0$。现在两个骰子同时投掷，请你把第一个骰子某些为$0$的面写上一些唯一的$1\sim X$的数字，让第一个骰子的胜率尽可能接近$0.5$。</p>
-<h2 id="Solution-1">Solution</h2><p>其实就是考虑将一些数插入一些空里，是否能赢得$k$次，容易想到$dp$，$dp[i][j][k]$表示$前i个数放入j个空能否赢k次$。不妨对第二个数组排序，依次处理即可。</p>
-<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm548/450.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;<span class="comment">//dp</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">55</span>;</span><br><span class="line"><span class="keyword">bool</span> dp[N][N * N];</span><br><span class="line"><span class="keyword">struct</span> KingdomAndDice &#123;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">newFairness</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; firstDie, <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; secondDie, <span class="keyword">int</span> X)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = firstDie.size();</span><br><span class="line">        <span class="keyword">int</span> now = <span class="number">0</span>, nd = <span class="number">0</span>;</span><br><span class="line">        sort(secondDie.begin(), secondDie.end());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            nd += firstDie[i] == <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j)</span><br><span class="line">                <span class="keyword">if</span> (firstDie[i] &gt; secondDie[j]) ++now;</span><br><span class="line">        &#125;</span><br><span class="line">        secondDie.pb(X + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= nd; ++i)   dp[i][now] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> l = secondDie[i] + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> r = secondDie[i + <span class="number">1</span>] - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> cnt = r - l + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j)</span><br><span class="line">                <span class="keyword">if</span> (firstDie[j] &gt;= l &amp;&amp; firstDie[j] &lt;= r)   --cnt;</span><br><span class="line">            cnt = min(cnt, nd);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; cnt; ++j)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = nd - <span class="number">1</span>; k &gt;= <span class="number">0</span>; --k)</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> p = <span class="number">0</span>; p &lt;= n * n; ++p)</span><br><span class="line">                        <span class="keyword">if</span> (dp[k][p] &amp;&amp; p + i + <span class="number">1</span> &lt;= n * n) dp[k + <span class="number">1</span>][p + i + <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span> ans = now;</span><br><span class="line">        <span class="keyword">double</span> mn = <span class="number">1000000</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= n * n; ++k)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= nd; ++j)   </span><br><span class="line">                <span class="keyword">if</span> (dp[j][k] &amp;&amp; <span class="built_in">abs</span>(n * n - k * <span class="number">2</span>) &lt; mn)    ans = k, mn = <span class="built_in">abs</span>(n * n - k * <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">return</span> ans / n / n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1191,7 +1191,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
