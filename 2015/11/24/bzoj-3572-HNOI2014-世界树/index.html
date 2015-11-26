@@ -47,7 +47,7 @@ Solution一个很经典的题，通过这题学到了一个叫虚树的东西，
 <meta property="og:site_name" content="mlz000's Blog">
 <meta property="og:description" content="Descripiton给定一棵树，有若干个询问，每次给定$m$个点，每个点都被这$m$个点中最近（距离相同，编号小的近）的点管辖。问$m$个点分别管几个点$\sum m\le 300000$
 Solution一个很经典的题，通过这题学到了一个叫虚树的东西，修为得到的精进虚树就是包含了给定点，并收缩了不分叉边的连通子图然后我们讨论下虚树的构建先给代码$t$表示虚树的节点，$h$是给定点，$st$是栈">
-<meta property="og:updated_time" content="2015-11-24T15:01:04.096Z">
+<meta property="og:updated_time" content="2015-11-26T08:36:56.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj 3572[HNOI2014]世界树">
 <meta name="twitter:description" content="Descripiton给定一棵树，有若干个询问，每次给定$m$个点，每个点都被这$m$个点中最近（距离相同，编号小的近）的点管辖。问$m$个点分别管几个点$\sum m\le 300000$
@@ -268,7 +268,7 @@ Solution一个很经典的题，通过这题学到了一个叫虚树的东西，
       
 
       
-        <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+        <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
 
 <h2 id="Descripiton">Descripiton</h2><p>给定一棵树，有若干个询问，每次给定$m$个点，每个点都被这$m$个点中最近（距离相同，编号小的近）的点管辖。问$m$个点分别管几个点<br>$\sum m\le 300000$</p>
 <h2 id="Solution">Solution</h2><p>一个很经典的题，通过这题学到了一个叫虚树的东西，修为得到的精进<br>虚树就是包含了给定点，并收缩了不分叉边的连通子图<br>然后我们讨论下虚树的构建<br>先给代码<br>$t$表示虚树的节点，$h$是给定点，$st$是栈<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> top = <span class="number">0</span>;</span><br><span class="line">    sort(h + <span class="number">1</span>, h + m + <span class="number">1</span>, cmp);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!top)   fa[st[++top] = h[i]] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> x = lca(st[top], h[i]);</span><br><span class="line">            <span class="keyword">for</span> (; dep[st[top]] &gt; dep[x]; --top)</span><br><span class="line">                <span class="keyword">if</span> (dep[st[top - <span class="number">1</span>]] &lt;= dep[x]) fa[st[top]] = x;</span><br><span class="line">            <span class="keyword">if</span> (st[top] != x) &#123;</span><br><span class="line">                fa[x] = st[top];</span><br><span class="line">                t[++tot] = st[++top] = x;</span><br><span class="line">                near[x] = mp(<span class="number">0x3f3f3f3f</span>, <span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            fa[st[++top] = h[i]] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -288,6 +288,8 @@ Solution一个很经典的题，通过这题学到了一个叫虚树的东西，
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/26/srm-556/" rel="prev">srm 556</a>
             
           </div>
 
@@ -359,7 +361,7 @@ Solution一个很经典的题，通过这题学到了一个叫虚树的东西，
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

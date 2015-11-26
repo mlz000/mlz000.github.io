@@ -204,6 +204,99 @@
           
           
             
+              <a class="post-title-link" href="/2015/10/10/srm-550/" itemprop="url">
+                srm 550
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-10T13:54:53+08:00" content="2015-10-10">
+            2015-10-10
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
+                  <span itemprop="name">topcoder题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/10/10/srm-550/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/10/srm-550/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+
+<h1 id="300">300</h1><p><hr></p>
+<h2 id="Description">Description</h2><p>有个机器人，从某一点出发，他只有碰到地形边缘或者碰到走过的点时才会改变运动方向，然后接着走，现在给出他的运动轨迹，判断他的运动是否合法，如果合法的话，那么整个地形的最小面积是多少。每次走的步数$\le 50$</p>
+<h2 id="Solution">Solution</h2><p>先确定最大的最小的$x,y$,然后进行验证，如果走到重复的地方或者不应该转弯时转弯则不合法。</p>
+<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm550/300.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">int</span> dx[] = &#123;<span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[] = &#123;<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">205</span>;</span><br><span class="line"><span class="keyword">bool</span> vis[N][N];</span><br><span class="line"><span class="keyword">struct</span> RotatingBot &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minArea</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; moves)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = moves.size();</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">100</span>, y = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">int</span> mxx = <span class="number">100</span>, mxy = <span class="number">100</span>, mnx = <span class="number">100</span>, mny = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> dir = i % <span class="number">4</span>;</span><br><span class="line">            <span class="keyword">int</span> tx = x + dx[dir] * moves[i];</span><br><span class="line">            <span class="keyword">int</span> ty = y + dy[dir] * moves[i];</span><br><span class="line">            mxx = max(mxx, tx), mnx = min(mnx, tx);</span><br><span class="line">            mxy = max(mxy, ty), mny = min(mny, ty);</span><br><span class="line">            x = tx, y = ty;</span><br><span class="line">        &#125;</span><br><span class="line">        x = <span class="number">100</span>, y = <span class="number">100</span>;</span><br><span class="line">        vis[x][y] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (mxx &gt; <span class="number">151</span> || mxy &gt; <span class="number">151</span> || mnx &lt; <span class="number">49</span>|| mxy &lt; <span class="number">49</span>)  <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">151</span>; ++i) &#123;</span><br><span class="line">            vis[i][mxy + <span class="number">1</span>] = vis[i][mny - <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">            vis[mxx + <span class="number">1</span>][i] = vis[mnx - <span class="number">1</span>][i] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> dir = i % <span class="number">4</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; moves[i]; ++j) &#123;</span><br><span class="line">                <span class="keyword">int</span> tx = x + dx[dir];</span><br><span class="line">                <span class="keyword">int</span> ty = y + dy[dir];</span><br><span class="line">                <span class="keyword">if</span> (vis[tx][ty])    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                vis[tx][ty] = <span class="number">1</span>;</span><br><span class="line">                x = tx, y = ty;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (i != n - <span class="number">1</span> &amp;&amp; !vis[x + dx[dir]][y + dy[dir]])   <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (mxx - mnx + <span class="number">1</span>) * (mxy - mny + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="500">500</h1><p><hr></p>
+<h2 id="Description-1">Description</h2><p>两个人在一个无限大的格子里轮流涂红蓝两色，第一个人先在$(0,0)$涂红，然后接下来的每一轮，对于所有的点$(x,y)$，如果$(x-1,y-1)$和$(x-2,y)$一个有另一个人的颜色，一个为空，那么就把这个点涂成自己的颜色，问经过$t$轮之后，某个区域的染色情况。</p>
+<h2 id="Solution-1">Solution</h2><p>将前几轮的情况手画一下，是下图这个样子的。。<br><img src="http://i13.tietuku.com/337844adf1bed019.jpg" alt=""><br>容易发现只有在$y\le x$这些格子才会被染色，然后发现按$y=-x+b$来看，奇数的没有被染色，偶数的有被染色的。且非常类似杨辉三角，其实杨辉三角奇数项才会被染色。这里有个神奇的结论$c[n][m]为奇数时当且仅当(n \&amp; m) == m$，于是就做完了QvQ</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm550/500.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;<span class="comment">//conclusion</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">struct</span> CheckerExpansion &#123;</span><br><span class="line">    <span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; resultAfter(<span class="keyword">long</span> <span class="keyword">long</span> t, <span class="keyword">long</span> <span class="keyword">long</span> x0, <span class="keyword">long</span> <span class="keyword">long</span> y0, <span class="keyword">int</span> w, <span class="keyword">int</span> h) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; ans;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h; ++i) &#123;</span><br><span class="line">            <span class="built_in">string</span> s = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; w; ++j) &#123;</span><br><span class="line">                LL x = x0 + j;</span><br><span class="line">                LL y = y0 + h - i - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (y &gt; x) &#123;</span><br><span class="line">                    s += <span class="string">"."</span>;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> ((x + y) % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                    LL n = (x + y) / <span class="number">2</span>;</span><br><span class="line">                    LL m = <span class="built_in">abs</span>(x - n);</span><br><span class="line">                    <span class="keyword">if</span> (n &gt;= t) s += <span class="string">"."</span>;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> ((n &amp; m) == m) &#123;    <span class="comment">//amazing </span></span><br><span class="line">                        <span class="keyword">if</span> (n &amp; <span class="number">1</span>)  s += <span class="string">"B"</span>;</span><br><span class="line">                        <span class="keyword">else</span> s += <span class="string">"A"</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> s += <span class="string">"."</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> s += <span class="string">"."</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.pb(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/10/10/srm-549/" itemprop="url">
                 srm 549
               </a>
@@ -1075,102 +1168,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/14/srm-543/" itemprop="url">
-                srm 543
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-09-14T20:52:09+08:00" content="2015-09-14">
-            2015-09-14
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
-                  <span itemprop="name">topcoder题解</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/09/14/srm-543/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/14/srm-543/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
-
-<h1 id="250">250</h1><p><hr><br>求$A, B(A,B\le 4\times 10^{12})$之间所有数的$XOR$</p>
-<h2 id="Solution">Solution</h2><p>转换成$1\sim B$异或和异或$1\sim A$异或和，容易发现当$n\ge 2时，1~\sim 2^n-1异或和为0$，$0,1,2,3$特判即可</p>
-<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm543/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="function">LL <span class="title">gao</span><span class="params">(LL x)</span> </span>&#123;</span><br><span class="line">    LL t = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">40</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        LL p = <span class="number">1l</span>l &lt;&lt; i;</span><br><span class="line">        <span class="keyword">if</span> (x == <span class="number">3</span> || !x) <span class="keyword">return</span> t;</span><br><span class="line">        <span class="keyword">if</span> (x == <span class="number">2</span>) <span class="keyword">return</span> t + <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">if</span> (x == <span class="number">1</span>) <span class="keyword">return</span> t + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (p &lt;= x) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((x - p + <span class="number">1</span>) &amp; <span class="number">1</span>)    t += p;</span><br><span class="line">            x ^= p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> EllysXors &#123;</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">getXor</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> L, <span class="keyword">long</span> <span class="keyword">long</span> R)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> gao(R) ^ gao(L - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="500">500</h1><p><hr></p>
-<h2 id="Description">Description</h2><p>在一个横坐标轴上有若干个垂直的线段.每个线段之间的距离为$width[i]$,现在让你从最左线段的左下角运动到最右线段的右上角<br>线段之间的运行速度为speed[i],在线段上垂直运动的速度为$walk$线段之间只能从整数坐标点运动到整数坐标点, 每个线段的高度都是一个定值$length$<br>请问最快多久可以到达目的地<br>$length\le 100000$</p>
-<h2 id="Solution-1">Solution</h2><p>很容易想到dp,$dp[i][j]$表示过了前$i$个线段，当前在$j$的答案，暴力转移复杂度爆炸，容易发现，在每个线段的答案沿高度是单调的，转移时维护上一次转移的位置即可。</p>
-<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm543/500.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> inf = <span class="number">1e20</span>;</span><br><span class="line"><span class="keyword">double</span> dp[<span class="number">2</span>][<span class="number">100005</span>];</span><br><span class="line"><span class="keyword">struct</span> EllysRivers &#123;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">getMin</span><span class="params">(<span class="keyword">int</span> length, <span class="keyword">int</span> walk, <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; width, <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; speed)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = width.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= length; ++i)   dp[<span class="number">0</span>][i] = (<span class="keyword">double</span>)i / walk;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= length; ++j)   dp[i &amp; <span class="number">1</span>][j] = inf;</span><br><span class="line">            <span class="keyword">int</span> last = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= length; ++j)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = last; k &lt;= j; ++k) &#123;</span><br><span class="line">                    <span class="keyword">double</span> t =  dp[(i - <span class="number">1</span>) &amp; <span class="number">1</span>][k] + hypot(width[i - <span class="number">1</span>], j - k) / speed[i - <span class="number">1</span>];</span><br><span class="line">                    <span class="keyword">if</span> (t &gt; dp[i &amp; <span class="number">1</span>][j])   <span class="keyword">break</span>;</span><br><span class="line">                    dp[i &amp; <span class="number">1</span>][j] = t;</span><br><span class="line">                    last = k;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n &amp; <span class="number">1</span>][length];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">&raquo;</a>
   </nav>
 
  </div>
@@ -1204,7 +1206,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
