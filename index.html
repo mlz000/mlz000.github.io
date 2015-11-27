@@ -204,6 +204,99 @@
           
           
             
+              <a class="post-title-link" href="/2015/11/27/srm-557/" itemprop="url">
+                srm 557
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-27T15:47:58+08:00" content="2015-11-27">
+            2015-11-27
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
+                  <span itemprop="name">topcoder题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/27/srm-557/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/27/srm-557/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+
+
+<h1 id="250">250</h1><p><hr></p>
+<h2 id="Description">Description</h2><p>在二维坐标轴上从$(0,h_0)$走到$(n, h_n)$,走一次在x轴上前进一个单位长度，在y轴上上升或者下降一个单位长度<br>现在已知中间的某段连续区域的走法（只由’U’和’D’构成的不超过50的字符串）<br>问是否在保证最低点不低于0的情况下成功走到终点。</p>
+<h2 id="Solution">Solution</h2><p>判断连续一段最低点到哪里，前面补$U$即可，其余部分判判奇偶随便搞搞就行了</p>
+<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm557/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">struct</span> FoxAndMountainEasy &#123;</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">possible</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> h0, <span class="keyword">int</span> hn, <span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = s.size();</span><br><span class="line">        <span class="keyword">int</span> mn = <span class="number">0</span>, now = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; l; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == <span class="string">'U'</span>)    ++now;</span><br><span class="line">            <span class="keyword">else</span> --now;</span><br><span class="line">            mn = min(mn, now);</span><br><span class="line">        &#125;</span><br><span class="line">        mn = h0 + mn;</span><br><span class="line">        <span class="keyword">int</span> del = hn - h0 - now;</span><br><span class="line">        n -= l;</span><br><span class="line">        <span class="keyword">if</span> (mn &lt; <span class="number">0</span>) del += mn, n += mn;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">abs</span>(del) &gt; n || n &lt; <span class="number">0</span>)  <span class="keyword">return</span> <span class="string">"NO"</span>;</span><br><span class="line">        <span class="keyword">int</span> t = del - n;</span><br><span class="line">        <span class="keyword">if</span> (t &amp; <span class="number">1</span>)  <span class="keyword">return</span> <span class="string">"NO"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"YES"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="550">550</h1><p><hr></p>
+<h2 id="Description-1">Description</h2><p>一张普通图，$50*50$，可能有自环。初始全白<br>给一个闭包矩阵，每次挑一个点染成灰色则它可达的点全黑,求最多能有多少点变灰。</p>
+<h2 id="Solution-1">Solution</h2><p>所求即最长反链，根据dilworth定理，即为最大反链大小等于最少划分成的链数<br>即求最小可相交路径覆盖，求个闭包$|V|-最大匹配$即为答案</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm557/550(dilworth).cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;<span class="comment">//dilworth</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">55</span>;</span><br><span class="line"><span class="keyword">int</span> n, l[N];</span><br><span class="line"><span class="keyword">bool</span> g[N][N], v[N];</span><br><span class="line"><span class="keyword">struct</span> Incubator &#123;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">can</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) </span><br><span class="line">            <span class="keyword">if</span> (g[u][i] &amp;&amp; !v[i]) &#123;</span><br><span class="line">                v[i] = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (l[i] == -<span class="number">1</span> || can(l[i])) &#123;</span><br><span class="line">                    l[i] = u;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxMagicalGirls</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; s)</span> </span>&#123;</span><br><span class="line">         n = s.size();</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) </span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j)</span><br><span class="line">                 g[i][j] = s[i][j] == <span class="string">'Y'</span>;</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; ++k)</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">                 <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j)</span><br><span class="line">                     g[i][j] |= g[i][k] &amp; g[k][j];</span><br><span class="line">         <span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">         <span class="built_in">memset</span>(l, -<span class="number">1</span>, <span class="keyword">sizeof</span>(l));</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">             <span class="built_in">memset</span>(v, <span class="number">0</span>, <span class="keyword">sizeof</span>(v));</span><br><span class="line">             <span class="keyword">if</span> (can(i))    ++t;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> n - t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/26/srm-556/" itemprop="url">
                 srm 556
               </a>
@@ -1063,99 +1156,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/12/srm-551/" itemprop="url">
-                srm 551
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-10-12T15:56:19+08:00" content="2015-10-12">
-            2015-10-12
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
-                  <span itemprop="name">topcoder题解</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/10/12/srm-551/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/12/srm-551/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
-
-<h1 id="250">250</h1><p><hr></p>
-<h2 id="Description">Description</h2><p>题意：一个长度最多$50$的字符串，每次操作可以交换相邻的两个字符，问，经过最多$MaxSwaps$次交换之后，最多能让多少个相同的字符连起来</p>
-<h2 id="Solution">Solution</h2><p>枚举一个字符，让其他字符往这里即可，取最小即可</p>
-<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm551/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">struct</span> ColorfulChocolates &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maximumSpread</span><span class="params">(<span class="built_in">string</span> chocolates, <span class="keyword">int</span> maxSwaps)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n = chocolates.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="built_in">string</span> s = chocolates;</span><br><span class="line">            <span class="keyword">int</span> now = <span class="number">1</span>;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; --j)</span><br><span class="line">                <span class="keyword">if</span> (s[j] == s[i])   a.pb(i - j - now), ++now;</span><br><span class="line">            now = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; ++j)</span><br><span class="line">                <span class="keyword">if</span> (s[j] == s[i])   a.pb(j - i - now), ++now;</span><br><span class="line">            sort(a.begin(), a.end());</span><br><span class="line">            <span class="keyword">int</span> cnt = maxSwaps;</span><br><span class="line">            <span class="keyword">int</span> t = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.size(); ++i)</span><br><span class="line">                <span class="keyword">if</span> (cnt - a[i] &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    cnt -= a[i];</span><br><span class="line">                    ++t;</span><br><span class="line">                &#125;</span><br><span class="line">            ans = max(ans, t);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="450">450</h1><p><hr></p>
-<h2 id="Description-1">Description</h2><p>一个有向图，顶点标号$0\sim n-1$，每个点会选择优先走他能到达的编号最小的点，现在想通过去掉一些边使得可以从$0$走到$n-1$,求最少要去掉的边数</p>
-<h2 id="Solution-1">Solution</h2><p>考虑类似于$floyd$的做法，$d[i][j]$表示$i$走到$j$需要最少删多少条边，直接$dp$即可</p>
-<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm551/450.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;<span class="comment">//dp</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">55</span>, inf = <span class="number">1e6</span>;</span><br><span class="line"><span class="keyword">int</span> d[N][N];</span><br><span class="line"><span class="keyword">struct</span> ColorfulWolves &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getmin</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; colormap)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = colormap.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> now = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (colormap[i][j] == <span class="string">'Y'</span>)  d[i][j] = now++;</span><br><span class="line">                <span class="keyword">else</span> d[i][j] = inf;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; ++k)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j)</span><br><span class="line">                    d[i][j] = min(d[i][j], d[i][k] + d[k][j]);</span><br><span class="line">        <span class="keyword">return</span> d[<span class="number">0</span>][n - <span class="number">1</span>] == inf ? -<span class="number">1</span> : d[<span class="number">0</span>][n - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1194,7 +1194,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

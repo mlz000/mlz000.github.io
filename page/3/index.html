@@ -204,6 +204,129 @@
           
           
             
+              <a class="post-title-link" href="/2015/09/17/2015-ACM多校训练第五场/" itemprop="url">
+                2015-ACM多校训练第五场
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-17T16:30:33+08:00" content="2015-09-17">
+            2015-09-17
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/hdu/" itemprop="url" rel="index">
+                  <span itemprop="name">hdu</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/hdu/ACM多校题解/" itemprop="url" rel="index">
+                  <span itemprop="name">ACM多校题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/09/17/2015-ACM多校训练第五场/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/17/2015-ACM多校训练第五场/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque"></p>
+<h1 id="题外话">题外话</h1><p>第五套感觉难度适中，今天把它补掉了。。。</p>
+<p><hr></p>
+<h1 id="hdu_5343(1001)_MZL’s_Circle_Zhou">hdu 5343(1001) MZL’s Circle Zhou</h1><h2 id="Solution">Solution</h2><p>这题深深的暴露了自己$SAM$水平只差，每次遇到$SAM$的题，都不太能做出来，说到底还是对$SAM$理解不够深刻吧= =。。<br>由于是把两个串拼起来，容易想到，对第一个串正着建立$SAM$，第二个串反过来建$SAM$，用$dp[i]$表示第二个串中以$i$这个字符开头的串有多少个。<br>然后在第一个串$SAM$节点上，如果不能转移到字母$c$，答案加上$dp[c]$就好了<br>仔细想想，其实这题并不难= =。。。自己太弱了</p>
+<h2 id="Code"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/01.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5344(1002)_MZL’s_xor">hdu 5344(1002) MZL’s xor</h1><h2 id="Solution-1">Solution</h2><p>水题，发现不同项都抵消掉了。。。</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/02.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5345(1003)_MZL’s_combat">hdu 5345(1003) MZL’s combat</h1><h2 id="Solution-2">Solution</h2><p>貌似有点烦，先跳过= =过段时间补</p>
+<p><hr>  </p>
+<h1 id="hdu_5346(1004)_MZL’s_game">hdu 5346(1004) MZL’s game</h1><h2 id="Solution-3">Solution</h2><p>dp好题，状态设计非常高端，和前几天CC月赛一个题思想非常相似，很好的idea。<br>正常dp复杂度无法保证，不妨考虑，一个选人顺序的全排列，如果一个人挂了，就继续选下一个人。由于每个人在每个位置概率都是$\frac{1}{n}$，我们不妨考虑编号$1 \sim n$。<br>这样转化后我们就可以做了！<br>考虑$dp[j][i]$表示$i$这个人受到$j$次攻击的概率,分两种情况考虑</p>
+<ul>
+<li>(1) 第$i-1$个人没挂，则第$j$次攻击是来自第$i-1$的人的，于是$dp[j][i] = dp[j-1][i-1]\times (1-p)^{j-1}$</li>
+<li>(2) 第$i-1$个人挂掉了，则受到的攻击次数和第$i-1$个人相同，于是$dp[j][i] = dp[j][i-1]\times (1-(1-p)^j)$<br>于是就做完了，考虑全排列的这种思想，学到了。。</li>
+</ul>
+<h2 id="Code-2"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/04.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5347(1005)_MZL’s_chemistry">hdu 5347(1005) MZL’s chemistry</h1><h2 id="Solution-4">Solution</h2><p>无聊题，随手打个表</p>
+<h2 id="Code-3"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/05.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5348(1006)_MZL’s_endless_loop">hdu 5348(1006) MZL’s endless loop</h1><h2 id="Solution-5">Solution</h2><p>类似于一笔画，奇数度的两两连一下，跑欧拉回路就完了</p>
+<h2 id="Code-4"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/06.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5349(1007)_MZL’s_simple_problem">hdu 5349(1007) MZL’s simple problem</h1><h2 id="Solution-6">Solution</h2><p>水题，直接用set或者维护一下都可以</p>
+<h2 id="Code-5"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/07.cpp" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5350(1008)_MZL’s_munhaff_function">hdu 5350(1008) MZL’s munhaff function</h1><h2 id="Solution-7">Solution</h2><p>其实这就是个huffman树的生成过程，想明白那个式子和它的转换关系即可</p>
+<h2 id="Code-6"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/08.cpp" target="_blank" rel="external">Code</a></h2><hr>
+
+<h1 id="hdu_5351(1009)_MZL’s_Border">hdu 5351(1009) MZL’s Border</h1><h2 id="Solution-8">Solution</h2><p>水题，关于$Fibonacci$的一般打个表就看出规律了，找第一个$i,m+1&lt;|fib[i]|$,答案就是$m-|fib[i-2]|$</p>
+<h2 id="Code-7"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/09.java" target="_blank" rel="external">Code</a></h2><p><hr></p>
+<h1 id="hdu_5352(1010)_MZL’s_City">hdu 5352(1010) MZL’s City</h1><h2 id="Solution-9">Solution</h2><p>很容易想到的做法是，把每个操作$1$拆成$k$个点，与能相连的城市连一条边，跑匹配即可，由于要求字典序最小，倒着跑匹配即可。也可用最大流，费用流来做</p>
+<h2 id="Code-8"><a href="https://github.com/mlz000/ACM/blob/master/2015%E5%A4%9A%E6%A0%A1/5/10.cpp" target="_blank" rel="external">Code</a></h2><p>完结撒花！<br>继续补题！&gt;_&lt;</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/09/14/srm-543/" itemprop="url">
                 srm 543
               </a>
@@ -1155,94 +1278,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/14/srm-538/" itemprop="url">
-                srm 538
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-07-14T15:37:03+08:00" content="2015-07-14">
-            2015-07-14
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
-                  <span itemprop="name">topcoder题解</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/07/14/srm-538/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/srm-538/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>topcoder,srm538 题解<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/14/srm-538/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1281,7 +1316,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
