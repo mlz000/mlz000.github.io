@@ -204,6 +204,99 @@
           
           
             
+              <a class="post-title-link" href="/2015/12/03/srm-558/" itemprop="url">
+                srm 558
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-12-03T20:28:09+08:00" content="2015-12-03">
+            2015-12-03
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
+                  <span itemprop="name">topcoder题解</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/12/03/srm-558/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/03/srm-558/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+
+<h1 id="275">275</h1><p><hr></p>
+<h2 id="Description">Description</h2><p>懒得写了= =自己看吧。。。</p>
+<h2 id="Solution">Solution</h2><p>直接dp即可，用二进制的小技巧表示相同颜色即可</p>
+<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm558/275.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">55</span>, inf = <span class="number">1e7</span>;</span><br><span class="line"><span class="keyword">int</span> a[N], dp[N];</span><br><span class="line"><span class="keyword">class</span> Stamp &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">getMinimumCost</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> A, <span class="keyword">int</span> B)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> n = s.size();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span> (s[i] == <span class="string">'R'</span>)    a[i] = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (s[i] == <span class="string">'G'</span>)    a[i] = <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span> (s[i] == <span class="string">'B'</span>)    a[i] = <span class="number">4</span>;</span><br><span class="line">                <span class="keyword">if</span> (s[i] == <span class="string">'*'</span>)    a[i] = <span class="number">7</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> ans = inf;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>; l &lt;= n; ++l) &#123;</span><br><span class="line">                fill(dp, dp + n + <span class="number">1</span>, inf);</span><br><span class="line">                dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">                    <span class="keyword">int</span> now = <span class="number">7</span>;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; n; ++j) &#123;</span><br><span class="line">                        now &amp;= a[j];</span><br><span class="line">                        <span class="keyword">if</span> (!now)   <span class="keyword">break</span>;</span><br><span class="line">                        <span class="keyword">int</span> len = j - i + <span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">if</span> (len &gt;= l &amp;&amp; dp[i] != inf)   dp[j + <span class="number">1</span>] = min(dp[j + <span class="number">1</span>], dp[i] + ((len + l - <span class="number">1</span>) / l) * B);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (dp[n] != inf)   ans = min(ans, dp[n] + A * l);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="550">550</h1><p><hr></p>
+<h2 id="Description-1">Description</h2><p>看图泥就懂题意了= =</p>
+<h2 id="Solution-1">Solution</h2><p>首先枚举两个蓝色点，再枚举$B$点，复杂度可以接受<br>从小到大枚举$B$点时可以同时记录可以满足条件的$A$的个数，然后二分求出右面$C,D$的个数，统计即可</p>
+<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm558/550.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">class</span> Ear &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">getCount</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; redX, <span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; blueX, <span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; blueY)</span> </span>&#123;</span><br><span class="line">            <span class="built_in">string</span> a, b, c;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; r, bx, by;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; redX.size(); ++i)   a += redX[i];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; blueX.size(); ++i)  b += blueX[i];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; blueY.size(); ++i)  c += blueY[i];</span><br><span class="line">            <span class="function"><span class="built_in">stringstream</span> <span class="title">sa</span><span class="params">(a)</span>, <span class="title">sb</span><span class="params">(b)</span>, <span class="title">sc</span><span class="params">(c)</span></span>;</span><br><span class="line">            <span class="keyword">int</span> x;</span><br><span class="line">            <span class="keyword">while</span> (sa &gt;&gt; x) r.pb(x);</span><br><span class="line">            <span class="keyword">while</span> (sb &gt;&gt; x) bx.pb(x);</span><br><span class="line">            <span class="keyword">while</span> (sc &gt;&gt; x) by.pb(x);</span><br><span class="line">            sort(r.begin(), r.end());</span><br><span class="line">            LL ans = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> n = bx.size(), m = r.size();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (i == j) <span class="keyword">continue</span>;</span><br><span class="line">                    <span class="keyword">if</span> (by[i] &gt; by[j]) &#123;</span><br><span class="line">                        <span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; m; ++k) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (r[k] &lt; bx[j]) &#123;</span><br><span class="line">                                <span class="keyword">int</span> R = max(bx[i], bx[j]) + <span class="number">1</span>;</span><br><span class="line">                                <span class="keyword">double</span> x = <span class="number">1e50</span>;</span><br><span class="line">                                <span class="keyword">if</span> (bx[i] != bx[j]) &#123;</span><br><span class="line">                                    <span class="keyword">double</span> k = (<span class="keyword">double</span>)(by[i] - by[j]) / (bx[i] - bx[j]);</span><br><span class="line">                                    x = bx[i] - (<span class="keyword">double</span>)by[i] / k;</span><br><span class="line">                                    R = max(R, (<span class="keyword">int</span>)<span class="built_in">floor</span>(x + <span class="number">1e-6</span>) + <span class="number">1</span>);</span><br><span class="line">                                &#125;</span><br><span class="line">                                <span class="keyword">int</span> RR = lower_bound(r.begin(), r.end(), R) - r.begin();</span><br><span class="line">                                <span class="keyword">int</span> LL = upper_bound(r.begin(), r.end(), bx[j]) - r.begin();</span><br><span class="line">                                ans += <span class="number">1l</span>l * tot * (RR + m - LL * <span class="number">2</span> - <span class="number">1</span>) * (m - RR) / <span class="number">2</span>;</span><br><span class="line">                                <span class="keyword">if</span> (r[k] &lt; bx[i] &amp;&amp; r[k] &lt; x - <span class="number">1e-6</span>)    ++tot;</span><br><span class="line">                            &#125;       </span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/27/srm-557/" itemprop="url">
                 srm 557
               </a>
@@ -257,7 +350,7 @@
 
       
         
-          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_1/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
+          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
 
 
 <h1 id="250">250</h1><p><hr></p>
@@ -1063,99 +1156,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/20/srm-552/" itemprop="url">
-                srm 552
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-10-20T21:16:22+08:00" content="2015-10-20">
-            2015-10-20
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/topcoder题解/" itemprop="url" rel="index">
-                  <span itemprop="name">topcoder题解</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/10/20/srm-552/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/20/srm-552/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><embed src="http://www.xiami.com/widget/5803277_112515512_235_346_FF8719_494949_0/collectPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque">
-
-
-<h1 id="250">250</h1><p><hr></p>
-<h2 id="Description">Description</h2><p>定义大小为$N$的三角形, 是由若干个等大的圆形构成的, 高度和底宽为$N$,三角形的每个圆染三种颜色$r,g,b$,相接触的圆不能染同种颜色,问有$R$个$r$颜色的球, $G$个$g$颜色的球和$B$个$b$颜色的球, 最多能染多少个大小为$N$的三角形</p>
-<h2 id="Solution">Solution</h2><p>稍加分析可以发现，每个三角形三个颜色的球要不是$x,x,x$,要不是$x,x,x+1$这种形式。先考虑$mod3=0$的情况，直接计算即可，$mod3=1$时，先当他们都相同，二分答案，然后check一下多出来的是否可以多出个数。</p>
-<h2 id="Code"><a href="https://github.com/mlz000/topcoder/blob/master/srm552/250.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="built_in">vector</span>&lt;LL&gt; a;</span><br><span class="line"><span class="keyword">struct</span> FoxPaintingBalls &#123;</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">theMax</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> R, <span class="keyword">long</span> <span class="keyword">long</span> G, <span class="keyword">long</span> <span class="keyword">long</span> B, <span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (N == <span class="number">1</span>) <span class="keyword">return</span> R + G + B;</span><br><span class="line">        a.pb(R), a.pb(G), a.pb(B);</span><br><span class="line">        sort(a.begin(), a.end());</span><br><span class="line">        LL tot = (LL)N * (N + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        LL x = tot / <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">if</span> (tot % <span class="number">3</span> == <span class="number">0</span>) <span class="keyword">return</span> a[<span class="number">0</span>] / x;</span><br><span class="line">        LL ll = <span class="number">0</span>, ans = <span class="number">0</span>, rr = a[<span class="number">0</span>] / x;</span><br><span class="line">        <span class="keyword">while</span> (ll &lt;= rr) &#123;</span><br><span class="line">            LL mid = (ll + rr) &gt;&gt; <span class="number">1l</span>l;</span><br><span class="line">            LL r = R - mid * x, g = G - mid * x, b = B - mid * x;</span><br><span class="line">            <span class="keyword">if</span> (r + g + b &gt;= mid) &#123;</span><br><span class="line">                ans = mid;</span><br><span class="line">                ll = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> rr = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="500">500</h1><p><hr></p>
-<h2 id="Description-1">Description</h2><p>大小为$n\times m(n,m&lt;30)$的矩阵, 有$L,P,.,$三种格子, 画两个互不相交的矩形, 使两个矩形$L$和$P$的差不超过$D$, 问这两个矩形最多能包含的$L$和$P$的和。</p>
-<h2 id="Solution-1">Solution</h2><p>考虑一定存在一个分界线将其分为两个矩阵，先暴力$N^6$处理所有分界线，比如$l[i][j]表示第i列左边差为j的最大的花的和$，然后枚举两个矩形内部的差，再枚举分界线，暴力$N^5$计算即可。</p>
-<h2 id="Code-1"><a href="https://github.com/mlz000/topcoder/blob/master/srm552/500.cpp" target="_blank" rel="external">Code</a></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;bits/stdc++.h&gt;<span class="comment">//enum</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> F first</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> S second</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">35</span>;</span><br><span class="line"><span class="keyword">int</span> L[N][N * N + <span class="number">1000</span>], R[N][N * N + <span class="number">1000</span>], D[N][N * N + <span class="number">1000</span>], U[N][N * N + <span class="number">1000</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">gao</span><span class="params">(<span class="keyword">int</span> &amp;x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y)  x = y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> FoxAndFlowerShopDivOne &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">theMaxFlowers</span><span class="params">(<span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; s, <span class="keyword">int</span> maxDiff)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(L, <span class="number">0xc0</span>, <span class="keyword">sizeof</span>(L));</span><br><span class="line">        <span class="built_in">memset</span>(R, <span class="number">0xc0</span>, <span class="keyword">sizeof</span>(R));</span><br><span class="line">        <span class="built_in">memset</span>(U, <span class="number">0xc0</span>, <span class="keyword">sizeof</span>(U));</span><br><span class="line">        <span class="built_in">memset</span>(D, <span class="number">0xc0</span>, <span class="keyword">sizeof</span>(D));</span><br><span class="line">        <span class="keyword">int</span> n = s.size(), m = s[<span class="number">0</span>].size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; ++j) </span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = i; k &lt; n; ++k)</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> l = j; l &lt; m; ++l) &#123;</span><br><span class="line">                        <span class="keyword">int</span> suml = <span class="number">0</span>, sump = <span class="number">0</span>;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">int</span> p = i; p &lt;= k; ++p)</span><br><span class="line">                            <span class="keyword">for</span> (<span class="keyword">int</span> q = j; q &lt;= l; ++q) &#123;</span><br><span class="line">                                suml += s[p][q] == <span class="string">'L'</span>;</span><br><span class="line">                                sump += s[p][q] == <span class="string">'P'</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                        <span class="keyword">int</span> sum = suml + sump, dif = suml - sump + <span class="number">1000</span>;</span><br><span class="line">                        gao(D[i][dif], sum);</span><br><span class="line">                        gao(R[j][dif], sum);</span><br><span class="line">                        gao(U[k][dif], sum);</span><br><span class="line">                        gao(L[l][dif], sum);</span><br><span class="line">                    &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) </span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N * N + <span class="number">1000</span>; ++j)</span><br><span class="line">                U[i][j] = max(U[i][j], U[i - <span class="number">1</span>][j]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">2</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N * N + <span class="number">1000</span>; ++j)</span><br><span class="line">                D[i][j] = max(D[i][j], D[i + <span class="number">1</span>][j]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; m; ++j)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; N * N + <span class="number">1000</span>; ++k)</span><br><span class="line">                L[j][k] = max(L[j][k], L[j - <span class="number">1</span>][k]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = m - <span class="number">2</span>; j &gt;= <span class="number">0</span>; --j)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; N * N + <span class="number">1000</span>; ++k)</span><br><span class="line">                R[j][k] = max(R[j][k], R[j + <span class="number">1</span>][k]);</span><br><span class="line">        <span class="keyword">int</span> ans = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = -n * m; i &lt;= n * m; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = -n * m; j &lt;= n * m; ++j) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> h = <span class="number">0</span>; h &lt; n - <span class="number">1</span>; ++h) </span><br><span class="line">                    <span class="keyword">if</span> (<span class="built_in">abs</span>(i + j) &lt;= maxDiff)  ans = max(ans, U[h][i + <span class="number">1000</span>] + D[h + <span class="number">1</span>][j + <span class="number">1000</span>]);</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">0</span>; l &lt; m - <span class="number">1</span>; ++l)</span><br><span class="line">                    <span class="keyword">if</span> (<span class="built_in">abs</span>(i + j) &lt;= maxDiff)  ans = max(ans, L[l][i + <span class="number">1000</span>] + R[l + <span class="number">1</span>][j + <span class="number">1000</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1194,7 +1194,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
